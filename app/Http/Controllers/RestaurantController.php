@@ -4,25 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $restaurants = Restaurant::all();
-
-        return view('restaurants.index', compact('restaurants'));
-    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('restaurants.create');
     }
 
     /**
@@ -30,7 +22,8 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        // $data['user_id'] = Auth::user()->id;
     }
 
     /**
