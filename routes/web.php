@@ -21,11 +21,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->prefix('restaurants')->group(function () {
 
+    // Restaurants routes
 
-    // Restaurants CRUD
-    Route::resource('restaurants', RestaurantController::class);
+    //create
+    Route::get('create', [RestaurantController::class, 'create'])->name('restaurants.create');
+
+    //store
+    Route::post('store', [RestaurantController::class, 'store'])->name('restaurants.store');
 
 });
 
