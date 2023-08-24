@@ -11,11 +11,22 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Restaurant extends Model
 {
     use HasFactory;
-
+    protected $fillable = [
+        "user_id",
+        "name",
+        "vat_number",
+        "note",
+        "thumb",
+        "city",
+        "street_name",
+        "street_number",
+        "zip_code"
+    ];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
+    
 
     public function products(): HasMany
     {
