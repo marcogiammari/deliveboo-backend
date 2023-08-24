@@ -86,7 +86,7 @@ return [
     ],
     [
         "name" => "Poke",
-        "tumb" => "https://media-cdn.tripadvisor.com/media/photo-m/1280/17/a7/1d/16/poke-bowl-ebi.jpg"
+        "thumb" => "https://media-cdn.tripadvisor.com/media/photo-m/1280/17/a7/1d/16/poke-bowl-ebi.jpg"
     ],
     [
         "name" => "Sushi",

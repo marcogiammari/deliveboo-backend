@@ -10,6 +10,11 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'thumb'
+    ];
+
     public function restaurants(): BelongsToMany
     {
         return $this->belongsToMany(Restaurant::class);
