@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->boolean("is_paid");
+            $table->boolean("is_paid")->default("0");
             $table->decimal("total_amount",8,2);
             $table->string("customer_name", 50);
             $table->string("customer_address", 100);
