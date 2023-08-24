@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('ordered_product', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger("quantity");
             $table->timestamps();
         });
     }
