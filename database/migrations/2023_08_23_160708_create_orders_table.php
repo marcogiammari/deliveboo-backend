@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->boolean("delivered");
             $table->boolean("is_paid");
             $table->decimal("total_amount",8,2);
             $table->string("customer_name", 50);
-            $table->string("customer_address", 50);
+            $table->string("customer_address", 100);
             $table->string("customer_tel", 20);
             $table->string("customer_email", 50);
             $table->string("customer_note", 255)->nullable();
