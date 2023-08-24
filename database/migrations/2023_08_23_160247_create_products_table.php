@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreignId("course_id")->constrained();
             $table->string("name",50);
             $table->decimal("price",5,2);
-            $table->string("description",255);
+            $table->string("description",255)->nullable();
             $table->boolean("visible");
-            $table->text("thumb");
+            $table->text("thumb")->nullable();
             $table->timestamps();
         });
     }
