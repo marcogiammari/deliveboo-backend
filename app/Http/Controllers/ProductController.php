@@ -10,22 +10,6 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-
-    function generateSlug($stringa) {
-        // Converto la stringa in caratteri minuscoli
-        $stringa = strtolower($stringa);
-        
-        // Rimuovo caratteri non alfanumerici
-        $stringa = preg_replace('/[^a-z0-9]/', '-', $stringa);
-        
-        // Rimuovo eventuali caratteri duplicati "-"
-        $stringa = preg_replace('/-+/', '-', $stringa);
-        
-        // Rimuovo eventuali trattini all'inizio o alla fine
-        $stringa = trim($stringa, '-');
-        
-        return $stringa;
-    }
     
     public function index()
     {
@@ -52,9 +36,12 @@ class ProductController extends Controller
         $validatedData = $request->validated();
         $product = new Product();
         $product->fill($validatedData);
-        $product->restaurant_id=1;
+        
+        // ricavo il restaurant_id dalla query sull'id dell'utente autenticato
+        $restaurant = Restaurant::select('id')->where('user_id', Auth::user()->id)->first();
+        $product->restaurant_id = $restaurant->id;
+
         $product->save();
-        // $product->slug = $this->generateSlug($validatedData["name"]);
 
         return redirect()->route("products.show", $product);
 
