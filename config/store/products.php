@@ -10,6 +10,14 @@ return [
         "thumb" => "https://www.projectinvictus.it/wp-content/uploads/2017/12/calorie-pizza-margherita-1280x720.jpg.webp"
     ],
     [
+        "restaurant_id" => "6",
+        "name" => "Margherita Con Bufala",
+        "price" => 5.00,
+        "description" => "Pizza con pomodoro e mozzarella di bufala",
+        "visible" => true,
+        "thumb" => "https://www.projectinvictus.it/wp-content/uploads/2017/12/calorie-pizza-margherita-1280x720.jpg.webp"
+    ],
+    [
         "restaurant_id" => "4",
         "name" => "Poke",
         "price" => 10.50,

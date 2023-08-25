@@ -17,13 +17,10 @@ class RestaurantSeeder extends Seeder
         $category_restaurant_data = config('store.category_restaurant');
 
         foreach ($restaurants_data as $restaurant) {
-
             $newRestaurant = new Restaurant();
             $newRestaurant->fill($restaurant);
             $newRestaurant->save();
             $newRestaurant->categories()->attach($category_restaurant_data[$newRestaurant->id]);
-            // Restaurant::create($restaurant);
-            
         }
     }
 }
