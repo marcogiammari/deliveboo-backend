@@ -1,4 +1,5 @@
-@extends('layouts.app_dashboard')
+@extends('layouts.app')
 <div>
     ciao
 </div>
+@endsection
