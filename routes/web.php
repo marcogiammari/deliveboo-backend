@@ -31,7 +31,7 @@ Route::middleware(['auth'])->prefix('restaurants')->group(function () {
 
     //store
     Route::post('store', [RestaurantController::class, 'store'])->name('restaurants.store');
-
+    Route::get('show/{restaurant}', [RestaurantController::class, 'show'])->name('restaurants.show');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

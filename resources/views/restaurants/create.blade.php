@@ -7,7 +7,7 @@
 
         <h1>Create new restaurant</h1>
     
-        <form class="d-flex flex-column gap-3" action="{{ route('restaurants.store') }}" method="post">
+        <form class="d-flex flex-column gap-3" action="{{ route('restaurants.store') }}" class="needs-validation" method="post">
             @csrf
     
             <div>
