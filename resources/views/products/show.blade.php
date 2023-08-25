@@ -1,4 +1,4 @@
-@extends('layouts.app_dashboard.blade')
+@extends('layouts.app_dashboard')
 <div>
     ciao
 </div>
