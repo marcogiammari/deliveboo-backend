@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreRestaurantRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
@@ -13,25 +15,36 @@ class RestaurantController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    {   
+        
+        
         return view('restaurants.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRestaurantRequest $request)
     {
-        dd($request);
-        // $data['user_id'] = Auth::user()->id;
+        
+        $data = $request->validated();
+        
+        $newRestaurant = new Restaurant();
+        $newRestaurant->fill($data);
+        $newRestaurant->user_id = Auth::user()->id;
+        $newRestaurant->save();
+        
+        return redirect()->route("restaurants.show",$newRestaurant);
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Restaurant $restaurant)
+
     {
-        //
+        return view("restaurants.show", compact("restaurant"));
     }
 
     /**
