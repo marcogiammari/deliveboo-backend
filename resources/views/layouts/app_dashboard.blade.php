@@ -107,11 +107,11 @@
                                 <i class="fa-solid fa-list-alt fa-lg fa-fw"></i> Crea Ristoranti
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
+                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{route('products.create')}}">
                                 <i class="fa-solid fa-plus fa-lg fa-fw"></i> Aggiungi Prodotto
                             </a>
-                        </li> --}}
+                        </li>
                     </ul>
 
                 </div>

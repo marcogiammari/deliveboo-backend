@@ -1,32 +1,36 @@
-@extends('layouts.app_dashboard')
+@extends('layouts.app')
 
 @section('content')
 <div>
-    <h1 class="text-center">Create Product</h1>
+
+    <h1 class="text-center">Aggiungi un Piatto</h1>
         
-    <form class="d-flex flex-column gap-3 w-50 m-auto " action="{{ route('products.store') }}" method="POST">
+    <form class="d-flex flex-column gap-3 w-50 m-auto " action="{{ route('products.update', $product) }}" method="POST" enctype="multipart/form-data">
+
         @csrf
+        @method('PUT')
+        
         <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control" name="name" id="name">
+            <input type="text" class="form-control" name="name" id="name"  value="{{$product->name}}">
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Prezzo</label>
-            <input type="text" class="form-control" name="price" id="price">
+            <input type="text" class="form-control" name="price" id="price" value="{{$product->price}}">
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
-            <textarea class="form-control" name="description" id="description" rows="4"></textarea>
+            <textarea class="form-control" name="description" id="description" value="{{$product->description}}" rows="4"></textarea>
         </div>
         <div class="mb-3">
             <label for="thumb" class="form-label">Immagine</label>
-            <input type="text" class="form-control" name="thumb" id="thumb">
+            <input type="text" class="form-control" name="thumb" id="thumb" value="{{$product->thumb}}">
         </div>
         <div class="m-3 d-flex">
             <label class="form-check-label fs-5" for="visible">Il piatto è disponibile?</label>
             <div class="form-check ms-4 mt-1">
                 <input type="hidden" name="visible" value="0">
-                <input type="checkbox" class="form-check-input" name="visible" value="1">
+                <input type="checkbox" class="form-check-input" name="visible" value="1" >
                 <label class="form-check-label" for="visible">Sì</label>
             </div>
         </div>

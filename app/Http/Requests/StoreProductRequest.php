@@ -24,7 +24,7 @@ class StoreProductRequest extends FormRequest
         return [
             "name" => "required|max:50",
             "price" => "required|numeric",
-            "description" => "required|max:255",
+            "description" => "max:255",
             "visible" => "boolean|required",
             "thumb" => "nullable",
         ];
