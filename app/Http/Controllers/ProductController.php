@@ -7,13 +7,18 @@ use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     
     public function index()
     {
-        // $user = Auth::user();
+        
+        $restaurant = Restaurant::select('id')->where('user_id', Auth::user()->id)->first();
+        $products = DB::table('products')->where('restaurant_id', $restaurant->id)->get();
+
+        return view('products.index', compact('products'));
     }
     
 
