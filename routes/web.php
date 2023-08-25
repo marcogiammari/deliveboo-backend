@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +35,18 @@ Route::middleware(['auth'])->prefix('restaurants')->group(function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])->prefix('products')->group(function () {
+
+    // Product routes
+
+    //create
+    Route::get('create', [ProductController::class, 'create'])->name('products.create');
+
+    //store
+    Route::post('store', [ProductController::class, 'store'])->name('products.store');
+
+    //show
+    Route::get('show{product}', [ProductController::class, 'show'])->name('products.show');
+
+});
