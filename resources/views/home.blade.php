@@ -1,4 +1,4 @@
-@extends('layouts.app_dashboard')
+@extends('layouts.app')
 
 @section('content')
 <div class="container-fluid mt-4">
@@ -13,7 +13,6 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
                     {{ __('You are logged in!') }}
                 </div>
             </div>
