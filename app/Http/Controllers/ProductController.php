@@ -7,13 +7,18 @@ use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     
     public function index()
     {
-        // $user = Auth::user();
+        
+        $restaurant = Restaurant::select('id')->where('user_id', Auth::user()->id)->first();
+        $products = DB::table('products')->where('restaurant_id', $restaurant->id)->get();
+
+        return view('products.index', compact('products'));
     }
     
 
@@ -58,28 +63,29 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
+        return view("products.edit", ["product" => $product]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreProductRequest $request, Product $product)
     {
-        //
+               
+        $validatedData = $request->validated();
+        $product->fill($validatedData);
+        $product->update();
+
+        return redirect()->route("products.show", $product);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($slug)
+    public function destroy()
     {
-        $dish = $this->findBySlug($slug);
-
-        $dish->delete();
-
-        return redirect()->route("admin.product.index");
+        // return redirect()->route("product.index");
     }
 }
