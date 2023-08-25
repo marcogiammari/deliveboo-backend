@@ -1,5 +1,5 @@
 
-@extends('layouts.app_dashboard')
+@extends('layouts.app')
 @section("content")
 <div class="container position-relative">
     <img class="container-fluid " src="{{ asset($restaurant->thumb)}}" alt="{{$restaurant->name}}">

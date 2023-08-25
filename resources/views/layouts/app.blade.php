@@ -105,15 +105,6 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> {{ __('Logout') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('restaurants.create') }}">
                                     <i class="fa-solid fa-list-alt fa-lg fa-fw"></i> Crea Ristoranti
                                 </a>
