@@ -47,6 +47,6 @@ Route::middleware(['auth'])->prefix('products')->group(function () {
     Route::post('store', [ProductController::class, 'store'])->name('products.store');
 
     //show
-    Route::get('show{product}', [ProductController::class, 'show'])->name('products.show');
+    Route::get('show/{product}', [ProductController::class, 'show'])->name('products.show');
 
 });
