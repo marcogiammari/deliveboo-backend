@@ -6,11 +6,8 @@ use App\Models\Order;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-<<<<<<<< HEAD:database/seeders/OrderProductSeeder.php
-class OrderProductSeeder extends Seeder
-========
 class OrderSeeder extends Seeder
->>>>>>>> emanuele-seeding:database/seeders/OrderSeeder.php
+
 {
     /**
      * Run the database seeds.
