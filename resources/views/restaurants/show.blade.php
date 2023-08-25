@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('layouts.app_dashboard.blade')
 @section("content")
 <h1>
     {{$restaurant->name}}

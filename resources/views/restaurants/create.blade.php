@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_dashboard.blade')
 
 @section('content')
     {{-- Trovare il modo di ricavare lo user_id dell'utente connesso --}}
