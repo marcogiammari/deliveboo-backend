@@ -53,7 +53,6 @@ class ProductController extends Controller
         $product = new Product();
         $product->fill($validatedData);
         $product->restaurant_id=1;
-        // $product->restaurant_id=Restaurant::find('id');
         $product->save();
         // $product->slug = $this->generateSlug($validatedData["name"]);
 
@@ -72,28 +71,29 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
+        return view("products.edit", ["product" => $product]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreProductRequest $request, Product $product)
     {
-        //
+               
+        $validatedData = $request->validated();
+        $product->fill($validatedData);
+        $product->update();
+
+        return redirect()->route("products.show", $product);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($slug)
+    public function destroy()
     {
-        $dish = $this->findBySlug($slug);
-
-        $dish->delete();
-
-        return redirect()->route("admin.product.index");
+        // return redirect()->route("product.index");
     }
 }
