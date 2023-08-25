@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             User::factory()->create($user);
         }
         
-        $this->call([RestaurantSeeder::class,CategorySeeder::class,ProductSeeder::class,OrderSeeder::class,]);
+        $this->call([CategorySeeder::class,RestaurantSeeder::class,ProductSeeder::class,OrderSeeder::class,]);
 
 
     }
