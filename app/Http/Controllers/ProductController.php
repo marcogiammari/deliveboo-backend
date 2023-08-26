@@ -84,8 +84,9 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy()
+    public function destroy(Product $product)
     {
-        // return redirect()->route("product.index");
+        $product->delete();
+        return redirect()->route('products.index');
     }
 }
