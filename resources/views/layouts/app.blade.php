@@ -114,6 +114,11 @@
                                     <i class="fa-solid fa-plus fa-lg fa-fw"></i> Aggiungi Prodotto
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('products.index') }}">
+                                    <i class="fa-brands fa-elementor fa-lg fa-fw"></i> Menu
+                                </a>
+                            </li>
                         </ul>
 
                     </div>
