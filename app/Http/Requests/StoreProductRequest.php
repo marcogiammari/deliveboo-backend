@@ -29,4 +29,14 @@ class StoreProductRequest extends FormRequest
             "thumb" => "nullable",
         ];
     }
+
+public function messages(): array
+{
+    return [
+        'name.required' => 'il nome è richiesto',
+        'name.max' => 'Il nome non può superare i 50 caratteri.',
+        'price.required' => 'il prezzo è richiesto',
+        'description.max' => 'la descrizione non può superare i 255 caratteri'
+    ];
+}
 }
