@@ -26,10 +26,9 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md  navbar-dark pastel-orange-bg shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="" href="{{ url('/') }}">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -39,8 +38,10 @@
 
                 <div class="navbar-collapse collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
+                    <ul class="navbar-nav">
+                        <li>
+                            <img src="https://i.postimg.cc/pLBJ9VT7/logo-16-9.png" alt="logo" class="logo-width-custom img-fluid">
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -87,36 +88,48 @@
     <div class="container-fluid vh-100">
         <div class="row h-100">
             @auth
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block peach-bg sidebar collapse">
                     <div class="position-sticky pt-3">
-                        <ul class="nav flex-column">
-
+                        <ul class="nav flex-column align-items-end mt-5 pt-5 justify-content-evenly">
+{{-- 
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="/">
-                                    <i class="fa-solid fa-home-alt fa-lg fa-fw"></i> Home
+                                    Home <i class="fa-solid fa-home-alt fa-lg fa-fw"></i>
                                 </a>
-                            </li>
+                            </li> --}}
 
-                            <li class="nav-item">
-                                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'bg-secondary' : '' }} text-white"
+                            <li class="nav-item py-2">
+                                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'bg-custard rounded' : '' }} text-white"
                                     href="{{ route('home') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <h6 class="me-3">Dashboard</h6>
+                                        <img src="https://i.postimg.cc/gjvh6ddr/menu.png" alt="dashboard-icon" class="w-25">
+                                    </div>
                                 </a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('restaurants.create') }}">
-                                    <i class="fa-solid fa-list-alt fa-lg fa-fw"></i> Crea Ristoranti
+                            <li class="nav-item py-2">
+                                <a class="nav-link {{ Route::currentRouteName() == 'restaurants.create' ? 'bg-custard rounded' : '' }} text-white " href="{{ route('restaurants.create') }}">
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <h6 class="me-3">Crea Ristorante</h6>
+                                        <img src="https://i.postimg.cc/YCfwDP2g/shop-icon.png" alt="dashboard-icon" class="w-25">
+                                    </div>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('products.create') }}">
-                                    <i class="fa-solid fa-plus fa-lg fa-fw"></i> Aggiungi Prodotto
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard rounded' : '' }}" href="{{ route('products.create') }}">
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <h6 class="me-3">Aggiungi Prodotto</h6>
+                                        <img src="https://i.postimg.cc/PJZ7pLPZ/aggiungi-prodotto.png" alt="Add-product" class="w-25">
+                                    </div>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('products.index') }}">
-                                    <i class="fa-brands fa-elementor fa-lg fa-fw"></i> Menu
+                            <li class="nav-item py-2">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-custard rounded' : '' }}" href="{{ route('products.index') }}">
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <h5 class="me-3">Menù</h5>
+                                        <img src="https://i.postimg.cc/MTw5PsTc/menu-icon.png" alt="dashboard-icon" class="w-25">
+                                    </div>
                                 </a>
                             </li>
                         </ul>

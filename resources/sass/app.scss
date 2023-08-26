@@ -7,6 +7,22 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
+.peach-bg{
+    background-color: $peach;
+}
+
+.pastel-orange-bg{
+    background-color: $pastel-orange;
+}
+
+.bg-custard{
+    background: $custard;
+}
+
+.logo-width-custom{
+    width: 100px;
+}
+
 .miaclasse{
     background-color: #212121e3;
     border-radius: 30px;
@@ -28,12 +44,13 @@
     justify-content: center;
 }
 .image{
-    width:100px
+    width:100px;
+    transition: .3s;
 }
-.image:hover{
-    position: absolute;
-    z-index: 1;
-    top: -5rem;
-    left: 0;
-    width: 250px;
+.image-container-custom:hover{
+    .image{
+        position: absolute;
+        z-index: 1;
+        width: 250px;
+    }
 }
