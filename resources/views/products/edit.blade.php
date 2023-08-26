@@ -50,6 +50,7 @@
         <div class="m-3 d-flex">
             <label class="form-check-label fs-5" for="visible">Il piatto è disponibile?</label>
             <div class="form-check ms-4 mt-1">
+                <input type="hidden" name="visible" value="0">
                 <input type="checkbox" class="form-check-input" name="visible" value="1" id="visible" {{ $product->visible ? 'checked' : '' }}>
                 <label class="form-check-label" for="visible">Sì</label>
             </div>
