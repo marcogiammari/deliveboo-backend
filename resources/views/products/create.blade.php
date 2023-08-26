@@ -13,7 +13,7 @@
     </div>
     @endif
 
-    <h1 class="text-center">Aggiungi un piatto</h1>
+    <h1 class="text-center mt-5">Aggiungi un piatto</h1>
         
     <form class="d-flex flex-column gap-3 w-50 m-auto " action="{{ route('products.store') }}" method="POST">
         @csrf
