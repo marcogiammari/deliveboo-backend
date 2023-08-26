@@ -13,7 +13,7 @@
     </div>
     @endif
 
-    <h1 class="text-center">Aggiungi un Piatto</h1>
+    <h1 class="text-center">Modifica il tuo Piatto</h1>
         
     <form class="d-flex flex-column gap-3 w-50 m-auto needs-validation" action="{{ route('products.update', $product) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -28,14 +28,14 @@
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Prezzo</label>
-            <input type="number" min="0" class="form-control  @error('price') is-invalid @enderror" name="price" id="price" value="{{ old('price', $product->price) }}">
+            <input type="number" min="0" step=".01" class="form-control  @error('price') is-invalid @enderror" name="price" id="price" value="{{ old('price', $product->price) }}">
             @error("price")
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
-            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="4" required>{{ old('description', $product->description) }}</textarea>
+            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="4">{{ old('description', $product->description) }}</textarea>
             @error("description")
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
@@ -50,8 +50,7 @@
         <div class="m-3 d-flex">
             <label class="form-check-label fs-5" for="visible">Il piatto è disponibile?</label>
             <div class="form-check ms-4 mt-1">
-                <input type="hidden" name="visible" value="0">
-                <input type="checkbox" class="form-check-input" name="visible" value="1" {{ $product->visible ? 'checked' : '' }}>
+                <input type="checkbox" class="form-check-input" name="visible" value="1" id="visible" {{ $product->visible ? 'checked' : '' }}>
                 <label class="form-check-label" for="visible">Sì</label>
             </div>
         </div>

@@ -22,7 +22,7 @@
                     @csrf
             
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
+                        <label for="name" class="form-label">Nome del ristorante</label>
                         <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror">
                         @error("name")
                             <div class="invalid-feedback">{{$message}}</div>
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="vat_number" class="form-label">Vat Number</label>
+                        <label for="vat_number" class="form-label">P. Iva</label>
                         <input type="text" name="vat_number" id="vat_number" class="form-control  @error('vat_number') is-invalid @enderror">
                         @error("vat_number")
                             <div class="invalid-feedback">{{$message}}</div>
@@ -38,7 +38,7 @@
                     </div>
             
                     <div class="mb-3">
-                        <label for="note" class="form-label">Note</label>
+                        <label for="note" class="form-label">Vuoi aggiungere una nota?</label>
                         <textarea name="note" id="note" class="form-control  @error('note') is-invalid @enderror" rows="4"></textarea>
                         @error("note")
                             <div class="invalid-feedback">{{$message}}</div>
@@ -46,7 +46,7 @@
                     </div>
             
                     <div class="mb-3">
-                        <label for="thumb" class="form-label ">Thumb</label>
+                        <label for="thumb" class="form-label ">Inserisci un Immagine</label>
                         <input type="file" name="thumb" id="thumb" class="form-control @error('thumb') is-invalid @enderror">
                         @error("thumb")
                             <div class="invalid-feedback">{{$message}}</div>
@@ -54,7 +54,7 @@
                     </div>
             
                     <div class="mb-3">
-                        <label for="city" class="form-label">City</label>
+                        <label for="city" class="form-label">Città</label>
                         <input type="text" name="city" id="city" class="form-control  @error('city') is-invalid @enderror">
                         @error("city")
                             <div class="invalid-feedback">{{$message}}</div>
@@ -62,7 +62,7 @@
                     </div>
             
                     <div class="mb-3">
-                        <label for="street_name" class="form-label">Street</label>
+                        <label for="street_name" class="form-label">Via</label>
                         <input type="text" name="street_name" id="street_name" class="form-control  @error('street_name') is-invalid @enderror">
                         @error("street_name")
                             <div class="invalid-feedback">{{$message}}</div>
@@ -70,7 +70,7 @@
                     </div>
             
                     <div class="mb-3">
-                        <label for="street_number" class="form-label">Number</label>
+                        <label for="street_number" class="form-label">N°</label>
                         <input type="text" name="street_number" id="street_number" class="form-control  @error('street_number') is-invalid @enderror">
                         @error("street_number")
                             <div class="invalid-feedback">{{$message}}</div>
@@ -78,7 +78,7 @@
                     </div>
             
                     <div class="mb-3">
-                        <label for="zip_code" class="form-label">Zip Code</label>
+                        <label for="zip_code" class="form-label">CAP</label>
                         <input type="text" name="zip_code" id="zip_code" class="form-control  @error('zip_code') is-invalid @enderror">
                         @error("zip_code")
                             <div class="invalid-feedback">{{$message}}</div>
