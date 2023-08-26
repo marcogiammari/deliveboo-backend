@@ -12,7 +12,7 @@
                 <div class="width_product-index text-center"><span class="fw-bold fs-5">Disponibile</span></div>
                 <div class="width_product-index text-center"><span class="fw-bold fs-5">Gestisci</span></div>
             </div>
-            @foreach ($products as $product)
+            @forelse ($products as $product)
                 <div class="d-flex flex-row gap-3 justify-content-between p-2 border-bottom border-start border-end align-items-center">
                     <div class="width_product-index ps-3">
                         <span class=" text-black-50 fw-bold">
@@ -65,7 +65,14 @@
                      </a>
                    </div>
                 </div>
-            @endforeach
+
+                @empty
+                <div>
+                    <span>non hai elementi nel tuo menu</span>
+                </div>
+
+            @endforelse
+                
         </div>
     </div>
    </div>
