@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRestaurantRequest;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
@@ -31,10 +30,12 @@ class RestaurantController extends Controller
         
         $newRestaurant = new Restaurant();
         $newRestaurant->fill($data);
+
+        // ricava la foreign key dall'id dell'utente autenticato
         $newRestaurant->user_id = Auth::user()->id;
         $newRestaurant->save();
         
-        return redirect()->route("restaurants.show",$newRestaurant);
+        return redirect()->route("restaurants.show", $newRestaurant);
 
     }
 

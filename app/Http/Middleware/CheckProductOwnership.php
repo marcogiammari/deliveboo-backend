@@ -18,7 +18,9 @@ class CheckProductOwnership
      */
     public function handle(Request $request, Closure $next): Response
     {
-
+        
+        // ricava il prodotto dal parametro dell'uri, trova sul db il ristorante a cui appartiene 
+        // e verifica che appartenga all'utente connesso
         $product = $request->route('product');
         $restaurant = Restaurant::find($product->restaurant_id);
         

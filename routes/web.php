@@ -21,6 +21,8 @@ Route::get('/', function () {
     return redirect('home');
 });
 
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
 Route::middleware(['auth'])->prefix('restaurants')->group(function () {
@@ -33,25 +35,28 @@ Route::middleware(['auth'])->prefix('restaurants')->group(function () {
     //store
     Route::post('store', [RestaurantController::class, 'store'])->name('restaurants.store');
 
-    // show
+    // show protected
     Route::middleware(['check-restaurant-ownership'])->group(function () {
+
         Route::get('{restaurant}', [RestaurantController::class, 'show'])->name('restaurants.show');
+        
     });
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-
-Route::middleware(['auth'])->prefix('products')->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     // Product routes
-    Route::get('', [ProductController::class, 'index'])->name('products.index');
+    Route::get('products', [ProductController::class, 'index'])->name('products.index');
 
-    Route::post('', [ProductController::class, 'store'])->name('products.store');
+    Route::post('products', [ProductController::class, 'store'])->name('products.store');
 
-    Route::get('create', [ProductController::class, 'create'])->name('products.create');
+    Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
 
+    // Product protected routes
     Route::middleware(['check-product-ownership'])->group(function () {
+
         Route::resource('products', ProductController::class)->except('index', 'store', 'create');
+
     });
 });

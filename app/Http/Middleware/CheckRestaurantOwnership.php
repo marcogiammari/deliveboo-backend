@@ -17,6 +17,9 @@ class CheckRestaurantOwnership
      */
     public function handle(Request $request, Closure $next): Response
     {
+
+        // ricava il ristorante dal parametro dell'uri 
+        // e verifica che appartenga all'utente connesso 
         $restaurant = $request->route('restaurant');
         
         if ( !$restaurant || $restaurant->user_id !== Auth::user()->id) {

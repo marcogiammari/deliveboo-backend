@@ -6,22 +6,22 @@ use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    
+
     public function index()
     {
-        
-        // ricavo il restaurant_id dalla query sull'id dell'utente autenticato
+
+        // ricava il restaurant_id dalla query sull'id dell'utente autenticato
         $restaurant_id = Restaurant::where('user_id', Auth::user()->id)->value('id');
+
+        // query sui prodotti che possiedono il restaurant_id come foreign key
         $products = Product::where('restaurant_id', $restaurant_id)->get();
 
         return view('products.index', compact('products'));
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,18 +38,18 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        
+
         $validatedData = $request->validated();
         $product = new Product();
         $product->fill($validatedData);
-        
+
+        // ricava il ristorante a cui deve appartenere il prodotto traimite una query sull'id dell'utente connesso
         $restaurant_id = Restaurant::where('user_id', Auth::user()->id)->value('id');
         $product->restaurant_id = $restaurant_id;
 
         $product->save();
 
         return redirect()->route("products.show", $product);
-
     }
 
     /**
@@ -57,14 +57,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $restaurant_id = Restaurant::where('user_id', Auth::user()->id)->value('id');
 
-        if ($product->restaurant_id === $restaurant_id) {
-            return view("products.show", compact("product"));
-        }
-
-        abort(403);
-
+        return view("products.show", compact("product"));
     }
 
     /**
@@ -80,7 +74,7 @@ class ProductController extends Controller
      */
     public function update(StoreProductRequest $request, Product $product)
     {
-               
+
         $validatedData = $request->validated();
         $product->fill($validatedData);
         $product->update();
