@@ -116,22 +116,22 @@
                                     </div>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard rounded' : '' }}" href="{{ route('products.create') }}">
                                     <div class="d-flex justify-content-end align-items-center">
                                         <h6 class="me-3">Aggiungi Prodotto</h6>
                                         <img src="https://i.postimg.cc/PJZ7pLPZ/aggiungi-prodotto.png" alt="Add-product" class="w-25">
                                     </div>
                                 </a>
-                            </li>
-                            <li class="nav-item py-2">
+                            </li> --}}
+                            {{-- <li class="nav-item py-2">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-custard rounded' : '' }}" href="{{ route('products.index') }}">
                                     <div class="d-flex justify-content-end align-items-center">
                                         <h5 class="me-3">Menù</h5>
                                         <img src="https://i.postimg.cc/MTw5PsTc/menu-icon.png" alt="dashboard-icon" class="w-25">
                                     </div>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
 
                     </div>

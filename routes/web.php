@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Auth;
@@ -36,12 +37,15 @@ Route::middleware(['auth'])->prefix('restaurants')->group(function () {
     Route::get('{restaurant}', [RestaurantController::class, 'show'])->name('restaurants.show');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 
 Route::middleware(['auth'])->group(function () {
-
+    
     // Product routes
+    Route::get('products', [ProductController::class, 'index']);
 
-    Route::resource('products', ProductController::class);
-
+    Route::middleware(['check-product-ownership'])->group(function () {
+    Route::resource('products', ProductController::class)->except('index');
+    });
 });

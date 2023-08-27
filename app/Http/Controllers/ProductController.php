@@ -15,8 +15,9 @@ class ProductController extends Controller
     public function index()
     {
         
-        $restaurant = Restaurant::select('id')->where('user_id', Auth::user()->id)->first();
-        $products = DB::table('products')->where('restaurant_id', $restaurant->id)->get();
+        // ricavo il restaurant_id dalla query sull'id dell'utente autenticato
+        $restaurant_id = Restaurant::where('user_id', Auth::user()->id)->value('id');
+        $products = Product::where('restaurant_id', $restaurant_id)->get();
 
         return view('products.index', compact('products'));
     }
@@ -42,9 +43,8 @@ class ProductController extends Controller
         $product = new Product();
         $product->fill($validatedData);
         
-        // ricavo il restaurant_id dalla query sull'id dell'utente autenticato
-        $restaurant = Restaurant::select('id')->where('user_id', Auth::user()->id)->first();
-        $product->restaurant_id = $restaurant->id;
+        $restaurant_id = Restaurant::where('user_id', Auth::user()->id)->value('id');
+        $product->restaurant_id = $restaurant_id;
 
         $product->save();
 
@@ -57,7 +57,14 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view("products.show", compact("product"));
+        $restaurant_id = Restaurant::where('user_id', Auth::user()->id)->value('id');
+
+        if ($product->restaurant_id === $restaurant_id) {
+            return view("products.show", compact("product"));
+        }
+
+        abort(403);
+
     }
 
     /**
