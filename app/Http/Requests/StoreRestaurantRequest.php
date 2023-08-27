@@ -29,6 +29,7 @@ class StoreRestaurantRequest extends FormRequest
             "street_name" => 'required|max:50',
             "street_number" => 'required|max:15',
             "zip_code" => 'required|max:15',
+            "categories" => 'required|exists:categories,id'
         ];
     }
 
