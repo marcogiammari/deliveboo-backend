@@ -24,9 +24,10 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
-<body>
+<body @guest
+    class="bg-custom" @endguest >
     <div id="app">
-        <nav class="navbar navbar-expand-md  navbar-dark pastel-orange-bg shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark pastel-orange-bg shadow-sm">
             <div class="container">
                 <a class="" href="{{ url('/') }}">
                 </a>
@@ -139,7 +140,12 @@
 
             @endauth
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main @auth
+            class="col-md-9 col-lg-10 m-auto "
+            @endauth 
+            @guest
+                class=""
+            @endguest>
                 @yield('content')
             </main>
         </div>
