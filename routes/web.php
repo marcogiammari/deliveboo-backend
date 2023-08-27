@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home');
 });
 
 Auth::routes();
@@ -31,6 +31,8 @@ Route::middleware(['auth'])->prefix('restaurants')->group(function () {
 
     //store
     Route::post('store', [RestaurantController::class, 'store'])->name('restaurants.store');
+
+    // show
     Route::get('{restaurant}', [RestaurantController::class, 'show'])->name('restaurants.show');
 });
 
@@ -39,7 +41,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth'])->group(function () {
 
     // Product routes
-
 
     Route::resource('products', ProductController::class);
 
