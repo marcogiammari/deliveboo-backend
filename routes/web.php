@@ -40,12 +40,16 @@ Route::middleware(['auth'])->prefix('restaurants')->group(function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
-Route::middleware(['auth'])->group(function () {
-    
-    // Product routes
-    Route::get('products', [ProductController::class, 'index']);
+Route::middleware(['auth'])->prefix('products')->group(function () {
 
+    // Product routes
+    Route::get('', [ProductController::class, 'index'])->name('products.index');
+
+    Route::post('', [ProductController::class, 'store'])->name('products.store');
+
+    Route::get('create', [ProductController::class, 'create'])->name('products.create');
+    
     Route::middleware(['check-product-ownership'])->group(function () {
-    Route::resource('products', ProductController::class)->except('index');
+        Route::resource('products', ProductController::class)->except('index', 'store', 'create');
     });
 });
