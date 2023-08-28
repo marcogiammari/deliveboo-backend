@@ -2,35 +2,35 @@
 
 return [
    [
-    'name'=>'ale',
-    'email'=> 'ale@mail.it',
+    'name'=>'alessandro Pagelli',
+    'email'=> 'alessandro@mail.it',
    ],
    [
-    'name'=>'marco',
-    'email'=> 'marco@mail.it',
+    'name'=>'Marco Fantini',
+    'email'=> 'marcofantini@mail.it',
    ],
    [
-    'name'=>'ema',
-    'email'=> 'ema@mail.it',
+    'name'=>'Emanuele Benini',
+    'email'=> 'emanuelebenini@mail.it',
    ],
    [
-    'name'=>'edy',
-    'email'=> 'edy@mail.it',
+    'name'=>'Edy Fontana',
+    'email'=> 'edyfontana@mail.it',
    ],
    [
-    'name'=>'giorgio',
+    'name'=>'Giorgio Mauri',
     'email'=> 'giorgio@mail.it',
    ],
    [
-    'name'=>'pippo',
+    'name'=>'Gianfranco Storni',
     'email'=> 'pippo@mail.it',
    ],
    [
-    'name'=>'gerry',
-    'email'=> 'gerry@mail.it',
+    'name'=>'Filippo Cantini',
+    'email'=> 'Filippo12@mail.it',
    ],
    [
-    'name'=>'silvio',
-    'email'=> 'silio@mail.it',
+    'name'=>'Sabrina Rossi',
+    'email'=> 'Sabrina23@mail.it',
    ],
 ];
