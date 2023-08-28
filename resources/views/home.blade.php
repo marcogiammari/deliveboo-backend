@@ -18,6 +18,7 @@
                     </h1>
                     <h1 class="d-inline text-capitalize fw-bolder text-white">
                         {{ Auth::user()->name }}
+                        {{ Auth::user()->surname }} 
                     </h1>
                 </div>
             </div>
