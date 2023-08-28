@@ -15,7 +15,7 @@
 
     <h1 class="text-center mt-5">Aggiungi un piatto</h1>
         
-    <form class="d-flex flex-column gap-3 w-50 m-auto " action="{{ route('products.store') }}" method="POST">
+    <form class="d-flex flex-column gap-3 w-50 m-auto " action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
@@ -44,7 +44,7 @@
 
         <div class="mb-3">
             <label for="thumb" class="form-label">Immagine</label>
-            <input type="text" class="form-control  @error('thumb') is-invalid @enderror" name="thumb" id="thumb">
+            <input type="file" class="form-control  @error('thumb') is-invalid @enderror" name="thumb" id="thumb">
             @error("thumb")
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror

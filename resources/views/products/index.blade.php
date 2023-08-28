@@ -36,9 +36,9 @@
                             @endif
                         </div>
 
-                        @if ($product->thumb)
+                        @if (isset($product->thumb))
                             <div class="width_product-index position-relative image-container-custom text-center">
-                                <img src="{{ $product->thumb }}" alt="" class="image rounded">
+                                <img src="{{asset('storage/' . $product->thumb)}}" alt="{{$product->name}}" class="card-img-top mb-4">
                             </div>
                         @else
                             <img src="{{ asset('storage/placeholders/placeholder.jpg') }}" alt=""
