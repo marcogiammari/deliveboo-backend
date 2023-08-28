@@ -5,8 +5,8 @@
     <div class="card w-50 m-auto border-white peach-bg">
         <div class="row">
             <div>
-                @if ($product->thumb)
-                    <img src="{{$product->thumb}}" alt="" class="card-img-top mb-4">
+                @if (isset($product->thumb))
+                    <img src="{{asset('storage/' . $product->thumb)}}" alt="{{$product->name}}" class="card-img-top mb-4">
                 @else 
                     <img class="card-img-top" src="https://i.postimg.cc/KYST9jf9/Aggiungi.jpg" alt="">
                 @endif

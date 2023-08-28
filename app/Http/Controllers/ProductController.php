@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -39,9 +40,17 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
 
-        $validatedData = $request->validated();
+        $data = $request->validated();
+
+        // salva nello storage l'immagine e nell'istanza il path
+        if (isset($data['thumb'])) {
+            $img_path = Storage::disk('public')->put("uploads", $data['thumb']);
+            $data['thumb'] = $img_path;
+        }
+
         $product = new Product();
-        $product->fill($validatedData);
+        $product->fill($data);
+
 
         // ricava il ristorante a cui deve appartenere il prodotto traimite una query sull'id dell'utente connesso
         $restaurant_id = Restaurant::where('user_id', Auth::user()->id)->value('id');
@@ -75,8 +84,15 @@ class ProductController extends Controller
     public function update(StoreProductRequest $request, Product $product)
     {
 
-        $validatedData = $request->validated();
-        $product->fill($validatedData);
+        $data = $request->validated();
+
+        // salva nello storage l'immagine e nell'istanza il path
+        if (isset($data['thumb'])) {
+            $img_path = Storage::disk('public')->put("uploads", $data['thumb']);
+            $data['thumb'] = $img_path;
+        }
+
+        $product->fill($data);
         $product->update();
 
         return redirect()->route("products.show", $product);

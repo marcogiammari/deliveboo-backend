@@ -18,7 +18,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('restaurants.store') }}" class="needs-validation" method="post">
+                <form action="{{ route('restaurants.store') }}" class="needs-validation" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-3">
@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="thumb" class="form-label">Inserisci un Immagine</label>
+                        <label for="thumb" class="form-label">Inserisci un'immagine</label>
                         <input type="file" name="thumb" id="thumb"
                             class="form-control @error('thumb') is-invalid @enderror">
                         @error('thumb')

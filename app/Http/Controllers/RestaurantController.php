@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -29,6 +30,12 @@ class RestaurantController extends Controller
         
         $data = $request->validated();
         
+        // salva nello storage l'immagine e nell'istanza il path
+        if (isset($data['thumb'])) {
+            $img_path = Storage::disk('public')->put("uploads", $data['thumb']);
+            $data['thumb'] = $img_path;
+        }
+
         $newRestaurant = new Restaurant();
         $newRestaurant->fill($data);
 
