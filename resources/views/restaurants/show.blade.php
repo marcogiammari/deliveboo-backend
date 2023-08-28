@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
     <div class="position-relative container">
-        @if ($restaurant->thumb)
+        @if (isset($restaurant->thumb))
 
             {{-- questa riga andrà cambiata prendendo l'immagine dallo storage --}}
-            <img class="container-fluid" src="{{ asset($restaurant->thumb) }}" alt="{{ $restaurant->name }}">
+            <img class="container-fluid" src="{{ asset('storage/' . $restaurant->thumb) }}" alt="{{ $restaurant->name }}">
         @else
             <img class="container-fluid" src="{{ asset('storage/placeholders/placeholder.jpg') }}"
                 alt="{{ $restaurant->name }}">

@@ -18,7 +18,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('restaurants.store') }}" class="needs-validation" method="post">
+                <form action="{{ route('restaurants.store') }}" class="needs-validation" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-3">
