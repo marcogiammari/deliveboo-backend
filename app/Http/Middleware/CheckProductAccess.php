@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
-class CheckRestaurantAccess
+class CheckProductAccess
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,9 @@ class CheckRestaurantAccess
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = $request->user();
-        
+        if ((!auth()->user()->restaurant)) {
+            return redirect()->route("restaurants.create");
+        }
         return $next($request);
     }
 }

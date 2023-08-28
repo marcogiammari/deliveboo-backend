@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckProductAccess;
 use App\Http\Middleware\CheckProductOwnership;
 use App\Http\Middleware\CheckRestaurantOwnership;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -68,5 +69,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'check-restaurant-ownership' => CheckRestaurantOwnership::class,
         'check-product-ownership' => CheckProductOwnership::class,
+        'check-product-access' => CheckProductAccess::class,
     ];
 }
