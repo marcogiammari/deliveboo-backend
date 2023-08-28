@@ -117,6 +117,8 @@
                                     </div>
                                 </a>
                             </li>
+                            @auth
+                            @if (auth()->user()->restaurant)
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard rounded' : '' }}" href="{{ route('products.create') }}">
                                     <div class="d-flex justify-content-end align-items-center">
@@ -125,6 +127,8 @@
                                     </div>
                                 </a>
                             </li>
+                            @endif
+                            @endauth
                             <li class="nav-item py-2">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-custard rounded' : '' }}" href="{{ route('products.index') }}">
                                     <div class="d-flex justify-content-end align-items-center">
