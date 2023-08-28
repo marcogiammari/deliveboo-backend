@@ -40,7 +40,6 @@ Route::middleware(['auth'])->group(function () {
 
     // Product routes
 
-
     Route::resource('products', ProductController::class);
 
 });
