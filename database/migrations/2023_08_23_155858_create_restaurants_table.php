@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string("vat_number", 20);
             $table->string("note", 255)->nullable();
             $table->foreignId("user_id")->constrained();
-            $table->string("city", 30);
             $table->string("street_name", 50);
             $table->string("street_number", 15);
             $table->string("zip_code", 15);

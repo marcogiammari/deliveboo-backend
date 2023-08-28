@@ -25,7 +25,6 @@ class StoreRestaurantRequest extends FormRequest
             "name"=>"required|max:100",
             "vat_number"=>"required|max:20",
             "note"=>"nullable|max:255",
-            "city" => 'required|max:30',
             "street_name" => 'required|max:50',
             "street_number" => 'required|max:15',
             "zip_code" => 'required|max:15',
