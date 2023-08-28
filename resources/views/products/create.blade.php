@@ -44,7 +44,7 @@
 
         <div class="mb-3">
             <label for="thumb" class="form-label">Immagine</label>
-            <input type="text" class="form-control  @error('thumb') is-invalid @enderror" name="thumb" id="thumb">
+            <input type="file" class="form-control  @error('thumb') is-invalid @enderror" name="thumb" id="thumb">
             @error("thumb")
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror

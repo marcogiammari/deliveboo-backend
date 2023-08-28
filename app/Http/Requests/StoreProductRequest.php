@@ -26,7 +26,7 @@ class StoreProductRequest extends FormRequest
             "price" => "required|numeric",
             "description" => "max:255",
             "visible" => "boolean|required",
-            "thumb" => "nullable",
+            "thumb" => "nullable|url",
         ];
     }
 
