@@ -29,11 +29,11 @@ class RestaurantController extends Controller
     {
         
         $data = $request->validated();
-
+        
         // salva nello storage l'immagine e nell'istanza il path
         $img_path = Storage::put("uploads", $data['thumb']);
         $data['thumb'] = $img_path;
-        
+
         $newRestaurant = new Restaurant();
         $newRestaurant->fill($data);
 
