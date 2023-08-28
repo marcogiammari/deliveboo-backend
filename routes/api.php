@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/restaurants', [ApiRestaurantController::class, "index"]);
+
+Route::get('/restaurants/search/{category}', [ApiRestaurantController::class, 'filterByCategory']);
