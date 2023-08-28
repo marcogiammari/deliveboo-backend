@@ -133,6 +133,17 @@
                                     </div>
                                 </a>
                             </li>
+
+                            {{-- da cambiare con l'id del ristorante --}}
+
+                            <li class="nav-item py-2">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard rounded' : '' }}" href="{{ route('restaurants.show', Auth::user()->id) }}">
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <h5 class="me-3">Il tuo Ristorante</h5>
+                                        <img src="https://i.postimg.cc/52kqWYxW/user-icon.png" alt="dashboard-icon" class="w-25">
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
 
                     </div>
