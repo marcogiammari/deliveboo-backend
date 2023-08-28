@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("name",50);
             $table->decimal("price",5,2);
             $table->string("description",255)->nullable();
-            $table->boolean("visible");
+            $table->boolean("is_visible");
             $table->text("thumb")->nullable();
             $table->timestamps();
         });

@@ -23,20 +23,12 @@
                        <strong span class="fs-5 text-white"> Descrizione:</strong> <span class="fs-6 text-white ">{{$product->description}}</span>
                     </p>
                 @else 
-                    <p class="bg-warning">Questo piatto non ha una descrizione. Vuoi inserirla?</p>
+                    <p class="bg-warning">Questo piatto non ha una descrizione. <a href="{{route('products.edit', $product)}}"> Vuoi inserirla?</a> </p>
+                    
                 @endif
             </div>
 
             <div class="justify-content-between d-flex">
-                @if ($product->visible == 1)
-                    <div class="ps-3">
-                        <span class=" text-white fw-bold"> Disponibile: <i class="fa-solid fa-check text-success ms-1 fs-3"></i></span>
-                    </div>
-                @else 
-                    <div class="ps-3">
-                        <span class=" text-white fw-bold">Disponibile:  <i class="fa-regular fa-circle-xmark text-danger ms-1 fs-4"></i></span>
-                    </div>
-                @endif
                 <div class="m-2">
                     <form action="{{ route('products.destroy', $product) }}" method="post">
                         @csrf

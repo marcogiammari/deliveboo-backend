@@ -18,8 +18,8 @@ class ProductController extends Controller
         $restaurant_id = Restaurant::where('user_id', Auth::user()->id)->value('id');
 
         // query sui prodotti che possiedono il restaurant_id come foreign key
-        $products = Product::where('restaurant_id', $restaurant_id)->get();
-
+        $products = Product::where('restaurant_id', $restaurant_id)->where("is_visible",true)->get();
+        
         return view('products.index', compact('products'));
     }
 
@@ -50,6 +50,7 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->fill($data);
+        $product->is_visible = true;
 
 
         // ricava il ristorante a cui deve appartenere il prodotto traimite una query sull'id dell'utente connesso
@@ -103,7 +104,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
+
+        $product->is_visible = false;
+        $product->save();
         return redirect()->route('products.index');
     }
 }

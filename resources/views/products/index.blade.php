@@ -46,15 +46,6 @@
                         @endif
 
                         <div class="width_product-index text-center">
-                            @if ($product->visible)
-                                <span class="text-black-50 fw-bold"><i class="fa-solid fa-check text-success"></i></span>
-                            @else
-                                <span class="text-black-50 fw-bold"><i
-                                        class="fa-regular fa-circle-xmark text-danger"></i></span>
-                            @endif
-                        </div>
-
-                        <div class="width_product-index text-center">
                             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-light bg-custard">
                                 <span class="text-small text-white">Modifica</span>
                             </a>
