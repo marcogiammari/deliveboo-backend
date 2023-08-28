@@ -17,7 +17,6 @@ class Restaurant extends Model
         "vat_number",
         "note",
         "thumb",
-        "city",
         "street_name",
         "street_number",
         "zip_code"
