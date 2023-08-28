@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRestaurantRequest;
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
@@ -17,8 +17,8 @@ class RestaurantController extends Controller
     public function create()
     {   
         
-        
-        return view('restaurants.create');
+        $categories = Category::latest()->paginate(10);
+        return view('restaurants.create', compact('categories'));
     }
 
     /**
@@ -31,10 +31,14 @@ class RestaurantController extends Controller
         
         $newRestaurant = new Restaurant();
         $newRestaurant->fill($data);
+
+        // ricava la foreign key dall'id dell'utente autenticato
         $newRestaurant->user_id = Auth::user()->id;
         $newRestaurant->save();
+
+        $newRestaurant->categories()->attach($data['categories']);
         
-        return redirect()->route("restaurants.show",$newRestaurant);
+        return redirect()->route("restaurants.show", $newRestaurant);
 
     }
 
