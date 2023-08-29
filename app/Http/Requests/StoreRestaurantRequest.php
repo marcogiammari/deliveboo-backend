@@ -22,9 +22,9 @@ class StoreRestaurantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name"=>"required|max:100",
-            "vat_number"=>"required|max:20",
-            "note"=>"nullable|max:255",
+            "name" => "required|max:100",
+            "vat_number" => "required|max:20|min:10",
+            "note" => "nullable|max:255",
             "street_name" => 'required|max:50',
             "street_number" => 'required|max:15',
             "zip_code" => 'required|max:15',
@@ -49,6 +49,9 @@ class StoreRestaurantRequest extends FormRequest
             'street_number.max' => 'Il numero civico non può superare i 15 caratteri',
             'zip_code.required' => 'Il codice postale è richiesto',
             'zip_code.max' => 'Il codice postale non può superare i 15 caratteri',
+            'categories.required' => 'Le categorie sono richieste',
+            'categories.exists' => 'Categorie non disponibili',
+
         ];
     }
 }
