@@ -92,12 +92,6 @@
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block peach-bg sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column align-items-end mt-5 pt-5 justify-content-evenly">
-{{-- 
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="/">
-                                    Home <i class="fa-solid fa-home-alt fa-lg fa-fw"></i>
-                                </a>
-                            </li> --}}
 
                             <li class="nav-item py-2">
                                 <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'bg-custard rounded' : '' }} text-white"
@@ -164,6 +158,15 @@
             @guest
                 class=""
             @endguest>
+
+            {{-- flash messages  --}}
+            @if (session()->has('flash'))
+            <div class="d-flex justify-content-center">
+                <span class="p-4 m-4 text-center bg-warning rounded-2 mx-auto">{{ session('flash') }}</span>
+            </div>
+            @endif
+
+
                 @yield('content')
             </main>
         </div>

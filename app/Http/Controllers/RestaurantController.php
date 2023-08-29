@@ -45,7 +45,7 @@ class RestaurantController extends Controller
 
         $newRestaurant->categories()->attach($data['categories']);
         
-        return redirect()->route("restaurants.show", $newRestaurant);
+        return redirect()->route("restaurants.show", $newRestaurant)->with('flash', 'Ristorante aggiunto con successo');
 
     }
 

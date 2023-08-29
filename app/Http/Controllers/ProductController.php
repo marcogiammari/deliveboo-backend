@@ -59,7 +59,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route("products.show", $product);
+        return redirect()->route("products.show", $product)->with('flash', 'Il tuo prodotto è stato aggiunto con successo');
     }
 
     /**
@@ -96,7 +96,7 @@ class ProductController extends Controller
         $product->fill($data);
         $product->update();
 
-        return redirect()->route("products.show", $product);
+        return redirect()->route("products.show", $product)->with('flash', 'Il tuo prodotto è stato aggiornato con successo');
     }
 
     /**
@@ -107,6 +107,6 @@ class ProductController extends Controller
 
         $product->is_visible = false;
         $product->save();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('flash', 'Il prodotto è stato eliminato');
     }
 }
