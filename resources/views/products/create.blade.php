@@ -18,8 +18,8 @@
     <form class="d-flex flex-column gap-3 w-50 m-auto " action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-            <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control  @error('name') is-invalid @enderror" name="name" id="name">
+            <label for="name" class="form-label">Nome <span class="{{ $errors->has('name') ? 'text-danger' : '' }}">*</span></label>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" required>
             @error("name")
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
@@ -27,8 +27,8 @@
 
 
         <div class="mb-3">
-            <label for="price" class="form-label">Prezzo</label>
-            <input type="number" min="0" step=".01" class="form-control @error('price') is-invalid @enderror" name="price" id="price">
+            <label for="price" class="form-label">Prezzo <span class="{{ $errors->has('price') ? 'text-danger' : '' }}">*</span></label>
+            <input type="number" min="0" step=".01" class="form-control @error('price') is-invalid @enderror" name="price" id="price" required >
             @error("price")
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
