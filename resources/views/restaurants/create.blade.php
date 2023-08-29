@@ -7,29 +7,20 @@
             <div class="col-8 offset-2">
                 <h1>Crea il tuo ristorante</h1>
 
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul class="mb-0">
-                            @foreach ($errors->all() as $err)
-                                <li>{{ $err }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
 
                 <form action="{{ route('restaurants.store') }}" class="needs-validation" method="post"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nome del ristorante</label>
-                        <input type="text" name="name" id="name" required
+                        <label for="name" class="form-label">Nome del ristorante <span class="{{ $errors->has('name') ? 'text-danger' : '' }}">*</span></label>
+                        <input type="text" name="name" id="name" 
                             class="form-control @error('name') is-invalid @enderror">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="vat_number" class="form-label">Partita Iva</label>
+                        <label for="vat_number" class="form-label">Partita Iva <span class="{{ $errors->has('vat_number') ? 'text-danger' : '' }}">*</span></label>
                         <input type="text" name="vat_number" id="vat_number"
                             class="form-control @error('vat_number') is-invalid @enderror" required>
                         @error('vat_number')
@@ -53,7 +44,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="street_name" class="form-label">Via</label>
+                        <label for="street_name" class="form-label">Via <span class="{{ $errors->has('street_name') ? 'text-danger' : '' }}">*</span></label>
                         <input type="text" name="street_name" id="street_name" required
                             class="form-control @error('street_name') is-invalid @enderror">
                         @error('street_name')
@@ -61,7 +52,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="street_number" class="form-label">N°</label>
+                        <label for="street_number" class="form-label">N° <span class="{{ $errors->has('street_number') ? 'text-danger' : '' }}">*</span></label>
                         <input type="text" name="street_number" id="street_number" required
                             class="form-control @error('street_number') is-invalid @enderror">
                         @error('street_number')
@@ -69,7 +60,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="zip_code" class="form-label">CAP</label>
+                        <label for="zip_code" class="form-label">CAP <span class="{{ $errors->has('zip_code') ? 'text-danger' : '' }}">*</span></label>
                         <input type="text" name="zip_code" id="zip_code" required
                             class="form-control @error('zip_code') is-invalid @enderror">
                         @error('zip_code')
