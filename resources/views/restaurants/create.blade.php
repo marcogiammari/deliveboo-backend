@@ -22,26 +22,26 @@
                     @csrf
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nome del ristorante</label>
+                        <label for="name" class="form-label">Nome del Ristorante <span class="{{ $errors->has('name') ? 'text-danger' : '' }}">*</span></label>
                         <input type="text" name="name" id="name"
-                            class="form-control @error('name') is-invalid @enderror">
+                            class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" required>
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="mb-3">
-                        <label for="vat_number" class="form-label">P. Iva</label>
+                        <label for="vat_number" class="form-label">P. Iva <span class="{{ $errors->has('vat_number') ? 'text-danger' : '' }}">*</span>va</label>
                         <input type="text" name="vat_number" id="vat_number"
-                            class="form-control @error('vat_number') is-invalid @enderror">
+                            class="form-control @error('vat_number') is-invalid @enderror" value="{{old('vat_number')}}" required>
                         @error('vat_number')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="mb-3">
-                        <label for="note" class="form-label">Vuoi aggiungere una nota?</label>
-                        <textarea name="note" id="note" class="form-control @error('note') is-invalid @enderror" rows="4"></textarea>
+                        <label for="note" class="form-label">Vuoi aggiungere una nota?<span class="{{ $errors->has('note') ? 'text-danger' : '' }}">*</span></label>
+                        <textarea name="note" id="note" class="form-control @error('note') is-invalid @enderror" value="{{old('note')}}" rows="4"></textarea>
                         @error('note')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -57,36 +57,36 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="city" class="form-label">Città</label>
+                        <label for="city" class="form-label">Città <span class="{{ $errors->has('city') ? 'text-danger' : '' }}">*</span> </label>
                         <input type="text" name="city" id="city"
-                            class="form-control @error('city') is-invalid @enderror">
+                            class="form-control @error('city') is-invalid @enderror" value="{{old('city')}}" required>
                         @error('city')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="mb-3">
-                        <label for="street_name" class="form-label">Via</label>
+                        <label for="street_name" class="form-label">Via <span class="{{ $errors->has('street_name') ? 'text-danger' : '' }}">*</span></label>
                         <input type="text" name="street_name" id="street_name"
-                            class="form-control @error('street_name') is-invalid @enderror">
+                            class="form-control @error('street_name') is-invalid @enderror" value="{{old('street_name')}}" required>
                         @error('street_name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="mb-3">
-                        <label for="street_number" class="form-label">N°</label>
+                        <label for="street_number" class="form-label">N° <span class="{{ $errors->has('street_number') ? 'text-danger' : '' }}">*</span></label>
                         <input type="text" name="street_number" id="street_number"
-                            class="form-control @error('street_number') is-invalid @enderror">
+                            class="form-control @error('street_number') is-invalid @enderror" value="{{old('street_number')}}" required>
                         @error('street_number')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="mb-3">
-                        <label for="zip_code" class="form-label">CAP</label>
+                        <label for="zip_code" class="form-label">CAP <span class="{{ $errors->has('zip_code') ? 'text-danger' : '' }}">*</span></label>
                         <input type="text" name="zip_code" id="zip_code"
-                            class="form-control @error('zip_code') is-invalid @enderror">
+                            class="form-control @error('zip_code') is-invalid @enderror" value="{{old('zip_code')}}" required>
                         @error('zip_code')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -101,10 +101,6 @@
                                     value="{{ $category->id }}" id="category{{ $i }}">
                             </div>
                             @endforeach
-                            
-                            @error('categories')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
                             
                             {{ $categories->links() }}
                         

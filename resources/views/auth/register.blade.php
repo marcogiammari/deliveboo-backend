@@ -18,7 +18,7 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end text-white fw-bolder fs-4">Nome</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end text-white fw-bolder fs-4">Nome <span class="{{ $errors->has('name') ? 'text-danger' : '' }}">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control bg-transparent-custom text-white fs-4 fw-bold @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="surname" class="col-md-4 col-form-label text-md-end text-white fw-bolder fs-4">Cognome</label>
+                            <label for="surname" class="col-md-4 col-form-label text-md-end text-white fw-bolder fs-4">Cognome <span class="{{ $errors->has('surname') ? 'text-danger' : '' }}">*</span></label>
                             <div class="col-md-6">
                                 <input id="surname" type="text" class="form-control bg-transparent-custom text-white fs-4 fw-bold @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
 
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end text-white fw-bolder fs-4">Email</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end text-white fw-bolder fs-4">Email <span class="{{ $errors->has('email') ? 'text-danger' : '' }}">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control bg-transparent-custom text-white fs-4 fw-bold @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">

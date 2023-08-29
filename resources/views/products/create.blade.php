@@ -3,15 +3,7 @@
 @section('content')
 <div>
 
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul class="mb-0">
-            @foreach ($errors->all() as $err)
-                <li>{{ $err }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+
 
     <h1 class="text-center mt-5">Aggiungi un piatto</h1>
         
@@ -19,7 +11,7 @@
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Nome <span class="{{ $errors->has('name') ? 'text-danger' : '' }}">*</span></label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" required>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{old('name')}}" required >
             @error("name")
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
@@ -28,7 +20,7 @@
 
         <div class="mb-3">
             <label for="price" class="form-label">Prezzo <span class="{{ $errors->has('price') ? 'text-danger' : '' }}">*</span></label>
-            <input type="number" min="0" step=".01" class="form-control @error('price') is-invalid @enderror" name="price" id="price" required >
+            <input type="number" min="0" step=".01" class="form-control @error('price') is-invalid @enderror" name="price" id="price" value="{{old('price')}}" required>
             @error("price")
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
@@ -36,7 +28,7 @@
 
         <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
-            <textarea class="form-control  @error('description') is-invalid @enderror" name="description" id="description" rows="4"></textarea>
+            <textarea class="form-control  @error('description') is-invalid @enderror" name="description" id="description" value="{{old('description')}}" rows="4"></textarea>
             @error("description")
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
