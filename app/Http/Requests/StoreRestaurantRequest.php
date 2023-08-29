@@ -40,6 +40,7 @@ class StoreRestaurantRequest extends FormRequest
             'name.max' => 'Il nome non può superare i 100 caratteri.',
             'vat_number.required' => 'il codice partita iva è richiesto',
             'vat_number.max' => 'Il codice partita iva non può superare i 20 caratteri.',
+            'vat_number.min' => 'Il codice partita iva non può essere inferiore ai 11 caratteri.',
             'note.max' => 'la descrizione non può superare i 255 caratteri',
             'city.required' => 'La città è richiesta',
             'city.max' => 'La città non può superare i 30 caratteri',

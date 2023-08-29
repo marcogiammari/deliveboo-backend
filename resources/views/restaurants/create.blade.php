@@ -13,7 +13,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome del ristorante <span class="{{ $errors->has('name') ? 'text-danger' : '' }}">*</span></label>
-                        <input type="text" name="name" id="name" 
+                        <input type="text" name="name" id="name"  required
                             class="form-control @error('name') is-invalid @enderror">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
