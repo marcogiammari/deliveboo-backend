@@ -61,7 +61,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-end text-white fw-bolder fs-4">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control bg-transparent-custom text-white fs-4 fw-bold @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control bg-transparent-custom text-white fs-4 fw-bold @error('password') is-invalid @enderror" name="password" required autocomplete="new-password"  onChange="onChange()">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -75,7 +75,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end text-white fw-bolder fs-4 lh-1">Conferma Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control bg-transparent-custom text-white fs-4 fw-bold " name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control bg-transparent-custom text-white fs-4 fw-bold " name="password_confirmation" required autocomplete="new-password"  onChange="onChange()">
                             </div>
                         </div>
 
@@ -86,6 +86,20 @@
                                 </button>
                             </div>
                         </div>
+
+                        <script>
+
+                            function onChange() {
+                                const password = document.querySelector('input[name=password]');
+                                const confirm = document.querySelector('input[name=password_confirmation]');
+                                if (confirm.value === password.value) {
+                                  confirm.setCustomValidity('');
+                                } else {
+                                  confirm.setCustomValidity('Le password non coincidono');
+                                }
+                              }
+
+                        </script>
                     </form>
                 </div>
             </div>
