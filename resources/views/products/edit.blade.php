@@ -3,15 +3,7 @@
 @section('content')
 <div>
     
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul class="mb-0">
-            @foreach ($errors->all() as $err)
-                <li>{{ $err }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+
 
     <h1 class="text-center">Modifica il tuo Piatto</h1>
         
@@ -20,14 +12,14 @@
         @method('PUT')
     
         <div class="mb-3">
-            <label for="name" class="form-label">Nome</label>
+            <label for="name" class="form-label">Nome <span class="{{ $errors->has('name') ? 'text-danger' : '' }}">*</span></label>
             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name', $product->name) }}">
             @error("name")
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label">Prezzo</label>
+            <label for="price" class="form-label">Prezzo <span class="{{ $errors->has('price') ? 'text-danger' : '' }}">*</span></label>
             <input type="number" min="0" step=".01" class="form-control  @error('price') is-invalid @enderror" name="price" id="price" value="{{ old('price', $product->price) }}">
             @error("price")
                 <div class="invalid-feedback">{{$message}}</div>

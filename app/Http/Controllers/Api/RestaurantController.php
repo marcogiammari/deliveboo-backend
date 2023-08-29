@@ -19,11 +19,9 @@ class RestaurantController extends Controller
 
     public function filterByCategory($categoryId)
     {
-
         $category = Category::findOrFail($categoryId);
         $restaurants = $category->restaurants;
     
         return new RestaurantCollection($restaurants);
     }
-
 }

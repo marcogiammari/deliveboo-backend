@@ -20,7 +20,6 @@
                 <form action="{{ route('restaurants.store') }}" class="needs-validation" method="post"
                     enctype="multipart/form-data">
                     @csrf
-
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome del ristorante</label>
                         <input type="text" name="name" id="name" required
@@ -29,7 +28,6 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-
                     <div class="mb-3">
                         <label for="vat_number" class="form-label">Partita Iva</label>
                         <input type="text" name="vat_number" id="vat_number"
@@ -38,7 +36,6 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-
                     <div class="mb-3">
                         <label for="note" class="form-label">Vuoi aggiungere una descrizione?</label>
                         <textarea name="note" id="note" class="form-control @error('note') is-invalid @enderror" rows="4"></textarea>
@@ -46,7 +43,6 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-
                     <div class="mb-3">
                         <label for="thumb" class="form-label">Inserisci un'immagine</label>
                         <input type="file" name="thumb" id="thumb"
@@ -64,7 +60,6 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-
                     <div class="mb-3">
                         <label for="street_number" class="form-label">N°</label>
                         <input type="text" name="street_number" id="street_number" required
@@ -73,7 +68,6 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-
                     <div class="mb-3">
                         <label for="zip_code" class="form-label">CAP</label>
                         <input type="text" name="zip_code" id="zip_code" required
