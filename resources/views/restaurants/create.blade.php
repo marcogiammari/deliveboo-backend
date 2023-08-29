@@ -101,12 +101,15 @@
             const selectedOption = select.options[select.selectedIndex];
             if (selectedOption && selectedOption.value !== "") {
                 const tagInput = document.createElement("input");
-                tagInput.type = "text";
+                tagInput.type = "hidden";
                 tagInput.name = "categories[]";
-                tagInput.value = selectedOption.text;
+                tagInput.value = selectedOption.value;
                 tagInput.readOnly = true;
                 tagInput.required = true;
-                console.log(tagInput);
+                const tagSpan = document.createElement("span");
+                tagSpan.textContent = selectedOption.text;
+                
+                
 
                 const removeTagButton = document.createElement("button");
                 removeTagButton.className = "remove-tag";
@@ -116,8 +119,9 @@
                     removeSelectedTag(selectedOption.value);
                 });
 
-                const tagContainer = document.createElement("div"); // Aggiunto tagContainer
+                const tagContainer = document.createElement("div"); 
                 selectedTags.push(selectedOption.text);
+                tagContainer.appendChild(tagSpan);
                 selectedTagsContainer.appendChild(tagContainer);
                 tagContainer.appendChild(tagInput);
                 tagContainer.appendChild(removeTagButton);
