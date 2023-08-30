@@ -6,8 +6,6 @@
         <div class="row">
             <div class="col-8 offset-2">
                 <h1>Crea il tuo ristorante</h1>
-
-
                 <form id="createRestaurant" action="{{ route('restaurants.store') }}" class="needs-validation" method="post"
                     enctype="multipart/form-data">
                     @csrf
@@ -91,46 +89,46 @@
                 <script>
                 // FUNCTION PER DEFINIRE SELECT REQUIRED
                     document.addEventListener("DOMContentLoaded", function() {
-        const select = document.getElementById("categorySelect");
-        const addTagButton = document.getElementById("addTagButton");
-        const selectedTagsContainer = document.getElementById("selectedTags");
-        const selectedTags = [];
+                    const select = document.getElementById("categorySelect");
+                    const addTagButton = document.getElementById("addTagButton");
+                    const selectedTagsContainer = document.getElementById("selectedTags");
+                    const selectedTags = [];
 
-        addTagButton.addEventListener("click", function() {
-            const selectedOption = select.options[select.selectedIndex];
-            if (selectedOption && selectedOption.value !== "") {
-                const tagInput = document.createElement("input");
-                tagInput.type = "hidden";
-                tagInput.name = "categories[]";
-                tagInput.value = selectedOption.value;
-                tagInput.readOnly = true;
-                tagInput.required = true;
-                const tagSpan = document.createElement("span");
-                tagSpan.textContent = selectedOption.text;
-                
-                
+                addTagButton.addEventListener("click", function() {
+                    const selectedOption = select.options[select.selectedIndex];
+                    if (selectedOption && selectedOption.value !== "") {
+                        const tagInput = document.createElement("input");
+                        tagInput.type = "hidden";
+                        tagInput.name = "categories[]";
+                        tagInput.value = selectedOption.value;
+                        tagInput.readOnly = true;
+                        tagInput.required = true;
+                        const tagSpan = document.createElement("span");
+                        tagSpan.textContent = selectedOption.text;
+                        
+                        
 
-                const removeTagButton = document.createElement("button");
-                removeTagButton.className = "remove-tag";
-                removeTagButton.textContent = "X";
-                removeTagButton.addEventListener("click", function() {
-                    removeSelectedTag(tagSpan.textContent);
-                    tagContainer.remove();
-                });
+                        const removeTagButton = document.createElement("button");
+                        removeTagButton.className = "remove-tag";
+                        removeTagButton.textContent = "X";
+                        removeTagButton.addEventListener("click", function() {
+                            removeSelectedTag(tagSpan.textContent);
+                            tagContainer.remove();
+                        });
 
-                const tagContainer = document.createElement("div"); 
-                selectedTags.push(selectedOption.text);
-                tagContainer.appendChild(tagSpan);
-                selectedTagsContainer.appendChild(tagContainer);
-                tagContainer.appendChild(tagInput);
-                tagContainer.appendChild(removeTagButton);
-                // Reset the select
-                select.value = "";
-            }
-            if (selectedTags.length > 0) {
-                
-                select.required = false;
-            }
+                        const tagContainer = document.createElement("div"); 
+                        selectedTags.push(selectedOption.text);
+                        tagContainer.appendChild(tagSpan);
+                        selectedTagsContainer.appendChild(tagContainer);
+                        tagContainer.appendChild(tagInput);
+                        tagContainer.appendChild(removeTagButton);
+                        // Reset the select
+                        select.value = "";
+                    }
+                    if (selectedTags.length > 0) {
+                        
+                        select.required = false;
+                    }
         });
 
         function removeSelectedTag(text) {

@@ -16,8 +16,8 @@ class RestaurantController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {   
-        
+    {
+
         $categories = Category::latest()->paginate(10);
         return view('restaurants.create', compact('categories'));
     }
@@ -27,9 +27,9 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        
+
         $data = $request->validated();
-        
+
         // salva nello storage l'immagine e nell'istanza il path
         if (isset($data['thumb'])) {
             $img_path = Storage::disk('public')->put("uploads", $data['thumb']);
@@ -44,7 +44,7 @@ class RestaurantController extends Controller
         $newRestaurant->save();
 
         $newRestaurant->categories()->attach($data['categories']);
-        
+
         return redirect()->route("restaurants.show", $newRestaurant)->with('flash', 'Ristorante aggiunto con successo');
 
     }
@@ -53,9 +53,10 @@ class RestaurantController extends Controller
      * Display the specified resource.
      */
     public function show(Restaurant $restaurant)
-
     {
-        return view("restaurants.show", compact("restaurant"));
+        $categories = Category::latest()->paginate(10);
+        $categoriesSelected = $restaurant->categories;
+        return view("restaurants.show", compact("restaurant", "categoriesSelected", "categories"));
     }
 
     /**
@@ -63,15 +64,25 @@ class RestaurantController extends Controller
      */
     public function edit(string $id)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreRestaurantRequest $request, Restaurant $restaurant)
     {
-        //
+        $data = $request->validated();
+
+        // salva nello storage l'immagine e nell'istanza il path
+        if (isset($data['thumb'])) {
+            $img_path = Storage::disk('public')->put("uploads", $data['thumb']);
+            $data['thumb'] = $img_path;
+        }
+
+        $restaurant->fill($data);
+        $restaurant->update();
+
+        return redirect()->route("restaurant.show", $restaurant, )->with('flash', 'Il tuo ristorante è stato aggiornato con successo');
     }
 
     /**
