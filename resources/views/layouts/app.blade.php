@@ -134,8 +134,9 @@ class="bg-custom" @endguest >
                                 </a>
                             </li>
                             
-                            {{-- da cambiare con l'id del ristorante --}}
                             
+                            @auth
+                            @if (auth()->user()->restaurant)
                             <li class="nav-item py-2">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard rounded' : '' }}" href="{{ route('restaurants.show', Auth::user()->id) }}">
                                     <div class="d-flex justify-content-end align-items-center">
@@ -144,6 +145,8 @@ class="bg-custom" @endguest >
                                     </div>
                                 </a>
                             </li>
+                            @endif
+                            @endauth
                         </ul>
 
                     </div>

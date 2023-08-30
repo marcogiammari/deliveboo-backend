@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+
+    
     <div class="position-relative container">
         @if (isset($restaurant->thumb))
 
@@ -18,4 +20,5 @@
             </div>
         </div>
     </div>
+    
 @endsection
