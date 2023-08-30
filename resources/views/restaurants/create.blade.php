@@ -2,11 +2,12 @@
 
 @section('content')
 
-    <div class="container mt-5">
+<div class="container mt-5">
         <div class="row">
             <div class="col-8 offset-2">
                 <h1>Crea il tuo ristorante</h1>
-
+                
+                <img src="{{asset('assets\CategoriesImg\americano.png')}}" alt="">
 
                 <form id="createRestaurant" action="{{ route('restaurants.store') }}" class="needs-validation" method="post"
                     enctype="multipart/form-data">
@@ -88,6 +89,11 @@
                     </div>
 
                 </form>
+
+
+
+
+
                 <script>
                 // FUNCTION PER DEFINIRE SELECT REQUIRED
                     document.addEventListener("DOMContentLoaded", function() {
