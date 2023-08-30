@@ -196,12 +196,12 @@
                     </nav>
 
                 @endauth
-                <div class="d-flex justify-content-end">
+                <div @auth class="d-flex justify-content-end" @endauth>
                     <main @auth
-                    class="align-center-on-md"
+                    class="align-center-on-md main_bottom_padding main_top_padding"
                     @endauth 
                     @guest
-                    class=""
+                    class="full_screen"
                 @endguest>
     
                 {{-- flash messages  --}}

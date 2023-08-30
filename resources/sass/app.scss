@@ -48,7 +48,7 @@
     background-color: #9061FF;
 }
 .logo-width-custom{
-    width: 100px;
+    width: 150px;
 }
 
 .miaclasse{
@@ -110,12 +110,12 @@
     width: 200px;
 }
 
-main {
+.main_top_padding {
     padding-top: 64.250px;
 }
 
 @media screen and (max-width: 768px) {
-    main {
+    .main_bottom_padding {
         padding-bottom: 73px;
     }
 }
@@ -154,4 +154,23 @@ main {
 .footer li a {
     border-radius: 50%;
     padding: 1rem;
+}
+
+// Access
+
+.full_screen {
+    width: 100%;
+    height: 100vh;
+}
+
+.img-full-size {
+    height: calc(100vh - 100.38px);
+}
+
+@media screen and (max-height: 700px) {
+    .resize {
+        height: calc(100vh - 100.38px);
+        align-self: end;
+        padding-top: 100px !important;
+    }
 }
