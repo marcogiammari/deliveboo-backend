@@ -2,48 +2,48 @@
 
 return [
     [   
-        "name" => "Americano",1
+        "name" => "Americano",
     ],
     [
-        "name" => "Cinese",2
+        "name" => "Cinese",
     ],
     [
-        "name" => "Fast Food",3
+        "name" => "Fast Food",
     ],
     [
-        "name" => "Giappopnese",4
+        "name" => "Giappopnese",
     ],
     [
-        "name" => "Greco",5
+        "name" => "Greco",
     ],
     [
-        "name" => "Hamburger",6
+        "name" => "Hamburger",
     ],
     [
-        "name" => "Helthy",7
+        "name" => "Helthy",
     ],
     [
-        "name" => "Indiano",8
+        "name" => "Indiano",
     ],
     [
-        "name" => "Italiana",9
+        "name" => "Italiana",
     ],
     [
-        "name" => "Messicano",10
+        "name" => "Messicano",
     ],
     [
-        "name" => "Pesce",11
+        "name" => "Pesce",
     ],
     [
-        "name" => "Pizza",12
+        "name" => "Pizza",
     ],
     [
-        "name" => "Poke",13
+        "name" => "Poke",
     ],
     [
-        "name" => "Senza Glutine",14
+        "name" => "Senza Glutine",
     ],
     [
-        "name" => "Vegano",15
+        "name" => "Vegano",
     ]
 ];
