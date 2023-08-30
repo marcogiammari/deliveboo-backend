@@ -4,9 +4,11 @@
 <div>
     
 
-
+    
     <h1 class="text-center">Modifica il tuo Piatto</h1>
-        
+    <div class="wid100 text-center">
+    <img src="{{ Storage::url($product->thumb) }}" alt="Immagine attuale" class="mt-2" style="width: 200px;">
+    </div>
     <form class="d-flex flex-column gap-3 w-50 m-auto needs-validation" action="{{ route('products.update', $product) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -34,7 +36,10 @@
         </div>
         <div class="mb-3">
             <label for="thumb" class="form-label">Immagine</label>
-            <input type="file" class="form-control  @error('thumb') is-invalid @enderror" name="thumb" id="thumb" value="{{ old('thumb', $product->thumb) }}">
+            <input type="file" class="form-control  @error('thumb') is-invalid @enderror" name="thumb" id="thumb" value="">
+            @if ($product->thumb)
+           
+            @endif
             @error("thumb")
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror

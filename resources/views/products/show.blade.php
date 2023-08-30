@@ -4,9 +4,9 @@
 
     <div class="card w-50 m-auto border-white peach-bg">
         <div class="row">
-            <div>
+            <div class="text-center py-3">
                 @if (isset($product->thumb))
-                    <img src="{{asset('storage/' . $product->thumb)}}" alt="{{$product->name}}" class="card-img-top mb-4">
+                    <img src="{{asset('storage/' . $product->thumb)}}" alt="{{$product->name}}" class="card-img-top mb-4" style="width: 200px">
                 @else 
                     <img class="card-img-top" src="https://i.postimg.cc/KYST9jf9/Aggiungi.jpg" alt="">
                 @endif
@@ -33,22 +33,22 @@
                     <form action="{{ route('products.destroy', $product) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">
-                            Cancella il prodotto
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Vuoi rimuovere questo piatto ?
                         </button>
-                        <div class="modal" tabindex="0" id="confirmDeleteModal">
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Modal title</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h1 class="modal-title fs-5 m-auto" id="exampleModalLabel">Sei sicuro di voler eliminare {{$product->name}}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body">
-                                        <p>Modal body text goes here.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    <div class="modal-footer d-flex justify-content-center">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Torna indietro</button>
+                                    <button type="submit" class="btn btn-danger">Rimuovi</button>
                                     </div>
                                 </div>
                             </div>

@@ -18,8 +18,8 @@ class ProductController extends Controller
         $restaurant_id = Restaurant::where('user_id', Auth::user()->id)->value('id');
 
         // query sui prodotti che possiedono il restaurant_id come foreign key
-        $products = Product::where('restaurant_id', $restaurant_id)->where("is_visible",true)->get();
-        
+        $products = Product::where('restaurant_id', $restaurant_id)->where("is_visible", true)->get();
+
         return view('products.index', compact('products'));
     }
 
@@ -42,6 +42,7 @@ class ProductController extends Controller
 
         $data = $request->validated();
 
+        
         // salva nello storage l'immagine e nell'istanza il path
         if (isset($data['thumb'])) {
             $img_path = Storage::disk('public')->put("uploads", $data['thumb']);
