@@ -69,7 +69,7 @@
                     </div>
 
                     <div>
-                        <select id="categorySelect">
+                        <select id="categorySelect" required>
                             <option value="" disabled selected>Scegli una o più categorie</option>
                             @foreach ($categories as $i => $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -127,6 +127,10 @@
                 tagContainer.appendChild(removeTagButton);
                 // Reset the select
                 select.value = "";
+            }
+            if (selectedTags.length > 0) {
+                console.log(selectedTags);
+                select.required = false;
             }
         });
 
