@@ -2,68 +2,48 @@
 
 return [
     [   
-        "name" => "Italiano",
+        "name" => "Americano",1
     ],
     [
-        "name" => "Cinese",
+        "name" => "Cinese",2
     ],
     [
-        "name" => "Thailandese",
+        "name" => "Fast Food",3
     ],
     [
-        "name" => "Giapponese",
+        "name" => "Giappopnese",4
     ],
     [
-        "name" => "Americano",
+        "name" => "Greco",5
     ],
     [
-        "name" => "Indiano",
-        "thumb" => "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Indian-Food-wikicont.jpg/1280px-Indian-Food-wikicont.jpg"
+        "name" => "Hamburger",6
     ],
     [
-        "name" => "Messicano",
+        "name" => "Helthy",7
     ],
     [
-        "name" => "Taiwanese",
+        "name" => "Indiano",8
     ],
     [
-        "name" => "Spagnolo",
+        "name" => "Italiana",9
     ],
     [
-        "name" => "Portoghese",
+        "name" => "Messicano",10
     ],
     [
-        "name" => "Greco",
-        "thumb" => "https://www.greekality.com/wp-content/uploads/2022/01/moussaka.png"
+        "name" => "Pesce",11
     ],
     [
-        "name" => "Pizza",
-        "thumb" => "https://wallpapersmug.com/download/1280x960/b67e3e/pizza-slices-food.jpg"
+        "name" => "Pizza",12
     ],
     [
-        "name" => "Hamburger",
-        "thumb" => "https://img5.goodfon.com/original/1280x960/2/86/fastfud-burger-gamburger-pepsi-kola-kartofel-fri.jpg"
+        "name" => "Poke",13
     ],
     [
-        "name" => "Piadina",
+        "name" => "Senza Glutine",14
     ],
     [
-        "name" => "Sushi",
-        "thumb" => "https://www.arcipelagocenter.it/wp-content/uploads/2021/11/osaki_6.jpg"
-    ],
-    [
-        "name" => "Vegano",
-    ],
-    [
-        "name" => "Vegetariano",
-    ],
-    [
-        "name" => "Gluten Free",
-    ],
-    [
-        "name" => "Healthy",
-    ],
-    [
-        "name" => "Fast food"
+        "name" => "Vegano",15
     ]
 ];

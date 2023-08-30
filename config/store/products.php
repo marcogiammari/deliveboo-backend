@@ -561,4 +561,367 @@ return [
         "description" => "Pasta con salsa al pesto di spinaci",
         "is_visible" => true
     ],
+    [
+        "restaurant_id" => 9,
+        "name" => "Costine di Maiale Texane",
+        "price" => 18.99,
+        "description" => "Costine di maiale affumicate con salsa BBQ texana",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 9,
+        "name" => "Burger del Cowboy",
+        "price" => 14.75,
+        "description" => "Hamburger con bacon, formaggio cheddar e cipolla fritta",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 9,
+        "name" => "Fajitas Messicane",
+        "price" => 16.50,
+        "description" => "Strisce di carne grigliata servite con tortillas e condimenti",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 9,
+        "name" => "Insalata del Ranch",
+        "price" => 12.25,
+        "description" => "Insalata con pollo alla griglia, mais, fagioli e salsa ranch",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 9,
+        "name" => "Patatine Western",
+        "price" => 6.99,
+        "description" => "Patatine fritte con formaggio cheddar fuso e salsa piccante",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 9,
+        "name" => "Taco Messicano",
+        "price" => 9.50,
+        "description" => "Tortilla ripiena di carne, lattuga, pomodoro e formaggio",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 9,
+        "name" => "Stinco di Manzo al Forno",
+        "price" => 20.75,
+        "description" => "Stinco di manzo cotto lentamente al forno con aromi",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 9,
+        "name" => "Nachos Texani",
+        "price" => 11.99,
+        "description" => "Chips di mais con formaggio fuso, jalapenos e guacamole",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 9,
+        "name" => "Costata alla Griglia",
+        "price" => 24.50,
+        "description" => "Costata di manzo alla griglia servita con patate al forno",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 9,
+        "name" => "Cocktail del Deserto",
+        "price" => 8.25,
+        "description" => "Cocktail analcolico a base di frutta tropicale e succo d'arancia",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 10,
+        "name" => "McBurger Classico",
+        "price" => 4.99,
+        "description" => "Il classico hamburger con carne di manzo, lattuga e salsa speciale",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 10,
+        "name" => "Patatine Croccanti",
+        "price" => 2.49,
+        "description" => "Le famose patatine fritte tagliate sottili e croccanti",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 10,
+        "name" => "McNuggets",
+        "price" => 5.75,
+        "description" => "Bocconcini di pollo impanati e fritti, perfetti per uno snack",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 10,
+        "name" => "Big Mac",
+        "price" => 6.25,
+        "description" => "Doppio hamburger con formaggio, lattuga, salsa e cetriolini",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 10,
+        "name" => "Insalata Caesar",
+        "price" => 5.75,
+        "description" => "Insalata con pollo grigliato, crostini e salsa Caesar",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 10,
+        "name" => "Happy Meal",
+        "price" => 6.99,
+        "description" => "Menu per bambini con hamburger, patatine, bevanda e giocattolo",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 10,
+        "name" => "Caffè McCafé",
+        "price" => 1.89,
+        "description" => "Caffè 100% arabica appena macinato",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 10,
+        "name" => "Gelato al Caramello",
+        "price" => 2.75,
+        "description" => "Gelato alla vaniglia con salsa al caramello e granella di noccioline",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 11,
+        "name" => "Ramen Tonkotsu",
+        "price" => 12.99,
+        "description" => "Zuppa giapponese con noodle di grano, brodo di maiale e uovo marinato",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 11,
+        "name" => "Sushi Misto",
+        "price" => 18.75,
+        "description" => "Assortimento di sushi con pesce fresco e riso al vapore",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 11,
+        "name" => "Pollo all'Arancia",
+        "price" => 14.50,
+        "description" => "Bocconcini di pollo fritti in salsa all'arancia, serviti con riso",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 11,
+        "name" => "Gyoza",
+        "price" => 7.99,
+        "description" => "Ravioli giapponesi ripieni di carne e verdure, cotti al vapore e poi saltati",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 11,
+        "name" => "Involtini Primavera",
+        "price" => 6.50,
+        "description" => "Involtini croccanti ripieni di verdure e carne, serviti con salsa agrodolce",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 11,
+        "name" => "Fusho Box",
+        "price" => 16.75,
+        "description" => "Box con assortimento di piatti giapponesi, inclusi sushi, tempura e riso",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 11,
+        "name" => "Zuppa Wonton",
+        "price" => 8.25,
+        "description" => "Zuppa cinese con ravioli wonton ripieni di carne di maiale e brodo leggero",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 11,
+        "name" => "Anatra all'Arancia",
+        "price" => 19.50,
+        "description" => "Anatra arrosto in salsa all'arancia, accompagnata da verdure e riso",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 11,
+        "name" => "Bibimbap",
+        "price" => 10.99,
+        "description" => "Piatto coreano con riso, verdure, carne e uovo, servito in una ciotola",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 12,
+        "name" => "Ravioli al Vapore Classici",
+        "price" => 9.99,
+        "description" => "Ravioli al vapore ripieni di carne di maiale e erbe aromatiche",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 12,
+        "name" => "Ravioli al Vapore Vegetariani",
+        "price" => 8.99,
+        "description" => "Ravioli al vapore ripieni di verdure fresche e tofu",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 12,
+        "name" => "Ravioli Fritti",
+        "price" => 10.50,
+        "description" => "Ravioli fritti croccanti con ripieno di carne e cipolla",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 12,
+        "name" => "Ravioli in Brodo",
+        "price" => 8.75,
+        "description" => "Ravioli serviti in brodo leggero con cipolla verde e prezzemolo",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 12,
+        "name" => "Ravioli al Curry",
+        "price" => 9.25,
+        "description" => "Ravioli con ripieno al curry e salsa piccante",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 12,
+        "name" => "Ravioli al Pepe Nero",
+        "price" => 8.99,
+        "description" => "Ravioli con ripieno di carne e pepe nero, conditi con salsa di soia",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 12,
+        "name" => "Ravioli al Sesamo",
+        "price" => 9.50,
+        "description" => "Ravioli al vapore con ripieno di carne e salsa di sesamo",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 12,
+        "name" => "Ravioli di Mare",
+        "price" => 12.99,
+        "description" => "Ravioli al vapore ripieni di frutti di mare, serviti con salsa di gamberi",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 12,
+        "name" => "Ravioli al Tartufo",
+        "price" => 14.50,
+        "description" => "Ravioli con ripieno di carne e tartufo nero, conditi con burro fuso",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 12,
+        "name" => "Ravioli Dolci",
+        "price" => 7.99,
+        "description" => "Ravioli al vapore ripieni di crema dolce, cotti e cosparsi di zucchero a velo",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 13,
+        "name" => "Sushi Rolls Dragon",
+        "price" => 15.99,
+        "description" => "Roll di sushi con gambero tempura, avocado e salsa unagi",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 13,
+        "name" => "Maiale Teriyaki",
+        "price" => 13.50,
+        "description" => "Fettine di maiale grigliate in salsa teriyaki, servite con riso al vapore",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 13,
+        "name" => "Zuppa Wonton con Ramen",
+        "price" => 12.25,
+        "description" => "Zuppa cinese con ravioli wonton e noodle ramen in brodo",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 13,
+        "name" => "Involtini di Nori",
+        "price" => 9.75,
+        "description" => "Involtini croccanti di alga nori ripieni di riso, pesce e verdure",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 13,
+        "name" => "Manzo all'Aglio",
+        "price" => 14.99,
+        "description" => "Fettine di manzo saltate con aglio, peperoncino e verdure miste",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 13,
+        "name" => "Tempura Misto",
+        "price" => 11.50,
+        "description" => "Assortimento di verdure e frutti di mare fritti in pastella leggera",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 13,
+        "name" => "Ramen al Curry",
+        "price" => 13.75,
+        "description" => "Noodle ramen in brodo al curry con carne e verdure",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 13,
+        "name" => "Pesce al Vapore con Zenzero",
+        "price" => 16.25,
+        "description" => "Filetto di pesce al vapore con salsa al zenzero e cipolla verde",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 13,
+        "name" => "Baozi al Maiale",
+        "price" => 9.99,
+        "description" => "Panini al vapore ripieni di carne di maiale e verdure",
+        "is_visible" => true
+    ],
+    [
+        "restaurant_id" => 13,
+        "name" => "Gelato al Tè Matcha",
+        "price" => 6.99,
+        "description" => "Gelato al tè verde matcha, servito con biscotti al sesamo",
+        "is_visible" => true
+    ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
 ];
