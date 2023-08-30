@@ -20,10 +20,9 @@ class RestaurantController extends Controller
     public function filterByCategories(Request $request)
     {
         
-        // Validazione dei parametri
         $request->validate([
             'category_ids' => 'required|array',
-            'category_ids.*' => 'exists:categories,id', // Supponendo che le categorie siano nel modello Category
+            'category_ids.*' => 'exists:categories,id'
         ]);
         
         $categoryIds = $request->input('category_ids');
@@ -32,33 +31,20 @@ class RestaurantController extends Controller
         foreach ($categoryIds as $categoryId) {
             $category = Category::findOrFail($categoryId);
     
-            $restaurants[] = $category->restaurants()
+            $myrestaurants = $category->restaurants()
                 ->with('categories') 
                 ->get();
+
+            foreach ($myrestaurants as $rest) {
+                $restaurants[] = $rest;
+            };
         }
 
         $data = [
             'status' => true,
-            'results' => $restaurants[0]
+            'results' => $restaurants
         ];
 
         return response()->json($data);
-
-        // // return new RestaurantCollection($category);
-
-
-
-
-        // $restaurantsQuery = Restaurant::query();
-
-        // foreach ($categoryIds as $categoryId) {
-        //     $restaurantsQuery->whereHas('categories', function ($query) use ($categoryId) {
-        //         $query->where('id', $categoryId);
-        //     });
-        // }
-
-        // $restaurants = $restaurantsQuery->get();
-
-        // return response()->json(['restaurants' => $restaurants]);
     }
 }
