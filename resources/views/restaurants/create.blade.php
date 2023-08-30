@@ -2,6 +2,10 @@
 
 @section('content')
 
+
+{{-- <img src="{{asset('categories/americano.png')}}" alt=""> --}}
+
+
 <div class="container mt-5">
         <div class="row">
             <div class="col-8 offset-2">
