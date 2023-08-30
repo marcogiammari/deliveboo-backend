@@ -24,4 +24,4 @@ Route::get('/restaurants', [ApiRestaurantController::class, "index"]);
 
 Route::get('/categories', [ApiCategoryController::class, "index"]);
 
-Route::get('/restaurants/search/{category}', [ApiRestaurantController::class, 'filterByCategory']);
+Route::get('/restaurants/by-categories', [ApiRestaurantController::class, 'filterByCategories']);

@@ -11,17 +11,54 @@ use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
         return new RestaurantCollection(Restaurant::all());
-
     }
 
-    public function filterByCategory($categoryId)
+    public function filterByCategories(Request $request)
     {
-        $category = Category::findOrFail($categoryId);
-        $restaurants = $category->restaurants;
+        
+        // Validazione dei parametri
+        $request->validate([
+            'category_ids' => 'required|array',
+            'category_ids.*' => 'exists:categories,id', // Supponendo che le categorie siano nel modello Category
+        ]);
+        
+        $categoryIds = $request->input('category_ids');
+        $restaurants = [];
+        
+        foreach ($categoryIds as $categoryId) {
+            $category = Category::findOrFail($categoryId);
     
-        return new RestaurantCollection($restaurants);
+            $restaurants[] = $category->restaurants()
+                ->with('categories') 
+                ->get();
+        }
+
+        $data = [
+            'status' => true,
+            'results' => $restaurants[0]
+        ];
+
+        return response()->json($data);
+
+        // // return new RestaurantCollection($category);
+
+
+
+
+        // $restaurantsQuery = Restaurant::query();
+
+        // foreach ($categoryIds as $categoryId) {
+        //     $restaurantsQuery->whereHas('categories', function ($query) use ($categoryId) {
+        //         $query->where('id', $categoryId);
+        //     });
+        // }
+
+        // $restaurants = $restaurantsQuery->get();
+
+        // return response()->json(['restaurants' => $restaurants]);
     }
 }
