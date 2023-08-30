@@ -19,9 +19,11 @@ class DatabaseSeeder extends Seeder
         foreach ($usersData as $user) {
             User::factory()->create($user);
         }
-        
-        $this->call([CategorySeeder::class,RestaurantSeeder::class,ProductSeeder::class,OrderSeeder::class,]);
 
+        User::factory()
+            ->count(45)
+            ->create();
 
+        $this->call([CategorySeeder::class, RestaurantSeeder::class, ProductSeeder::class, OrderSeeder::class,]);
     }
 }
