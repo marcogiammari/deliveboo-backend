@@ -26,50 +26,55 @@
 </head>
 
 <body @guest
-class="bg-custom" @endguest >
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-dark pastel-orange-bg shadow-sm">
-        <div class="container">
-            <a class="" href="{{ url('/') }}">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="navbar-collapse collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav">
-                <li>
+    class="bg-custom" @endguest >
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-dark pastel-orange-bg shadow-sm">
+            <div class="container-fluid d-flex justify-content-between">
+                <div class="navbar-toggler">
                     <img src="https://i.postimg.cc/pLBJ9VT7/logo-16-9.png" alt="logo" class="logo-width-custom img-fluid">
-                </li>
-                </ul>
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ms-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                    @if (Route::has('login'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @endif
-                    
-                    @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                    @endif
-                    @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                </div>
+
+                <a class="" href="{{ url('/') }}">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav">
+                        <li>
+                            <img src="https://i.postimg.cc/pLBJ9VT7/logo-16-9.png" alt="logo" class="logo-width-custom img-fluid">
+                        </li>
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                            @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} {{Auth::user()->surname}}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
                                 
@@ -94,41 +99,41 @@ class="bg-custom" @endguest >
 
                             <li class="nav-item py-2">
                                 <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'bg-custard rounded' : '' }} text-white"
-                                href="{{ route('home') }}">
-                                <div class="d-flex justify-content-end align-items-center">
-                                    <h6 class="me-3">Dashboard</h6>
-                                    <img src="https://i.postimg.cc/gjvh6ddr/menu.png" alt="dashboard-icon" class="w-25">
-                                </div>
-                            </a>
-                        </li>
-                        @auth
-                        @if (!auth()->user()->restaurant)
-                        <li class="nav-item py-2">
-                            <a class="nav-link {{ Route::currentRouteName() == 'restaurants.create' ? 'bg-custard rounded' : '' }} text-white " href="{{ route('restaurants.create') }}">
-                                <div class="d-flex justify-content-end align-items-center">
-                                    <h6 class="me-3">Crea Ristorante</h6>
-                                    <img src="https://i.postimg.cc/YCfwDP2g/shop-icon.png" alt="dashboard-icon" class="w-25">
-                                </div>
-                            </a>
-                        </li>
-                        @endif
-                        @endauth
-                        @auth
-                        @if (auth()->user()->restaurant)
-                        <li class="nav-item">
-                            <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard rounded' : '' }}" href="{{ route('products.create') }}">
-                                <div class="d-flex justify-content-end align-items-center">
-                                    <h6 class="me-3">Aggiungi Prodotto</h6>
-                                    <img src="https://i.postimg.cc/PJZ7pLPZ/aggiungi-prodotto.png" alt="Add-product" class="w-25">
-                                </div>
-                            </a>
+                                    href="{{ route('home') }}">
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <h6 class="me-3 text-end">Dashboard</h6>
+                                        <img src="https://i.postimg.cc/gjvh6ddr/menu.png" alt="dashboard-icon" class="w-25">
+                                    </div>
+                                </a>
+                            </li>
+                            @auth
+                            @if (!auth()->user()->restaurant)
+                            <li class="nav-item py-2">
+                                <a class="nav-link {{ Route::currentRouteName() == 'restaurants.create' ? 'bg-custard rounded' : '' }} text-white " href="{{ route('restaurants.create') }}">
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <h6 class="me-3 text-end">Crea Ristorante</h6>
+                                        <img src="https://i.postimg.cc/YCfwDP2g/shop-icon.png" alt="dashboard-icon" class="w-25">
+                                    </div>
+                                </a>
+                            </li>
+                            @endif
+                            @endauth
+                            @auth
+                            @if (auth()->user()->restaurant)
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard rounded' : '' }}" href="{{ route('products.create') }}">
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <h6 class="me-3 text-end">Aggiungi Prodotto</h6>
+                                        <img src="https://i.postimg.cc/PJZ7pLPZ/aggiungi-prodotto.png" alt="Add-product" class="w-25">
+                                    </div>
+                                </a>
                             </li>
                             @endif
                             @endauth
                             <li class="nav-item py-2">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-custard rounded' : '' }}" href="{{ route('products.index') }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h5 class="me-3">Menù</h5>
+                                        <h5 class="me-3 text-end">Menù</h5>
                                         <img src="https://i.postimg.cc/MTw5PsTc/menu-icon.png" alt="dashboard-icon" class="w-25">
                                     </div>
                                 </a>
@@ -140,7 +145,7 @@ class="bg-custom" @endguest >
                             <li class="nav-item py-2">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard rounded' : '' }}" href="{{ route('restaurants.show', Auth::user()->id) }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h5 class="me-3">Il tuo Ristorante</h5>
+                                        <h5 class="me-3 text-end">Il tuo Ristorante</h5>
                                         <img src="https://i.postimg.cc/52kqWYxW/user-icon.png" alt="dashboard-icon" class="w-25">
                                     </div>
                                 </a>
