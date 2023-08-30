@@ -115,8 +115,8 @@
                 removeTagButton.className = "remove-tag";
                 removeTagButton.textContent = "X";
                 removeTagButton.addEventListener("click", function() {
-                    tagInput.remove();
-                    removeSelectedTag(selectedOption.value);
+                    removeSelectedTag(tagSpan.textContent);
+                    tagContainer.remove();
                 });
 
                 const tagContainer = document.createElement("div"); 
@@ -125,23 +125,16 @@
                 selectedTagsContainer.appendChild(tagContainer);
                 tagContainer.appendChild(tagInput);
                 tagContainer.appendChild(removeTagButton);
-
                 // Reset the select
                 select.value = "";
-                updateHiddenInputValue();
             }
         });
 
-        function removeSelectedTag(value) {
-            const index = selectedTags.indexOf(value);
+        function removeSelectedTag(text) {
+            const index = selectedTags.indexOf(text);
             if (index !== -1) {
                 selectedTags.splice(index, 1);
-                updateHiddenInputValue();
             }
-        }
-
-        function updateHiddenInputValue() {
-            hiddenSelectedTagsInput.value = selectedTags.join(",");
         }
     });
                 </script>
