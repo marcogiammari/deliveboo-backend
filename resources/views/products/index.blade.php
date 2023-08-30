@@ -46,8 +46,8 @@
                         @endif
 
                         <div class="width_product-index text-center">
-                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-light bg-custard">
-                                <span class="text-small text-white">Modifica</span>
+                            <a href="{{ route('products.edit', $product->id) }}" class="btn bg-custard">
+                                <span class="text-small">Modifica</span>
                             </a>
 
                             <a href="{{ route('products.show', $product->id) }}" class="btn btn-light peach-bg ms-2">
