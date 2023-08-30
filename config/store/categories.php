@@ -11,7 +11,7 @@ return [
         "name" => "Fast Food",
     ],
     [
-        "name" => "Giappopnese",
+        "name" => "Giapponese",
     ],
     [
         "name" => "Greco",
@@ -20,7 +20,7 @@ return [
         "name" => "Hamburger",
     ],
     [
-        "name" => "Helthy",
+        "name" => "Healthy",
     ],
     [
         "name" => "Indiano",
