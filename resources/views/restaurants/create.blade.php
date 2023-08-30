@@ -2,7 +2,11 @@
 
 @section('content')
 
-    <div class="container mt-5">
+
+{{-- <img src="{{asset('categories/americano.png')}}" alt=""> --}}
+
+
+<div class="container mt-5">
         <div class="row">
             <div class="col-8 offset-2">
                 <h1>Crea il tuo ristorante</h1>
@@ -86,6 +90,11 @@
                     </div>
 
                 </form>
+
+
+
+
+
                 <script>
                 // FUNCTION PER DEFINIRE SELECT REQUIRED
                     document.addEventListener("DOMContentLoaded", function() {
