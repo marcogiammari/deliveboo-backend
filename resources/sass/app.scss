@@ -86,3 +86,72 @@
     top: 100%;
     left: 40%;
 }
+.align-center-on-md{
+    width: calc(100% - 200px);
+}
+
+@media screen and (max-width: 768px){
+    .align-center-on-md{
+        width:100%;
+    }
+}
+
+// App.Blade.Php
+
+// Header
+
+.header_index {
+    z-index: 99;
+}
+
+// 
+
+.sidebar_size {
+    width: 200px;
+}
+
+main {
+    padding-top: 64.250px;
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        padding-bottom: 73px;
+    }
+}
+
+// Footer
+
+@media screen and (min-width: 768px) {
+    .display_none {
+        display: none;
+    }
+}
+
+.footer {
+    z-index: 99;
+}
+
+.fix_bottom {
+    position: fixed;
+    bottom: 0;
+}
+
+.w_25px {
+    width: 25px;
+}
+
+.footer ul {
+    margin: 0;
+    padding: 0;
+}
+
+.footer li {
+    list-style: none;
+    padding: 0.5rem;
+}
+
+.footer li a {
+    border-radius: 50%;
+    padding: 1rem;
+}
