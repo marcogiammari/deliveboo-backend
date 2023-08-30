@@ -28,7 +28,11 @@
     class="bg-custom" @endguest >
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark pastel-orange-bg shadow-sm">
-            <div class="container">
+            <div class="container-fluid d-flex justify-content-between">
+                <div class="navbar-toggler">
+                    <img src="https://i.postimg.cc/pLBJ9VT7/logo-16-9.png" alt="logo" class="logo-width-custom img-fluid">
+                </div>
+
                 <a class="" href="{{ url('/') }}">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -70,7 +74,7 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                            document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -97,7 +101,7 @@
                                 <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'bg-custard rounded' : '' }} text-white"
                                     href="{{ route('home') }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h6 class="me-3">Dashboard</h6>
+                                        <h6 class="me-3 text-end">Dashboard</h6>
                                         <img src="https://i.postimg.cc/gjvh6ddr/menu.png" alt="dashboard-icon" class="w-25">
                                     </div>
                                 </a>
@@ -107,7 +111,7 @@
                             <li class="nav-item py-2">
                                 <a class="nav-link {{ Route::currentRouteName() == 'restaurants.create' ? 'bg-custard rounded' : '' }} text-white " href="{{ route('restaurants.create') }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h6 class="me-3">Crea Ristorante</h6>
+                                        <h6 class="me-3 text-end">Crea Ristorante</h6>
                                         <img src="https://i.postimg.cc/YCfwDP2g/shop-icon.png" alt="dashboard-icon" class="w-25">
                                     </div>
                                 </a>
@@ -119,7 +123,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard rounded' : '' }}" href="{{ route('products.create') }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h6 class="me-3">Aggiungi Prodotto</h6>
+                                        <h6 class="me-3 text-end">Aggiungi Prodotto</h6>
                                         <img src="https://i.postimg.cc/PJZ7pLPZ/aggiungi-prodotto.png" alt="Add-product" class="w-25">
                                     </div>
                                 </a>
@@ -129,7 +133,7 @@
                             <li class="nav-item py-2">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-custard rounded' : '' }}" href="{{ route('products.index') }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h5 class="me-3">Menù</h5>
+                                        <h5 class="me-3 text-end">Menù</h5>
                                         <img src="https://i.postimg.cc/MTw5PsTc/menu-icon.png" alt="dashboard-icon" class="w-25">
                                     </div>
                                 </a>
@@ -140,7 +144,7 @@
                             <li class="nav-item py-2">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard rounded' : '' }}" href="{{ route('restaurants.show', Auth::user()->id) }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h5 class="me-3">Il tuo Ristorante</h5>
+                                        <h5 class="me-3 text-end">Il tuo Ristorante</h5>
                                         <img src="https://i.postimg.cc/52kqWYxW/user-icon.png" alt="dashboard-icon" class="w-25">
                                     </div>
                                 </a>
