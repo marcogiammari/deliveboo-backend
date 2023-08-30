@@ -94,7 +94,6 @@
         const select = document.getElementById("categorySelect");
         const addTagButton = document.getElementById("addTagButton");
         const selectedTagsContainer = document.getElementById("selectedTags");
-        const hiddenSelectedTagsInput = document.getElementById("hiddenSelectedTagsInput");
         const selectedTags = [];
 
         addTagButton.addEventListener("click", function() {
@@ -129,13 +128,14 @@
                 select.value = "";
             }
             if (selectedTags.length > 0) {
-                console.log(selectedTags);
+                
                 select.required = false;
             }
         });
 
         function removeSelectedTag(text) {
             const index = selectedTags.indexOf(text);
+            console.log(index);
             if (index !== -1) {
                 selectedTags.splice(index, 1);
             }
