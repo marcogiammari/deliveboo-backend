@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="blur">
-    <div class="container-fluid m-0 p-0 vh-100">
-        <div class="row">
-            <div class="col-md-5 p-0 m-0">
-                <img src="https://i.postimg.cc/j597w09D/21.jpg" alt="" class="img-fluid vh-100">
+    <div class="">
+        <div class="d-flex justify-content-center vh-100 position-relative">
+            <div class="bottom-0 start-0 position-absolute">
+                <img src="https://i.postimg.cc/j597w09D/21.jpg" alt="" class="d-block img-full-size img-fluid">
             </div>
-            <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="col-md-6 col-10 offset-md-4 d-flex align-items-center justify-content-center pt-5">
                 <div class="card-custom w-75">
                     <div class="card-body py-5">
                         <div class="text-center mb-4" >
@@ -15,7 +15,7 @@
                         </div>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            <div class="row mb-3">
+                            <div class="row mb-3 px-md-0 px-5">
                                 
                                 <label for="email" class="col-md-4 col-form-label text-md-end text-white fw-bolder fs-4">{{ __('Email') }}</label>
     
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
     
-                            <div class="row mb-3">
+                            <div class="row mb-3 px-md-0 px-5">
                                 <label for="password" class="col-md-4 col-form-label text-md-end  text-white fw-bolder fs-4">{{ __('Password') }}</label>
     
                                 <div class="col-md-6">
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
     
-                            <div class="row mb-3">
+                            <div class="row mb-3 px-md-0 px-5">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
     
-                            <div class="row mb-0">
+                            <div class="row mb-0 px-md-0 px-5">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-light border-0 px-3 button-login-register">
                                         <span class=" fw-bold text-white">{{ __('Login') }}</span>
