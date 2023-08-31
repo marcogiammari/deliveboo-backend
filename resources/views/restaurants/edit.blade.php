@@ -83,8 +83,8 @@
                 <button type="button" id="addTagButton">Aggiungi</button>
                 <div id="selectedTags">
                     <div>
-                        @foreach ($categoriesSelected as $categorySelected)
-                            <span id="selectCategory">{{$categorySelected->name}}<button id="removal">X</button></span>
+                        @foreach ($restaurant->categories as $category)
+                            <span id="selectCategory">{{$category->name}}<button id="removal">X</button></span>
                         @endforeach
                     </div>
                 </div>

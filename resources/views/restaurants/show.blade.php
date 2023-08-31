@@ -27,9 +27,9 @@
             <div class="mb-3">
                 <p class="mb-1 text-center">Le tue categorie:</p>
                 <div  class="d-flex justify-content-center gap-2 flex-wrap">
-                    @foreach ($categoriesSelected as $categorySelected)
+                    @foreach ($restaurant->categories as $category)
                         <div class="px-1 pastel-orange-bg rounded">
-                            <p class="p-1 m-0">{{ $categorySelected->name }}</p>
+                            <p class="p-1 m-0">{{ $category->name }}</p>
                         </div>
                     @endforeach
                 </div>
@@ -43,7 +43,7 @@
                 <a href="{{ route('restaurants.edit', $restaurant) }}">
                     <button type="button" class="btn btn-primary"><i class="fa-solid fa-pen"></i></button>
                 </a>
-                <a href="{{ route('restaurants.delete', $restaurant) }}">
+                <a href="{{ route('restaurants.destroy', $restaurant) }}">
                     <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                 </a>
             </div>
