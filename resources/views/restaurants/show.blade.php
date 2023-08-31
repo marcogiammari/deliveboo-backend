@@ -3,39 +3,41 @@
 
     <div class="m-auto d-flex flex-column align-items-center w-75 rs_general_container p-3">
         <!-- Immagine -->
-        <div class="w-75">
-            <img src="{{ Storage::url($restaurant->thumb) }}" class="img-fluid">
+        <div class="w-100">
+            <img src="{{ ($restaurant->thumb) }}" class="img-fluid d-block pb-3">
         </div>
         <!-- Titolo Ristorante -->
-        <div class="w-75 text-center">
+        <div>
             <h1>{{ $restaurant->name }}</h1>
         </div>
-        <!-- Descrizione -->
-        <div class="w-75">
-            <p>{{ $restaurant->description }}</p> <!-- NON MOSTRA LA DESCRIPTION -->
-        </div>
-        <!-- Indirizzo -->
-        <div class="w-75">
-            <p>{{ $restaurant->street_name }}, {{ $restaurant->street_number }}, {{ $restaurant->zip_code }}</p>
-        </div>
-        <!-- Categorie -->
-        <div class="mb-3 w-75">
-            <p class="mb-1">Le tue categorie:</p>
-            <div  class="d-flex justify-content-start gap-2 flex-wrap">
-                @foreach ($categoriesSelected as $categorySelected)
-                    <div class="px-1 pastel-orange-bg rounded">
-                        <p class="p-1 m-0">{{ $categorySelected->name }}</p>
-                    </div>
-                @endforeach
+        <div class="w-50 d-flex flex-column align-items-center">
+            <!-- Descrizione -->
+            <div class="">
+                <p>{{ $restaurant->description }}</p> <!-- NON MOSTRA LA DESCRIPTION -->
             </div>
-        </div>
-        <!-- Partita Iva -->
-        <div class="w-75">
-            <p>Partita Iva: <strong>{{ $restaurant->vat_number }}</strong></p>
-        </div>
-        <!-- Modifica -->
-        <div>
-            <button type="button" class="btn btn-primary">Modifica</button>
+            <!-- Indirizzo -->
+            <div class="">
+                <p>{{ $restaurant->street_name }}, {{ $restaurant->street_number }}, {{ $restaurant->zip_code }}</p>
+            </div>
+            <!-- Categorie -->
+            <div class="mb-3">
+                <p class="mb-1 text-center">Le tue categorie:</p>
+                <div  class="d-flex justify-content-start gap-2 flex-wrap">
+                    @foreach ($categoriesSelected as $categorySelected)
+                        <div class="px-1 pastel-orange-bg rounded">
+                            <p class="p-1 m-0">{{ $categorySelected->name }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <!-- Partita Iva -->
+            <div class="">
+                <p>Partita Iva: <strong>{{ $restaurant->vat_number }}</strong></p>
+            </div>
+            <!-- Modifica -->
+            <div>
+                <button type="button" class="btn btn-primary">Modifica</button>
+            </div>
         </div>
     </div>
 <!-- <div>
