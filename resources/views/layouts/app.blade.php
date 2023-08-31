@@ -196,9 +196,9 @@
                     </nav>
 
                 @endauth
-                <div @auth class="d-flex justify-content-end" @endauth>
+                <div @auth class="d-flex justify-content-end vh-100" @endauth>
                     <main @auth
-                    class="align-center-on-md main_bottom_padding main_top_padding"
+                    class="dashboard_size_lg dashboard_size_sm d-flex align-items-center"
                     @endauth 
                     @guest
                     class="full_screen"
