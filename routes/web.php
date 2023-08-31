@@ -25,21 +25,23 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
+Route::resource('restaurants', RestaurantController::class)->except('show', 'store', 'create');
+
 Route::middleware(['auth'])->prefix('restaurants')->group(function () {
 
     // Restaurants routes
+
 
     //create
     Route::get('create', [RestaurantController::class, 'create'])->name('restaurants.create');
 
     //store
     Route::post('store', [RestaurantController::class, 'store'])->name('restaurants.store');
-
+    
     // show protected
     Route::middleware(['check-restaurant-ownership'])->group(function () {
-
+        
         Route::get('{restaurant}', [RestaurantController::class, 'show'])->name('restaurants.show');
-
     });
 });
 
@@ -58,5 +60,4 @@ Route::middleware(['auth', 'check-product-access'])->group(function () {
 
         Route::resource('products', ProductController::class)->except('index', 'store', 'create');
     });
-        Route::resource('restaurants', RestaurantController::class)->except('index', 'show','store', 'create');
 });
