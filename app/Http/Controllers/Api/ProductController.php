@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -16,10 +17,14 @@ class ProductController extends Controller
         ]);
 
         $products = Product::where('restaurant_id', $id)->get();
+        $restaurant = Restaurant::findOrFail($id);
 
         $data = [
             'status' => true,
-            'results' => $products
+            'results' => [
+                'restaurant' => $restaurant,
+                'products' => $products
+            ]
         ];
 
         return response()->json($data);
