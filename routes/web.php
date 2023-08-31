@@ -58,5 +58,5 @@ Route::middleware(['auth', 'check-product-access'])->group(function () {
 
         Route::resource('products', ProductController::class)->except('index', 'store', 'create');
     });
-        Route::resource('restaurants', RestaurantController::class)->except('index', 'store', 'create');
+        Route::resource('restaurants', RestaurantController::class)->except('index', 'show','store', 'create');
 });
