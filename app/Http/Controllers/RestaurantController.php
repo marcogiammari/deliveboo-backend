@@ -54,15 +54,16 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        $categories = Category::latest()->paginate(20);
-        return view("restaurants.show", compact("restaurant","categories"));
+        return view("restaurants.show", compact("restaurant"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Restaurant $restaurant)
     {
+        $categories = Category::all();
+        return view("restaurants.edit", compact("restaurant", "categories"));
     }
 
     /**
@@ -87,8 +88,9 @@ class RestaurantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+        return redirect()->route("home");
     }
 }
