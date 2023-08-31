@@ -28,9 +28,9 @@
             </div>
             <!-- Descrizione Ristorante -->
             <div class="mb-3 w-75">
-                <label for="description" class="form-label">Descrizione</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="4">{{ old('description', $restaurant->description) }}</textarea>
-                @error("description")
+                <label for="note" class="form-label">Descrizione</label>
+                <textarea class="form-control @error('note') is-invalid @enderror" name="note" id="note" rows="4">{{ old('note', $restaurant->note) }}</textarea>
+                @error("note")
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
             </div>
