@@ -46,12 +46,12 @@
                         @endif
 
                         <div class="width_product-index text-center">
-                            <a href="{{ route('products.edit', $product->id) }}" class="btn bg-custard">
-                                <span class="text-small">Modifica</span>
+                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-light peach-bg">
+                                <span class="text-small"><i class="fa-solid fa-pen" style="color: #ffffff;"></i></span>
                             </a>
 
                             <a href="{{ route('products.show', $product->id) }}" class="btn btn-light peach-bg ms-2">
-                                <span class="text-small text-white">Di più</span>
+                                <span class="text-small text-white"><i class="fa-solid fa-magnifying-glass"></i></span>
                             </a>
                         </div>
                     </div>
