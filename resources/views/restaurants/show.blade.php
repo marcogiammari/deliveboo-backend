@@ -40,10 +40,10 @@
             </div>
             <!-- Modifica -->
             <div class="show_buttons">
-                <a href="">
+                <a href="{{ route('restaurants.edit', $restaurant) }}">
                     <button type="button" class="btn btn-primary"><i class="fa-solid fa-pen"></i></button>
                 </a>
-                <a href="">
+                <a href="{{ route('restaurants.delete', $restaurant) }}">
                     <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                 </a>
             </div>
