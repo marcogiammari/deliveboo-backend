@@ -26,25 +26,11 @@ class RestaurantController extends Controller
         ]);
         
         $categoryIds = $request->input('category_ids');
-        $restaurants = [];
-        
-        foreach ($categoryIds as $categoryId) {
-            $category = Category::findOrFail($categoryId);
+
+        $restaurants = Restaurant::whereHas('categories', function ($query) use ($categoryIds) {
+            $query->whereIn('category_id', $categoryIds);
+        }, '=', count($categoryIds))->with('categories')->get();
     
-            $myrestaurants = $category->restaurants()
-                ->with('categories') 
-                ->get();
-
-            foreach ($myrestaurants as $rest) {
-                $restaurants[] = $rest;
-            };
-        }
-
-        $data = [
-            'status' => true,
-            'results' => $restaurants
-        ];
-
-        return response()->json($data);
+        return response()->json($restaurants);
     }
 }
