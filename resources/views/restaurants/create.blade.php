@@ -69,32 +69,16 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="mb-3 w-75">
-                        @php
-                            $halfCount = ceil(count($categories) / 2);
-                        @endphp
-                        <div class="row">
-                            <div class="col-md-2">
-                                @foreach ($categories->slice(0, $halfCount) as $index => $category)
-                                    <div class="mb-2">
-                                        <label for="category{{$index}}">{{$category->name}}</label>
-                                        <input type="checkbox" id="category{{$index}}" name="categories[]" value="{{$category->id}}">
-                                    </div>
-                                @endforeach
-                            </div>
-                            <div class="col-md-2">
-                                @foreach ($categories->slice($halfCount) as $index => $category)
-                                    <div class="mb-2">
-                                        <label for="category{{$index}}">{{$category->name}}</label>
-                                        <input type="checkbox" id="category{{$index}}" name="categories[]" value="{{$category->id}}">
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                    
+                    <div class="mb-3 w-75 ">
+                        @foreach ($categories as $i => $category)
+                            <label
+                                for="category{{ $i }}">{{ $category->name }}</label>
+                            <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}"
+                                id="category{{ $i }}">
+                        @endforeach
+                    <div>
                     {{-- <input type="hidden" name="categories[]" id="hiddenSelectedTagsInput" required> --}}
-                    <div class="mb-3">
+                    <div class="mt-3 w-75">
                         <button type="reset" class="btn btn-secondary">Reset</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
