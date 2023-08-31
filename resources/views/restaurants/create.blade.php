@@ -3,7 +3,7 @@
 @section('content')
 
 
-{{-- <img src="{{asset('categories/americano.png')}}" alt=""> --}}
+
 
 
     <div>
@@ -69,86 +69,36 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-
-                    <div>
-                        <select id="categorySelect" required>
-                            <option value="" disabled selected>Scegli una o più categorie</option>
-                            @foreach ($categories as $i => $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                        <button type="button" id="addTagButton">Aggiungi</button>
-                        <div id="selectedTags"></div>
-                        @error('categories')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                    <div class="mb-3 w-75">
+                        @php
+                            $halfCount = ceil(count($categories) / 2);
+                        @endphp
+                        <div class="row">
+                            <div class="col-md-2">
+                                @foreach ($categories->slice(0, $halfCount) as $index => $category)
+                                    <div class="mb-2">
+                                        <label for="category{{$index}}">{{$category->name}}</label>
+                                        <input type="checkbox" id="category{{$index}}" name="categories[]" value="{{$category->id}}">
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="col-md-2">
+                                @foreach ($categories->slice($halfCount) as $index => $category)
+                                    <div class="mb-2">
+                                        <label for="category{{$index}}">{{$category->name}}</label>
+                                        <input type="checkbox" id="category{{$index}}" name="categories[]" value="{{$category->id}}">
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
+                    
                     {{-- <input type="hidden" name="categories[]" id="hiddenSelectedTagsInput" required> --}}
                     <div class="mb-3">
                         <button type="reset" class="btn btn-secondary">Reset</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-
                 </form>
-
-
-
-
-
-                <script>
-                // FUNCTION PER DEFINIRE SELECT REQUIRED
-                    document.addEventListener("DOMContentLoaded", function() {
-                    const select = document.getElementById("categorySelect");
-                    const addTagButton = document.getElementById("addTagButton");
-                    const selectedTagsContainer = document.getElementById("selectedTags");
-                    const selectedTags = [];
-
-                addTagButton.addEventListener("click", function() {
-                    const selectedOption = select.options[select.selectedIndex];
-                    if (selectedOption && selectedOption.value !== "") {
-                        const tagInput = document.createElement("input");
-                        tagInput.type = "hidden";
-                        tagInput.name = "categories[]";
-                        tagInput.value = selectedOption.value;
-                        tagInput.readOnly = true;
-                        tagInput.required = true;
-                        const tagSpan = document.createElement("span");
-                        tagSpan.textContent = selectedOption.text;
-                        
-                        
-
-                        const removeTagButton = document.createElement("button");
-                        removeTagButton.className = "remove-tag";
-                        removeTagButton.textContent = "X";
-                        removeTagButton.addEventListener("click", function() {
-                            removeSelectedTag(tagSpan.textContent);
-                            tagContainer.remove();
-                        });
-
-                        const tagContainer = document.createElement("div"); 
-                        selectedTags.push(selectedOption.text);
-                        tagContainer.appendChild(tagSpan);
-                        selectedTagsContainer.appendChild(tagContainer);
-                        tagContainer.appendChild(tagInput);
-                        tagContainer.appendChild(removeTagButton);
-                        // Reset the select
-                        select.value = "";
-                    }
-                    if (selectedTags.length > 0) {
-                        
-                        select.required = false;
-                    }
-        });
-
-        function removeSelectedTag(text) {
-            const index = selectedTags.indexOf(text);
-            console.log(index);
-            if (index !== -1) {
-                selectedTags.splice(index, 1);
-            }
-        }
-    });
-                </script>
             </div>
         </div>
     </div>

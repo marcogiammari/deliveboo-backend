@@ -18,7 +18,7 @@ class RestaurantController extends Controller
     public function create()
     {
 
-        $categories = Category::latest()->paginate(10);
+        $categories = Category::latest()->paginate(20);
         return view('restaurants.create', compact('categories'));
     }
 
@@ -54,9 +54,8 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        $categories = Category::latest()->paginate(10);
-        $categoriesSelected = $restaurant->categories;
-        return view("restaurants.show", compact("restaurant", "categoriesSelected", "categories"));
+        $categories = Category::latest()->paginate(20);
+        return view("restaurants.show", compact("restaurant","categories"));
     }
 
     /**

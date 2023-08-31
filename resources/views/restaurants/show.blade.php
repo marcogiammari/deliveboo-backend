@@ -65,25 +65,7 @@
                 @enderror
             </div>
             {{-- SISTEMARE ITERAZIONE CON LE CATEGORIE NON é FINITO --}}
-            <div class="mb-3 w-75">
-                <select id="categorySelect" required>
-                    <option value="" disabled selected>Scegli una o più categorie</option>
-                    @foreach ($categories as $i => $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
-                <button type="button" id="addTagButton">Aggiungi</button>
-                <div id="selectedTags">
-                    <div>
-                        @foreach ($categoriesSelected as $categorySelected)
-                            <span id="selectCategory">{{$categorySelected->name}}<button id="removal">X</button></span>
-                        @endforeach
-                    </div>
-                </div>
-                @error('categories')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
+           
             {{-- <input type="hidden" name="categories[]" id="hiddenSelectedTagsInput" required> --}}
             <div class="mb-3">
                 <button type="reset" class="btn btn-secondary">Reset</button>
