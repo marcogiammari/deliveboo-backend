@@ -39,13 +39,34 @@
                 <p>Partita Iva: <strong>{{ $restaurant->vat_number }}</strong></p>
             </div>
             <!-- Modifica -->
-            <div class="show_buttons">
+            <div class="show_buttons d-flex gap-2">
                 <a href="{{ route('restaurants.edit', $restaurant) }}">
                     <button type="button" class="btn btn-primary"><i class="fa-solid fa-pen"></i></button>
                 </a>
-                <a href="{{ route('restaurants.destroy', $restaurant) }}">
-                    <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                </a>
+                <form action="{{ route('restaurants.destroy', $restaurant) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5 m-auto" id="exampleModalLabel">Sei sicuro di voler eliminare il tuo ristorante? In questo modo verranno cancellati definitivamente anche tutti i tuoi prodotti</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Torna indietro</button>
+                                <button type="submit" class="btn btn-danger">Elimina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

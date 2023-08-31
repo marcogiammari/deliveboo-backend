@@ -90,7 +90,8 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+        $restaurant->products()->delete();
         $restaurant->delete();
-        return redirect()->route("home");
+        return redirect()->route("home")->with('flash', 'Ristorante cancellato con successo');
     }
 }
