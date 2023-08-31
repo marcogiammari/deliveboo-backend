@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CategoryController as ApiCategoryController;
 use App\Http\Controllers\Api\RestaurantController as ApiRestaurantController;
+use App\Http\Controllers\Api\ProductController as ApiProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,5 @@ Route::get('/restaurants', [ApiRestaurantController::class, "index"]);
 Route::get('/categories', [ApiCategoryController::class, "index"]);
 
 Route::get('/restaurants/by-categories', [ApiRestaurantController::class, 'filterByCategories']);
+
+Route::get('/menu/{id}', [ApiProductController::class, 'showMenu']);
