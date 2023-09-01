@@ -184,6 +184,7 @@
                                 </a>
                             </li>
                             @auth
+                            @if (auth()->user()->restaurant)
                             <li>
                                 <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard' : '' }}" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
                                     <img src="https://i.postimg.cc/52kqWYxW/user-icon.png" alt="dashboard-icon" class="w_25px">
@@ -193,7 +194,7 @@
                             @endauth
                         </ul>
                     </nav>
-                    
+                @endauth
                 <div @auth class="d-flex justify-content-end vh-100" @endauth>
                     <main @auth
                     class="dashboard_size_lg dashboard_size_sm d-flex align-items-center overflow-y-auto p-5"
