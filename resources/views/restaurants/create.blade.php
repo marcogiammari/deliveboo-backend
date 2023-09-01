@@ -31,15 +31,20 @@
                     </div>
                     <div class="mb-3 w-75">
                         <label for="note" class="form-label">Vuoi aggiungere una descrizione?</label>
-                        <textarea name="note" id="note" class="form-control @error('note') is-invalid @enderror" rows="4"></textarea>
+                        <textarea name="note" id="note" class="form-control @error('note') is-invalid @enderror" rows="4">{{old('note')}}</textarea>
                         @error('note')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="mb-3 w-75">
-                        <label for="thumb" class="form-label">Inserisci un'immagine</label>
-                        <input type="file" name="thumb" id="thumb"
-                            class="form-control @error('thumb') is-invalid @enderror">
+                    <div class="w-75 mb-3">
+                        <p>Anteprima</p>
+                        <div class="wid100 pb-3">
+                            <!-- Immagine -->
+                            <img id="preview" src="{{asset('storage/placeholders/placeholder.jpg')}}" alt="Immagine attuale" class="mt-2" style="width: 200px;">
+                        </div>
+                        <label for="inputFile" class="form-label">Immagine</label>
+                        <input type="file" class="form-control @error('thumb') is-invalid @enderror" name="thumb"
+                            id="inputFile">
                         @error('thumb')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -73,7 +78,7 @@
                         @foreach ($categories as $i => $category)
                             <label
                                 for="category{{ $i }}">{{ $category->name }}</label>
-                            <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}"
+                            <input @checked(old('categories') ? in_array($category->id, old('categories')) : false) class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}"
                                 id="category{{ $i }}">
                         @endforeach
                     <div>
@@ -86,5 +91,14 @@
             </div>
         </div>
     </div>
+
+    <script>
+        inputFile.onchange = evt => {
+            const [file] = inputFile.files
+            if (file) {
+                preview.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
 
 @endsection
