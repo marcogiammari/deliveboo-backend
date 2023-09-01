@@ -50,9 +50,37 @@
                                 <span class="text-small"><i class="fa-solid fa-pen" style="color: #ffffff;"></i></span>
                             </a>
 
-                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-light peach-bg ms-2">
+                            {{-- <a href="{{ route('products.show', $product->id) }}" class="btn btn-light peach-bg ms-2">
                                 <span class="text-small text-white"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            </a>
+                            </a> --}}
+
+                            <div class="ms-2">
+                                <form action="{{ route('products.destroy', $product) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h1 class="modal-title fs-5 m-auto" id="exampleModalLabel">Sei sicuro di voler eliminare {{$product->name}}</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-footer d-flex justify-content-center">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Torna indietro</button>
+                                                <button type="submit" class="btn btn-danger">Rimuovi</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>                                
+                            </div>
+
                         </div>
                     </div>
 
