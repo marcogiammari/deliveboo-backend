@@ -186,7 +186,7 @@
                             @auth
                             @if (auth()->user()->restaurant)
                             <li>
-                                <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard' : '' }}" href="{{ route('restaurants.show', Auth::user()->id) }}">
+                                <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard' : '' }}" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
                                     <img src="https://i.postimg.cc/52kqWYxW/user-icon.png" alt="dashboard-icon" class="w_25px">
                                 </a>
                             </li>
