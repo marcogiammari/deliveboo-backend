@@ -65,8 +65,8 @@
                     <img id="preview" src="{{asset('storage/placeholders/placeholder.jpg')}}" alt="Immagine attuale" class="mt-2" style="width: 200px;">
                 </div>
             <div class="mb-3 w-100">
-                <label for="thumb" class="form-label">Inserisci un'immagine</label>
-                <input type="file" name="thumb" id="thumb" class="form-control @error('thumb') is-invalid @enderror">
+                <label for="inputFile" class="form-label">Inserisci un'immagine</label>
+                <input type="file" name="thumb" id="inputFile" class="form-control @error('thumb') is-invalid @enderror">
                 @error('thumb')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -97,5 +97,14 @@
         </div>
     </form>
 </div>
+
+<script>
+    inputFile.onchange = evt => {
+        const [file] = inputFile.files
+        if (file) {
+            preview.src = URL.createObjectURL(file)
+        }
+    }
+</script>
 
 @endsection
