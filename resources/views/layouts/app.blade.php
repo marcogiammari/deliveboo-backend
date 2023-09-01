@@ -185,6 +185,7 @@
                             </li>
                             @auth
                             @if (auth()->user()->restaurant)
+                            PROVA
                             <li>
                                 <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard' : '' }}" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
                                     <img src="https://i.postimg.cc/52kqWYxW/user-icon.png" alt="dashboard-icon" class="w_25px">
