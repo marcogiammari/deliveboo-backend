@@ -128,10 +128,16 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .display_none_sidebar {
+        display: none;
+    }
+}
+
 // Footer
 
-@media screen and (min-width: 768px) {
-    .display_none {
+@media screen and (min-width: 769px) {
+    .display_none_footer {
         display: none;
     }
 }

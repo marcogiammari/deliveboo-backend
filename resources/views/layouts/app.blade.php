@@ -87,7 +87,7 @@
         <div class="h-100">
             @auth
                 <!-- Sidebar -->
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block peach-bg sidebar collapse position-fixed vh-100 sidebar_size">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 peach-bg sidebar display_none_sidebar position-fixed vh-100 sidebar_size">
                     <div class="pt-3">
                         <ul class="nav flex-column align-items-end mt-5 pt-5 justify-content-evenly">
 
@@ -152,7 +152,7 @@
                 </nav>
 
                 <!-- Footer -->
-                    <nav class="fix_bottom display_none peach-bg text-white footer w-100">
+                    <nav class="fix_bottom display_none_footer peach-bg text-white footer w-100">
                         <ul class="d-flex justify-content-around">
 
                             <li>
