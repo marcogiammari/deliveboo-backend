@@ -97,7 +97,7 @@ class ProductController extends Controller
         $product->fill($data);
         $product->update();
 
-        return redirect()->route("products.show", $product)->with('flash', 'Il tuo prodotto è stato aggiornato con successo');
+        return redirect()->route("products.index")->with('flash', 'Il tuo prodotto è stato aggiornato con successo');
     }
 
     /**

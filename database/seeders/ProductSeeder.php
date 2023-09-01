@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class ProductSeeder extends Seeder
 {
@@ -16,7 +17,12 @@ class ProductSeeder extends Seeder
         $productsData = config('store.products');
 
         foreach ($productsData as $product) {
-            Product::create($product);
+            $newProduct = new Product();
+            $newProduct->fill($product);
+        
+            $newProduct['thumb'] = 'placeholders\placeholder.jpg';
+
+            $newProduct->save();
         }
     }
 }
