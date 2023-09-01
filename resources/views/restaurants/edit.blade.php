@@ -1,116 +1,125 @@
 @extends('layouts.app')
 @section('content')
-
-<div class="m-auto d-flex flex-column align-items-center w-75 rs_general_container p-3">
-    <h1>Il tuo ristorante</h1>
-    <form class="w-75 d-flex flex-column gap-3 align-items-center needs-validation" action="{{ route('restaurants.update', $restaurant) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        <!-- Nome Ristorante -->
-        <div class="mb-3 w-100">
+    <div class="d-flex flex-column align-items-center w-75 rs_general_container m-auto p-3">
+        <h1>Il tuo ristorante</h1>
+        <form class="w-75 d-flex flex-column align-items-center needs-validation gap-3"
+            action="{{ route('restaurants.update', $restaurant) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <!-- Nome Ristorante -->
+            <div class="w-100 mb-3">
                 <label for="name" class="form-label">
                     Nome <span class="{{ $errors->has('name') ? 'text-danger' : '' }}">*</span>
                 </label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name', $restaurant->name) }}">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+                    value="{{ old('name', $restaurant->name) }}">
                 @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
-        </div>
-        <!-- Indirizzo -->
-        <div class="d-flex justify-content-between gap-1 w-100">
-            <!-- Via -->
-            <div class="mb-3 col">
-                <label for="street_name" class="form-label">
-                    Via <span class="{{ $errors->has('street_name') ? 'text-danger' : '' }}">*</span>
-                </label>
-                <input type="text" name="street_name" id="street_name" required value="{{ old('street_name', $restaurant->street_name) }}" class="form-control @error('street_name') is-invalid @enderror">
-                @error('street_name')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
             </div>
-            <!-- Numero Civico -->
-            <div class="mb-3 col-3 col-sm-2">
-                <label for="street_number" class="form-label">
-                    N° <span class="{{ $errors->has('street_number') ? 'text-danger' : '' }}">*</span>
-                </label>
-                <input type="text" name="street_number" id="street_number" required value="{{ old('street_number', $restaurant->street_number) }}" class="form-control @error('street_number') is-invalid @enderror">
-                @error('street_number')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-        </div>
-        <div class="d-flex justify-content-between gap-1 w-100">
-            <!-- CAP -->
-            <div class="mb-3 col-sm-3 col-4">
-                <label for="zip_code" class="form-label">
-                    CAP <span class="{{ $errors->has('zip_code') ? 'text-danger' : '' }}">*</span>
-                </label>
-                <input type="text" name="zip_code" id="zip_code" required value="{{ old('zip_code', $restaurant->zip_code) }}" class="form-control @error('zip_code') is-invalid @enderror">
-                @error('zip_code')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-            <!-- Partita Iva -->
-            <div class="mb-3 col">
-                <label for="price" class="form-label">
-                    Partita Iva <span class="{{ $errors->has('price') ? 'text-danger' : '' }}">*</span>
-                </label>
-                <input type="number" min="0" step=".01" class="form-control @error('price') is-invalid @enderror" name="price" id="price" value="{{ old('vat_number', $restaurant->vat_number) }}">
-                @error('price')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-        </div>
-        <!-- Immagine -->
-        <div class="w-100">
-            <p>Anteprima</p>
-            <!-- Preview -->
-            <div class="wid100 pb-3">
-                <img id="preview" src="{{ asset('restaurants/'.$restaurant->thumb) }}" alt="Immagine attuale" class="mt-2" style="width: 200px;">
-            </div>
-            <label for="inputFile" class="form-label">Immagine</label>
-            <input type="file" class="form-control @error('thumb') is-invalid @enderror" name="thumb" id="inputFile">
-            @error('thumb')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <!-- Descrizione -->
-        <div class="mb-3 w-100">
-            <label for="note" class="form-label">Descrizione</label>
-            <textarea class="form-control @error('note') is-invalid @enderror" name="note" id="note" rows="4">{{ old('note', $restaurant->note) }}</textarea>
-            @error('note')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <!-- Categorie -->
-        <div class="mb-3 w-100 d-flex justify-content-center gap-1 flex-wrap">
-            {{-- @foreach ($categories as $i => $category)
-                <label for="category{{ $i }}">{{ $category->name }}</label>
-                <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}" id="category{{ $i }}">
-            @endforeach --}}
-            @foreach ($categories as $i => $category)
-                <div class="form-check">
-                    <label class="form-check-label" for="category{{ $i }}">{{ $category->name }}</label>
-                    <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}" id="category{{ $i }}"
-                    @if (old('categories') && in_array($category->id, old('categories'))) {{ 'checked' }}
-                    @elseif (!old('categories') && $restaurant->categories->contains($category))
-                    {{ 'checked' }} 
-                    @endif>
+            <!-- Indirizzo -->
+            <div class="d-flex justify-content-between w-100 gap-1">
+                <!-- Via -->
+                <div class="col mb-3">
+                    <label for="street_name" class="form-label">
+                        Via <span class="{{ $errors->has('street_name') ? 'text-danger' : '' }}">*</span>
+                    </label>
+                    <input type="text" name="street_name" id="street_name" required
+                        value="{{ old('street_name', $restaurant->street_name) }}"
+                        class="form-control @error('street_name') is-invalid @enderror">
+                    @error('street_name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
-            @endforeach
+                <!-- Numero Civico -->
+                <div class="col-3 col-sm-2 mb-3">
+                    <label for="street_number" class="form-label">
+                        N° <span class="{{ $errors->has('street_number') ? 'text-danger' : '' }}">*</span>
+                    </label>
+                    <input type="text" name="street_number" id="street_number" required
+                        value="{{ old('street_number', $restaurant->street_number) }}"
+                        class="form-control @error('street_number') is-invalid @enderror">
+                    @error('street_number')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="d-flex justify-content-between w-100 gap-1">
+                <!-- CAP -->
+                <div class="col-sm-3 col-4 mb-3">
+                    <label for="zip_code" class="form-label">
+                        CAP <span class="{{ $errors->has('zip_code') ? 'text-danger' : '' }}">*</span>
+                    </label>
+                    <input type="text" name="zip_code" id="zip_code" required
+                        value="{{ old('zip_code', $restaurant->zip_code) }}"
+                        class="form-control @error('zip_code') is-invalid @enderror">
+                    @error('zip_code')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                <!-- Partita Iva -->
+                <div class="col mb-3">
+                    <label for="price" class="form-label">
+                        Partita Iva <span class="{{ $errors->has('price') ? 'text-danger' : '' }}">*</span>
+                    </label>
+                    <input type="number" min="0" step=".01"
+                        class="form-control @error('price') is-invalid @enderror" name="price" id="price"
+                        value="{{ old('vat_number', $restaurant->vat_number) }}">
+                    @error('price')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <!-- Immagine -->
+            <div class="w-100">
+                <p>Anteprima</p>
+                <!-- Preview -->
+                <div class="wid100 pb-3">
+                    <img id="preview" src="{{ asset('restaurants/' . $restaurant->thumb) }}" alt="Immagine attuale"
+                        class="mt-2" style="width: 200px;">
+                </div>
+                <label for="inputFile" class="form-label">Immagine</label>
+                <input type="file" class="form-control @error('thumb') is-invalid @enderror" name="thumb"
+                    id="inputFile">
+                @error('thumb')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <!-- Descrizione -->
+            <div class="w-100 mb-3">
+                <label for="note" class="form-label">Descrizione</label>
+                <textarea class="form-control @error('note') is-invalid @enderror" name="note" id="note" rows="4">{{ old('note', $restaurant->note) }}</textarea>
+                @error('note')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <!-- Categorie -->
             @error('categories')
-                <div class="invalid-feedback">{{ $message }}</div>
+                <div class="text-danger">{{ $message }}</div>
             @enderror
-        </div>
-        {{-- <div> --}}
-        {{-- <input type="hidden" name="categories[]" id="hiddenSelectedTagsInput" required> --}}
-        <!-- Button -->
-        <div class="mb-3 w-100 d-flex justify-content-center gap-3">
-            <button type="reset" class="btn btn-secondary">Reset</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
-</div>
+            <div class="form-group w-100 d-flex justify-content-center mb-3 flex-wrap gap-1">
+                
+                <label for="categories">Categorie</label>
+                @foreach ($categories as $category)
+                    <div class="form-check d-flex">
+                        <input @if (old('categories') && in_array($category->id, old('categories'))) {{ 'checked' }}
+                        @elseif (!old('categories') && $restaurant->categories->contains($category))
+                        {{ 'checked' }} @endif type="checkbox" name="categories[]" value="{{ $category->id }}"
+                            class="form-check-input">
+                        <label class="form-check-label">{{ $category->name }}</label>
+                    </div>
+                @endforeach
+
+            </div>
+            {{-- <div> --}}
+            {{-- <input type="hidden" name="categories[]" id="hiddenSelectedTagsInput" required> --}}
+            <!-- Button -->
+            <div class="w-100 d-flex justify-content-center mb-3 gap-3">
+                <button type="reset" class="btn btn-secondary">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
 
     {{-- <script>
         // FUNCTION PER DEFINIRE SELECT REQUIRED
@@ -168,12 +177,12 @@ function removeSelectedTag(text) {
 
         </script> --}}
 
-        <script>
-            inputFile.onchange = evt => {
-                const [file] = inputFile.files
-                if (file) {
-                    preview.src = URL.createObjectURL(file)
-                }
+    <script>
+        inputFile.onchange = evt => {
+            const [file] = inputFile.files
+            if (file) {
+                preview.src = URL.createObjectURL(file)
             }
-        </script>
+        }
+    </script>
 @endsection

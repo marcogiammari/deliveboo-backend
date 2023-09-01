@@ -65,8 +65,8 @@
                     <img id="preview" src="{{asset('storage/placeholders/placeholder.jpg')}}" alt="Immagine attuale" class="mt-2" style="width: 200px;">
                 </div>
             <div class="mb-3 w-100">
-                <label for="thumb" class="form-label">Inserisci un'immagine</label>
-                <input type="file" name="thumb" id="thumb" class="form-control @error('thumb') is-invalid @enderror">
+                <label for="inputFile" class="form-label">Inserisci un'immagine</label>
+                <input type="file" name="thumb" id="inputFile" class="form-control @error('thumb') is-invalid @enderror">
                 @error('thumb')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -81,13 +81,19 @@
             @enderror
         </div>
         <!-- Categorie -->
-        <div class="mb-3 w-100 d-flex justify-content-center gap-1 flex-wrap">
-            @foreach ($categories as $i => $category)
-            <div class="d-flex">
-                <input @checked(old('categories') ? in_array($category->id, old('categories')) : false) class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}" id="category{{ $i }}">
-                <label for="category{{ $i }}">{{ $category->name }}</label>
-            </div>
+        @error('categories')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+        <div class="form-group mb-3 w-100 d-flex justify-content-center gap-1 flex-wrap">
+
+            <label for="categories">Categorie</label>
+            @foreach ($categories as $category)
+                <div class="form-check d-flex">
+                    <input @checked(old('categories') ? in_array($category->id, old('categories')) : false) type="checkbox" name="categories[]" value="{{ $category->id }}" class="form-check-input">
+                    <label class="form-check-label">{{ $category->name }}</label>
+                </div>
             @endforeach
+        
         </div>
         {{-- <input type="hidden" name="categories[]" id="hiddenSelectedTagsInput" required> --}}
         <!-- Button -->
@@ -97,5 +103,14 @@
         </div>
     </form>
 </div>
+
+<script>
+    inputFile.onchange = evt => {
+        const [file] = inputFile.files
+        if (file) {
+            preview.src = URL.createObjectURL(file)
+        }
+    }
+</script>
 
 @endsection
