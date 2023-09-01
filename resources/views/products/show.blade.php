@@ -1,64 +1,59 @@
 @extends('layouts.app')
 @section("content")
-<div class="container pt-5 mt-5">
 
-    <div class="card w-50 m-auto border-white peach-bg">
-        <div class="row">
-            <div class="text-center py-3">
-                @if (isset($product->thumb))
-                    <img src="{{asset('storage/' . $product->thumb)}}" alt="{{$product->name}}" class="card-img-top mb-4" style="width: 200px">
-                @else 
-                    <img class="card-img-top" src="https://i.postimg.cc/KYST9jf9/Aggiungi.jpg" alt="">
-                @endif
-            </div>
+<div class="m-auto d-flex flex-column align-items-center w-75 rs_general_container p-3 text-center">
+        <!-- Immagine -->
+        <div class="w-75">
+            @if (isset($product->thumb))
+                <img src="{{asset('storage/' . $product->thumb)}}" alt="{{$product->name}}" class="img-fluid d-block pb-3">
+            @else 
+                <img class="card-img-top" src="https://i.postimg.cc/KYST9jf9/Aggiungi.jpg">
+            @endif
         </div>
-        <div class="row">
-            <div>
-                <div class="d-flex justify-content-between">
-                    <strong class="fs-4 text-white p-3">{{$product->name}}</strong>
-                    <strong class="fs-5 text-white pe-3 pt-3">{{$product->price}} € </strong>
+        <!-- Titolo Piatto -->
+        <div>
+            <h1 class="mb-1 text-break">{{ $product->name }}</h1>
+        </div>
+        <div class="w-50">
+            <p class="text-center mb-1">{{$product->price}} €</p>
+        </div>
+        <!-- Descrizione -->
+        <div class="w-50">
+            @if ($product->description == true)
+                <div>
+                    <p class="text-center mb-1 text-break">{{$product->description}}</p>
                 </div>
-                @if ($product->description)
-                    <p class="ps-3 ">
-                       <strong span class="fs-5 text-white"> Descrizione:</strong> <span class="fs-6 text-white ">{{$product->description}}</span>
-                    </p>
-                @else 
-                    <p class="bg-warning">Questo piatto non ha una descrizione. <a href="{{route('products.edit', $product)}}"> Vuoi inserirla?</a> </p>
+            @endif
+        </div>
+        <!-- Modifica -->
+        <div class="justify-content-between d-flex">
+            <div class="m-2">
+                <form action="{{ route('products.destroy', $product) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
                     
-                @endif
-            </div>
-
-            <div class="justify-content-between d-flex">
-                <div class="m-2">
-                    <form action="{{ route('products.destroy', $product) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Vuoi rimuovere questo piatto ?
-                        </button>
-                        
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h1 class="modal-title fs-5 m-auto" id="exampleModalLabel">Sei sicuro di voler eliminare {{$product->name}}</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-footer d-flex justify-content-center">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Torna indietro</button>
-                                    <button type="submit" class="btn btn-danger">Rimuovi</button>
-                                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h1 class="modal-title fs-5 m-auto" id="exampleModalLabel">Sei sicuro di voler eliminare {{$product->name}}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Torna indietro</button>
+                                <button type="submit" class="btn btn-danger">Rimuovi</button>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
-    
 
 @endsection

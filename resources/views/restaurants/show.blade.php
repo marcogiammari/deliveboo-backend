@@ -1,30 +1,30 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="m-auto d-flex flex-column align-items-center w-75 rs_general_container p-3">
+    <div class="m-auto d-flex flex-column align-items-center w-75 rs_general_container p-3 text-center">
         <!-- Immagine -->
         @if ($restaurant->thumb == true)
-            <div class="w-100">
+            <div class="w-75">
                 <img src="{{ asset('storage/'.$restaurant->thumb) }}" class="img-fluid d-block pb-3">
             </div>
         @endif
         <!-- Titolo Ristorante -->
         <div>
-            <h1>{{ $restaurant->name }}</h1>
+            <h1 class="mb-1 text-break">{{ $restaurant->name }}</h1>
         </div>
         <div class="w-50 d-flex flex-column align-items-center">
             <!-- Descrizione -->
             @if ($restaurant->note == true)
                 <div>
-                    <p>{{ $restaurant->note }}</p> <!-- NON MOSTRA LA DESCRIPTION -->
+                    <p class="mb-1 text-break">{{ $restaurant->note }}</p>
                 </div>
             @endif
             <!-- Indirizzo -->
             <div>
-                <p>{{ $restaurant->street_name }}, {{ $restaurant->street_number }}, {{ $restaurant->zip_code }}</p>
+                <p class="mb-1 text-break">{{ $restaurant->street_name }}, {{ $restaurant->street_number }}, {{ $restaurant->zip_code }}</p>
             </div>
             <!-- Categorie -->
-            <div class="mb-3">
+            <div class="mb-1">
                 <p class="mb-1 text-center">Le tue categorie:</p>
                 <div  class="d-flex justify-content-center gap-2 flex-wrap">
                     @foreach ($restaurant->categories as $category)
@@ -36,7 +36,7 @@
             </div>
             <!-- Partita Iva -->
             <div>
-                <p>Partita Iva: <strong>{{ $restaurant->vat_number }}</strong></p>
+                <p class="mb-1 text-break">Partita Iva: <strong>{{ $restaurant->vat_number }}</strong></p>
             </div>
             <!-- Modifica -->
             <div class="show_buttons d-flex gap-2">

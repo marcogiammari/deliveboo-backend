@@ -3,7 +3,7 @@
 
 <div class="m-auto d-flex flex-column align-items-center w-75 rs_general_container p-3">
     <h1>Il tuo ristorante</h1>
-    <form class="d-flex flex-column align-items-center needs-validation gap-3" action="{{ route('restaurants.update', $restaurant) }}" method="POST" enctype="multipart/form-data">
+    <form class="w-75 d-flex flex-column gap-3 align-items-center needs-validation" action="{{ route('restaurants.update', $restaurant) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <!-- Nome Ristorante -->
@@ -141,7 +141,6 @@
                     removeSelectedTag(tagSpan.textContent);
                     tagContainer.remove();
                 });
-               
 
                 const tagContainer = document.createElement("div"); 
                 selectedTags.push(selectedOption.text);
