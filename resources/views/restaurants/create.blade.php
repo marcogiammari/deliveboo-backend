@@ -8,7 +8,7 @@
 
     <div>
         <div>
-            <div>
+            <div class="m-auto d-flex flex-column align-items-center w-75 rs_general_container p-3">
                 <h1 class="text-center mt-5">Crea il tuo ristorante</h1>
                 <form id="createRestaurant" action="{{ route('restaurants.store') }}" class="d-flex flex-column gap-3 align-items-center needs-validation" method="post"
                     enctype="multipart/form-data">
