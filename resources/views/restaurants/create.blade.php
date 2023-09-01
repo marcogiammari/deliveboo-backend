@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH -->
 
 <div class="m-auto d-flex flex-column align-items-center w-75 rs_general_container p-3">
     <h1>Crea il tuo ristorante</h1>

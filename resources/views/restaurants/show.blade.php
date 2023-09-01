@@ -5,7 +5,7 @@
         <!-- Immagine -->
         @if ($restaurant->thumb == true)
             <div class="w-100">
-                <img src="{{ ($restaurant->thumb) }}" class="img-fluid d-block pb-3">
+                <img src="{{ asset('storage/'.$restaurant->thumb) }}" class="img-fluid d-block pb-3">
             </div>
         @endif
         <!-- Titolo Ristorante -->

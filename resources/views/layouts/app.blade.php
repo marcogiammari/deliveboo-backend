@@ -137,7 +137,7 @@
                             @auth
                             @if (auth()->user()->restaurant)
                             <li class="nav-item py-2">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard rounded' : '' }}" href="{{ route('restaurants.show', Auth::user()->id) }}">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard rounded' : '' }}" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
                                     <div class="d-flex justify-content-end align-items-center">
                                         <h5 class="me-3 text-end">Il tuo Ristorante</h5>
                                         <img src="https://i.postimg.cc/52kqWYxW/user-icon.png" alt="dashboard-icon" class="w-25">
@@ -197,18 +197,18 @@
                 @endauth
                 <div @auth class="d-flex justify-content-end vh-100" @endauth>
                     <main @auth
-                    class="dashboard_size_lg dashboard_size_sm d-flex align-items-center overflow-y-auto p-5"
+                    class="dashboard_size_lg dashboard_size_sm d-flex flex-column align-items-center overflow-y-auto p-5"
                     @endauth 
                     @guest
                     class="full_screen"
                 @endguest>
     
-                {{-- flash messages  --}}
-                @if (session()->has('flash'))
-                <div class="d-flex justify-content-center">
-                    <span class="p-4 m-5 text-center bg-warning rounded-2 mx-auto">{{ session('flash') }}</span>
-                </div>
-                @endif
+                    {{-- flash messages  --}}
+                    @if (session()->has('flash'))
+                    <div class="d-flex justify-content-center">
+                        <span class="p-4 text-center bg-warning rounded-2 mx-auto">{{ session('flash') }}</span>
+                    </div>
+                    @endif
     
     
                     @yield('content')
