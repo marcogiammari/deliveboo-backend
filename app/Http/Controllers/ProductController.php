@@ -60,7 +60,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route("products.show", $product)->with('flash', 'Il tuo prodotto è stato aggiunto con successo');
+        return redirect()->route("products.index")->with('flash', 'Il tuo prodotto è stato aggiunto con successo');
     }
 
     /**

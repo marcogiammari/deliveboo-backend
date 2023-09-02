@@ -23,7 +23,7 @@ class StoreProductRequest extends FormRequest
     {
         return [
             "name" => "required|max:50",
-            "price" => "required|numeric",
+            "price" => "required|numeric|max:999.99",
             "description" => "max:255",
             "thumb" => "nullable|image",
         ];
@@ -35,6 +35,7 @@ class StoreProductRequest extends FormRequest
             'name.required' => 'il nome è richiesto',
             'name.max' => 'Il nome non può superare i 50 caratteri.',
             'price.required' => 'il prezzo è richiesto',
+            'price.max' => 'il prezzo è troppo alto',
             'description.max' => 'la descrizione non può superare i 255 caratteri'
         ];
     }
