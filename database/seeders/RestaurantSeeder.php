@@ -19,6 +19,7 @@ class RestaurantSeeder extends Seeder
         foreach ($restaurants_data as $restaurant) {
             $newRestaurant = new Restaurant();
             $newRestaurant->fill($restaurant);
+            $newRestaurant->thumb = 'uploads/' . $newRestaurant->thumb;
             $newRestaurant->save();
             $newRestaurant->categories()->attach($category_restaurant_data[$newRestaurant->id]);
         }
