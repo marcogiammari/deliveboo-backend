@@ -12,7 +12,7 @@
                     Nome <span class="{{ $errors->has('name') ? 'text-danger' : '' }}">*</span>
                 </label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                    value="{{ old('name', $restaurant->name) }}">
+                    value="{{ old('name', $restaurant->name) }}" required>
                 @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -59,13 +59,13 @@
                 </div>
                 <!-- Partita Iva -->
                 <div class="col mb-3">
-                    <label for="price" class="form-label">
-                        Partita Iva <span class="{{ $errors->has('price') ? 'text-danger' : '' }}">*</span>
+                    <label for="vat_number" class="form-label">
+                        Partita Iva <span class="{{ $errors->has('vat_number') ? 'text-danger' : '' }}">*</span>
                     </label>
-                    <input type="number" min="0" step=".01"
-                        class="form-control @error('price') is-invalid @enderror" name="price" id="price"
+                    <input type="text"
+                        class="form-control @error('price') is-invalid @enderror" name="vat_number" id="vat_number"
                         value="{{ old('vat_number', $restaurant->vat_number) }}">
-                    @error('price')
+                    @error('vat_number')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -75,7 +75,7 @@
                 <p>Anteprima</p>
                 <!-- Preview -->
                 <div class="wid100 pb-3">
-                    <img id="preview" src="{{ asset('restaurants/' . $restaurant->thumb) }}" alt="Immagine attuale"
+                    <img id="preview" src="{{ asset('storage/' . $restaurant->thumb) }}" alt="Immagine attuale"
                         class="mt-2" style="width: 200px;">
                 </div>
                 <label for="inputFile" class="form-label">Immagine</label>
@@ -120,62 +120,6 @@
             </div>
         </form>
     </div>
-
-    {{-- <script>
-        // FUNCTION PER DEFINIRE SELECT REQUIRED
-            document.addEventListener("DOMContentLoaded", function() {
-            const select = document.getElementById("categorySelect");
-            const addTagButton = document.getElementById("addTagButton");
-            const selectedTagsContainer = document.getElementById("selectedTags");
-            const selectedTags = [];
-            const RemovalExistBtn =
-            
-
-        addTagButton.addEventListener("click", function() {
-            const selectedOption = select.options[select.selectedIndex];
-            if (selectedOption && selectedOption.value !== "") {
-                const tagInput = document.createElement("input");
-                tagInput.type = "hidden";
-                tagInput.name = "categories[]";
-                tagInput.value = selectedOption.value;
-                tagInput.readOnly = true;
-                tagInput.required = true;
-                const tagSpan = document.createElement("span");
-                tagSpan.textContent = selectedOption.text;
-                
-                const removeTagButton = document.createElement("button");
-                removeTagButton.className = "remove-tag";
-                removeTagButton.textContent = "X";
-                removeTagButton.addEventListener("click", function() {
-                    removeSelectedTag(tagSpan.textContent);
-                    tagContainer.remove();
-                });
-
-                const tagContainer = document.createElement("div"); 
-                selectedTags.push(selectedOption.text);
-                tagContainer.appendChild(tagSpan);
-                selectedTagsContainer.appendChild(tagContainer);
-                tagContainer.appendChild(tagInput);
-                tagContainer.appendChild(removeTagButton);
-                // Reset the select
-                select.value = "";
-            }
-            if (selectedTags.length > 0) {
-                
-                select.required = false;
-            }
-});
-
-function removeSelectedTag(text) {
-    const index = selectedTags.indexOf(text);
-    console.log(index);
-    if (index !== -1) {
-        selectedTags.splice(index, 1);
-    }
-};
-})
-
-        </script> --}}
 
     <script>
         inputFile.onchange = evt => {

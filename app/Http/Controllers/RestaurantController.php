@@ -82,7 +82,7 @@ class RestaurantController extends Controller
         $restaurant->fill($data);
         $restaurant->update();
 
-        return redirect()->route("restaurant.show", $restaurant, )->with('flash', 'Il tuo ristorante è stato aggiornato con successo');
+        return redirect()->route("restaurants.show", $restaurant, )->with('flash', 'Il tuo ristorante è stato aggiornato con successo');
     }
 
     /**
