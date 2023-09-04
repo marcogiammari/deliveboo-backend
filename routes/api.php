@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\CategoryController as ApiCategoryController;
 use App\Http\Controllers\Api\RestaurantController as ApiRestaurantController;
 use App\Http\Controllers\Api\ProductController as ApiProductController;
 use App\Http\Controllers\Api\OrderController as ApiOrderController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,10 @@ Route::get('/restaurants/by-categories', [ApiRestaurantController::class, 'filte
 Route::get('/menu/{id}', [ApiProductController::class, 'showMenu']);
 
 // ORDER API
+
 // TOKEN ROUTE
 Route::get('/orders/generate', [ApiOrderController::class, 'generate']);
 //PAYMENT ROUTE
 Route::post('/orders/make/payment', [ApiOrderController::class, 'makepayment']);
+// PRODUCTS ROUTE
+Route::get('products', [ApiProductController::class, 'index']);
