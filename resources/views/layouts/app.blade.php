@@ -29,10 +29,10 @@
 <body @guest
     class="bg-custom" @endguest >
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark pastel-orange-bg shadow-sm position-fixed top-0 w-100 header_index">
+        <nav class="navbar navbar-expand-md navbar-dark pastel-orange-bg shadow-sm position-fixed top-0 w-100 header_index ">
             <div class="container-fluid d-flex justify-content-between">
                 <div>
-                    <img src="https://i.postimg.cc/pLBJ9VT7/logo-16-9.png" alt="logo" class="logo-width-custom img-fluid">
+                    <img src="{{ asset('storage\logo\logo-only-text-white.png') }}" alt="logo" class="logo-width-custom img-fluid">
                 </div>
 
                 <a class="" href="{{ url('/') }}">
@@ -89,8 +89,8 @@
             @auth
                 <!-- Sidebar -->
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 peach-bg sidebar display_none_sidebar position-fixed vh-100 sidebar_size">
-                    <div class="pt-3">
-                        <ul class="nav flex-column align-items-end mt-5 pt-5 justify-content-evenly">
+                    <div class="">
+                        <ul class="nav flex-column align-items-end justify-content-evenly">
                             <!-- Home -->
                             <li class="nav-item py-2 w-100">
                                 <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'bg-custard rounded' : '' }} text-white"
@@ -116,17 +116,18 @@
                             @endauth
                             @auth
                             @if (auth()->user()->restaurant)
-                            <!-- Aggiungi Prodotto -->
-                            <li class="nav-item w-100">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard rounded' : '' }}" href="{{ route('products.create') }}">
+                            <!-- Gestisci Ristorante -->
+                            <li class="nav-item py-2 w-100">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard rounded' : '' }}" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h6 class="my-0 me-3 text-end">Aggiungi Prodotto</h6>
-                                        <i class="fa-solid fa-plus fs-1 text"></i>
+                                        <h5 class="my-0 me-3 text-end">Il tuo Ristorante</h5>
+                                        <i class="fa-solid fa-utensils fs-1 text"></i>
                                     </div>
                                 </a>
                             </li>
                             @endif
                             @endauth
+                            
                             <!-- Menù -->
                             <li class="nav-item py-2 w-100">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-custard rounded' : '' }}" href="{{ route('products.index') }}">
@@ -136,16 +137,15 @@
                                     </div>
                                 </a>
                             </li>
-                            
-                            
+
                             @auth
                             @if (auth()->user()->restaurant)
-                            <!-- Gestisci Ristorante -->
-                            <li class="nav-item py-2 w-100">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard rounded' : '' }}" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
+                            <!-- Aggiungi Prodotto -->
+                            <li class="nav-item w-100">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard rounded' : '' }}" href="{{ route('products.create') }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h5 class="my-0 me-3 text-end">Il tuo Ristorante</h5>
-                                        <i class="fa-solid fa-utensils fs-1 text"></i>
+                                        <h6 class="my-0 me-3 text-end">Aggiungi Prodotto</h6>
+                                        <i class="fa-solid fa-plus fs-1 text"></i>
                                     </div>
                                 </a>
                             </li>
@@ -175,28 +175,31 @@
                             </li>
                             @endif
                             @endauth
-                            @auth
-                            @if (auth()->user()->restaurant)
-                            <!-- Aggiungi Prodotti -->
-                            <li>
-                                <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'products.create' ? 'bg-custard' : '' }}" href="{{ route('products.create') }}">
-                                    <i class="fa-solid fa-plus fs-3 text"></i>
-                                </a>
-                            </li>
-                            @endif
-                            @endauth
-                            <!-- Menù -->
-                            <li>
-                                <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'products.index' ? 'bg-custard' : '' }}" href="{{ route('products.index') }}">
-                                    <i class="fa-solid fa-book-open fs-3 text"></i>
-                                </a>
-                            </li>
+
                             @auth
                             @if (auth()->user()->restaurant)
                             <!-- Gestisci Ristorante -->
                             <li>
                                 <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard' : '' }}" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
                                     <i class="fa-solid fa-utensils fs-3 text"></i>
+                                </a>
+                            </li>
+                            @endif
+                            @endauth
+                            
+                            <!-- Menù -->
+                            <li>
+                                <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'products.index' ? 'bg-custard' : '' }}" href="{{ route('products.index') }}">
+                                    <i class="fa-solid fa-book-open fs-3 text"></i>
+                                </a>
+                            </li>
+
+                            @auth
+                            @if (auth()->user()->restaurant)
+                            <!-- Aggiungi Prodotti -->
+                            <li>
+                                <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'products.create' ? 'bg-custard' : '' }}" href="{{ route('products.create') }}">
+                                    <i class="fa-solid fa-plus fs-3 text"></i>
                                 </a>
                             </li>
                             @endif

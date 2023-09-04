@@ -8,15 +8,15 @@
 @import 'bootstrap/scss/bootstrap';
 
 .peach-bg{
-    background-color: $peach;
+    background-color: #90d4ce;
 }
 
 .pastel-orange-bg{
-    background-color: $pastel-orange;
+    background-color: #83d8d1;
 }
 
 .bg-custard{
-    background: $custard;
+    background: #9de7e1;
 }
 .bg-custom {
     background-image: url('https://i.postimg.cc/NFrvYVZ8/delivery-truck-with-location-pin-tracking-shipping-fast-delivery-car-deliver-express-delivery-transp.jpg');
@@ -92,7 +92,7 @@
 
 @media screen and (max-width: 768px){
     .align-center-on-md{
-        width:100%;
+        width: 100%;
     }
 }
 
@@ -114,12 +114,13 @@
 
 .sidebar_size {
     width: 200px;
+    padding-top: 55.04px;
 }
 
 @media screen and (min-width: 768px) {
     .dashboard_size_lg {
         width: calc(100% - 200px);
-        height: calc(100vh - 100.38px);
+        height: calc(100vh - 55.04px);
         align-self: flex-end;
     }
 }
@@ -127,7 +128,7 @@
 @media screen and (max-width: 768px) {
     .dashboard_size_sm {
         width: 100%;
-        height: calc(100vh - 100.38px - 73px);
+        height: calc(100vh - 55.04px - 73px);
         align-self: flex-end;
         margin-bottom: 73px;
     }
@@ -183,12 +184,12 @@
 }
 
 .img-full-size {
-    height: calc(100vh - 100.38px);
+    height: calc(100vh - 55.04px);
 }
 
 @media screen and (max-height: 700px) {
     .resize {
-        height: calc(100vh - 100.38px);
+        height: calc(100vh - 100px);
         align-self: end;
         padding-top: 100px !important;
     }
@@ -219,4 +220,8 @@
     .dashboard_menu_xsm {
         width: 75%;
     }
+}
+
+.img_max-width {
+    max-width: 200px;
 }

@@ -29,15 +29,17 @@
                     </td>
                     <!-- Immagine -->
                     <td>
-                        @if (isset($product->thumb))
-                        <img src="{{asset('storage/' . $product->thumb)}}" class="w-75 img-fluid">
-                        @else
-                        <img src="{{ asset('storage/placeholders/placeholder.jpg') }}" class="w-75 img-fluid">
-                        @endif
+                        <div class="d-flex justify-content-center">
+                            @if (isset($product->thumb))
+                                <img src="{{asset('storage/' . $product->thumb)}}" class="w-75 img-fluid d-block img_max-width">
+                            @else
+                                <img src="{{ asset('storage/placeholders/placeholder.jpg') }}" class="w-75 img-fluid d-block img_max-width">
+                            @endif
+                        </div>
                     </td>
                     <!-- Gestici -->
                     <td>
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-center gap-2">
                             <!-- Modifica -->
                             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-light peach-bg">
                                 <span class="text-small"><i class="fa-solid fa-pen" style="color: #ffffff;"></i></span>
