@@ -239,3 +239,14 @@
 //     max-width: 100%;
 //     max-height: 500px;
 // }
+
+
+//HOME
+
+.custom-table{
+    width: calc(100% / 6);
+    text-align: center;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
