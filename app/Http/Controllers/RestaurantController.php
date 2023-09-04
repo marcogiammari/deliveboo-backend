@@ -45,7 +45,7 @@ class RestaurantController extends Controller
 
         $newRestaurant->categories()->attach($data['categories']);
 
-        return redirect()->route("restaurants.show", $newRestaurant)->with('flash', 'Ristorante aggiunto con successo');
+        return redirect()->route("restaurants.show", $newRestaurant)->with('success', 'Ristorante aggiunto');
 
     }
 
@@ -82,7 +82,7 @@ class RestaurantController extends Controller
         $restaurant->fill($data);
         $restaurant->update();
 
-        return redirect()->route("restaurants.show", $restaurant, )->with('flash', 'Il tuo ristorante è stato aggiornato con successo');
+        return redirect()->route("restaurants.show", $restaurant, )->with('success', 'Il tuo ristorante è stato aggiornato');
     }
 
     /**
@@ -92,6 +92,6 @@ class RestaurantController extends Controller
     {
         $restaurant->products()->delete();
         $restaurant->delete();
-        return redirect()->route("home")->with('flash', 'Ristorante cancellato con successo');
+        return redirect()->route("home")->with('success', 'Il tuo ristorante è stato cancellato');
     }
 }

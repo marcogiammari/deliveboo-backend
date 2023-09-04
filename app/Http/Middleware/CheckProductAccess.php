@@ -18,7 +18,7 @@ class CheckProductAccess
     public function handle(Request $request, Closure $next): Response
     {
         if ((!auth()->user()->restaurant)) {
-            return redirect()->route("restaurants.create")->with('flash', 'Devi aggiungere un ristorante prima di visualizzare i prodotti!');
+            return redirect()->route("restaurants.create")->with('error', 'Devi aggiungere un ristorante prima di visualizzare i prodotti!');
         }
         return $next($request);
     }

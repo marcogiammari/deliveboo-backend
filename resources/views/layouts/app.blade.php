@@ -206,14 +206,25 @@
     
                     {{-- flash messages  --}}
                     <div x-data="{ flash: true }">
-                        @if (session()->has('flash'))
+                        @if (session()->has('success'))
                         <div x-show="flash"
                             class="position-relative mb-10 rounded border border-success bg-success-subtle px-4 py-3 text-success"
                             role="alert">
 
-                            <div class="px-3 py-2">{{ session('flash') }}</div>
+                            <div class="px-3 py-2">{{ session('success') }}</div>
 
-                            <span @click="flash = false" class="position-absolute top-0 end-0 px-2 py-2 btn">
+                            <span @click="flash = false" class="position-absolute top-0 end-0 px-2 py-2 btn text-success">
+                                X
+                            </span>
+                        </div>
+                        @elseif (session()->has('error'))
+                        <div x-show="flash"
+                            class="position-relative mb-10 rounded border border-danger bg-danger-subtle px-4 py-3 text-danger"
+                            role="alert">
+
+                            <div class="px-3 py-2">{{ session('error') }}</div>
+
+                            <span @click="flash = false" class="position-absolute top-0 end-0 px-2 py-2 btn text-danger">
                                 X
                             </span>
                         </div>
