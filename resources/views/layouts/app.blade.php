@@ -198,7 +198,7 @@
                 @endauth
                 <div @auth class="d-flex justify-content-end vh-100" @endauth>
                     <main @auth
-                    class="dashboard_size_lg dashboard_size_sm d-flex flex-column align-items-center overflow-y-auto p-5"
+                    class="dashboard_size_lg dashboard_size_sm d-flex flex-column align-items-center overflow-y-auto py-5"
                     @endauth 
                     @guest
                     class="full_screen"
