@@ -41,3 +41,4 @@ Route::get('/orders/generate', [ApiOrderController::class, 'generate']);
 Route::post('/orders/make/payment', [ApiOrderController::class, 'makepayment']);
 // PRODUCTS ROUTE
 Route::get('products', [ApiProductController::class, 'index']);
+Route::post('orders', [ApiOrderController::class, 'createOrder']);
