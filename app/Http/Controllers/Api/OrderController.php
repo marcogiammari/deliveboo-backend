@@ -4,18 +4,35 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
+use App\Models\Order;
 use App\Models\Product;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
 
+
 class OrderController extends Controller
 {
+    public function createOrder(Request $request)
+    {
+        // STEP 1 RICAVARE PRODOTTI DALLA REQUEST
+        $products = $request->input("products");
+        $data = $request->input("data");
+        $newOrder = new Order();
+        $newOrder->fill($data);
+        $newOrder->save();
+        foreach ($products as $product) {
+            // Supponiamo che il campo 'quantity' sia presente nella richiesta per ogni prodotto
+            $quantity = $product['quantity'];
+            $newOrder->products()->attach([$product['id'] => ['quantity' => $quantity]]);
+        }
+        dd($newOrder);
+
+    }
     // FUNCTION PER GENERARE TOKEN
     public function generate(Request $request, Gateway $gateway)
     {
-        // ASSEGNIAMO TOKEN 
+        // ASSEGNIAMO TOKENk 
         $token = ($gateway->clientToken()->generate());
-
         $data = [
             'token' => $token
         ];
