@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user_id = Auth::user()->id;
+        $orders = Order::whereHas('products.restaurant.user', function ($query) use ($user_id) {
+            $query->where('users.id', $user_id);
+        })->get();
+
+        return view('home', compact('orders'));
     }
 }
