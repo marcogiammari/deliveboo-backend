@@ -25,22 +25,17 @@ class OrderController extends Controller
     // FUNCTION PER FARE IL PAGAMENTO
     public function makepayment(Request $request, Gateway $gateway)
     {
-        // QUI ANDRANNO LE REGOLE DI VALIDAZIONE
-        $request->validate([
-            'token' => 'required',
-            'products' => 'required|array'
-        ]);
-        
+
+        // CREO UNA VARIABILE PER LA REQUEST DEI DATI
         $products = $request->input('products');
+        // INIZIALIZZO LA VARIABILE PER LA SOMMA
         $totalAmount = 0;
+        // CICLO FOR PER RICAVARE IL PRICE DAL DB E CALCOLARE IL TOTAL AMOUNT
         foreach ($products as $product) {
             $productFromDB = Product::findOrFail($product["id"]);
-            if ($productFromDB) {
-                $productsFromDB[] = $productFromDB;
-                $totalAmount += $productFromDB->price * $product["quantity"];
-            }
+            $totalAmount += $productFromDB->price * $product["quantity"];
         }
-        dd($totalAmount);
+
         // GENERIAMO IL PAGAMENTO
         $result = $gateway->transaction()->sale([
             // TOKEN PRESO DAL F.END
@@ -50,28 +45,27 @@ class OrderController extends Controller
                 'submitForSettlement' => true
             ]
         ]);
-        // $data = [
-        //     'success' => false,
-        //     'message' => "",
-        // ];
-        // if ($result->success) {
-        //     $data['success'] = true;
-        //     $data['messagge'] = "Transazione avvenuta con successo. ";
-        //     return response()->json($data, 200);
-        // } else {
-        //     $data['message'] = 'La transazione ha fallito: ';
-        //     $errors = $result->errors->deepAll();
-
-        //     if (!empty($errors)) {
-        //         // Aggiungi gli errori alla risposta JSON
-        //         $errorMessages = [];
-        //         foreach ($errors as $error) {
-        //             $errorMessages[] = $error->message;
-        //         }
-        //         $data['errors'] = $errorMessages;
-        //     }
-
-        // }
-        // return response()->json($data, 401);
+        // VISUALIZZAZIONE RISULTATO TRANSAZIONE
+        $data = [
+            'success' => false,
+            'message' => "",
+        ];
+        if ($result->success) {
+            $data['success'] = true;
+            $data['message'] = "Transazione avvenuta con successo. ";
+            return response()->json($data, 200);
+        } else {
+            $data['message'] = 'La transazione ha fallito: ';
+            $errors = $result->errors->deepAll();
+            if (!empty($errors)) {
+                // Aggiungi gli errori alla risposta JSON
+                $errorMessages = [];
+                foreach ($errors as $error) {
+                    $errorMessages[] = $error->message;
+                }
+                $data['errors'] = $errorMessages;
+            }
+            return response()->json($data, 401);
+        }
     }
 }

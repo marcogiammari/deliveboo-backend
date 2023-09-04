@@ -29,10 +29,10 @@
 <body @guest
     class="bg-custom" @endguest >
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark pastel-orange-bg shadow-sm position-fixed top-0 w-100 header_index">
+        <nav class="navbar navbar-expand-md navbar-dark pastel-orange-bg shadow-sm position-fixed top-0 w-100 header_index ">
             <div class="container-fluid d-flex justify-content-between">
                 <div>
-                    <img src="https://i.postimg.cc/pLBJ9VT7/logo-16-9.png" alt="logo" class="logo-width-custom img-fluid">
+                    <img src="{{ asset('storage\logo\logo-only-text-white.png') }}" alt="logo" class="logo-width-custom img-fluid">
                 </div>
 
                 <a class="" href="{{ url('/') }}">
@@ -89,25 +89,26 @@
             @auth
                 <!-- Sidebar -->
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 peach-bg sidebar display_none_sidebar position-fixed vh-100 sidebar_size">
-                    <div class="pt-3">
-                        <ul class="nav flex-column align-items-end mt-5 pt-5 justify-content-evenly">
-
-                            <li class="nav-item py-2">
+                    <div class="">
+                        <ul class="nav flex-column align-items-end justify-content-evenly">
+                            <!-- Home -->
+                            <li class="nav-item py-2 w-100">
                                 <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'bg-custard rounded' : '' }} text-white"
                                     href="{{ route('home') }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h6 class="me-3 text-end">Dashboard</h6>
-                                        <img src="https://i.postimg.cc/gjvh6ddr/menu.png" alt="dashboard-icon" class="w-25">
+                                        <h6 class="my-0 me-3 text-end">Dashboard</h6>
+                                        <i class="fa-solid fa-house fs-1 text"></i>
                                     </div>
                                 </a>
                             </li>
                             @auth
                             @if (!auth()->user()->restaurant)
-                            <li class="nav-item py-2">
+                            <!-- Crea Ristorante -->
+                            <li class="nav-item py-2 w-100">
                                 <a class="nav-link {{ Route::currentRouteName() == 'restaurants.create' ? 'bg-custard rounded' : '' }} text-white " href="{{ route('restaurants.create') }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h6 class="me-3 text-end">Crea Ristorante</h6>
-                                        <img src="https://i.postimg.cc/YCfwDP2g/shop-icon.png" alt="dashboard-icon" class="w-25">
+                                        <h6 class="my-0 me-3 text-end">Crea Ristorante</h6>
+                                        <i class="fa-solid fa-utensils fs-1 text"></i>
                                     </div>
                                 </a>
                             </li>
@@ -115,33 +116,36 @@
                             @endauth
                             @auth
                             @if (auth()->user()->restaurant)
-                            <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard rounded' : '' }}" href="{{ route('products.create') }}">
-                                    <div class="d-flex justify-content-end align-items-center">
-                                        <h6 class="me-3 text-end">Aggiungi Prodotto</h6>
-                                        <img src="https://i.postimg.cc/PJZ7pLPZ/aggiungi-prodotto.png" alt="Add-product" class="w-25">
-                                    </div>
-                                </a>
-                            </li>
-                            @endif
-                            @endauth
-                            <li class="nav-item py-2">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-custard rounded' : '' }}" href="{{ route('products.index') }}">
-                                    <div class="d-flex justify-content-end align-items-center">
-                                        <h5 class="me-3 text-end">Menù</h5>
-                                        <img src="https://i.postimg.cc/MTw5PsTc/menu-icon.png" alt="dashboard-icon" class="w-25">
-                                    </div>
-                                </a>
-                            </li>
-                            
-                            
-                            @auth
-                            @if (auth()->user()->restaurant)
-                            <li class="nav-item py-2">
+                            <!-- Gestisci Ristorante -->
+                            <li class="nav-item py-2 w-100">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard rounded' : '' }}" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h5 class="me-3 text-end">Il tuo Ristorante</h5>
-                                        <img src="https://i.postimg.cc/52kqWYxW/user-icon.png" alt="dashboard-icon" class="w-25">
+                                        <h5 class="my-0 me-3 text-end">Il tuo Ristorante</h5>
+                                        <i class="fa-solid fa-utensils fs-1 text"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            @endif
+                            @endauth
+                            
+                            <!-- Menù -->
+                            <li class="nav-item py-2 w-100">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-custard rounded' : '' }}" href="{{ route('products.index') }}">
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <h5 class="my-0 me-3 text-end">Menù</h5>
+                                        <i class="fa-solid fa-book-open fs-1 text"></i>
+                                    </div>
+                                </a>
+                            </li>
+
+                            @auth
+                            @if (auth()->user()->restaurant)
+                            <!-- Aggiungi Prodotto -->
+                            <li class="nav-item w-100">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard rounded' : '' }}" href="{{ route('products.create') }}">
+                                    <div class="d-flex justify-content-end align-items-center">
+                                        <h6 class="my-0 me-3 text-end">Aggiungi Prodotto</h6>
+                                        <i class="fa-solid fa-plus fs-1 text"></i>
                                     </div>
                                 </a>
                             </li>
@@ -153,42 +157,49 @@
                 </nav>
 
                 <!-- Footer -->
-                    <nav class="fix_bottom display_none_footer peach-bg text-white footer w-100">
+                    <nav class="fix_bottom display_none_footer peach-bg footer w-100 navbar_icons">
                         <ul class="d-flex justify-content-around">
-
+                            <!-- Home -->
                             <li>
                                 <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'home' ? 'bg-custard' : '' }}" href="{{ route('home') }}">
-                                    <img src="https://i.postimg.cc/gjvh6ddr/menu.png" alt="dashboard-icon" class="w_25px">
+                                    <i class="fa-solid fa-house fs-3 text"></i>
                                 </a>
                             </li>
                             @auth
                             @if (!auth()->user()->restaurant)
+                            <!-- Crea ristorante -->
                             <li>
                                 <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'restaurants.create' ? 'bg-custard' : '' }}" href="{{ route('restaurants.create') }}">
-                                    <i class="fa-solid fa-utensils"></i>
+                                    <i class="fa-solid fa-utensils fs-3 text"></i>
                                 </a>
                             </li>
                             @endif
                             @endauth
+
                             @auth
                             @if (auth()->user()->restaurant)
-                            <li>
-                                <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'products.create' ? 'bg-custard' : '' }}" href="{{ route('products.create') }}">
-                                    <img src="https://i.postimg.cc/PJZ7pLPZ/aggiungi-prodotto.png" alt="Add-product" class="w_25px">
-                                </a>
-                            </li>
-                            @endif
-                            @endauth
-                            <li>
-                                <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'products.index' ? 'bg-custard' : '' }}" href="{{ route('products.index') }}">
-                                    <img src="https://i.postimg.cc/MTw5PsTc/menu-icon.png" alt="dashboard-icon" class="w_25px">
-                                </a>
-                            </li>
-                            @auth
-                            @if (auth()->user()->restaurant)
+                            <!-- Gestisci Ristorante -->
                             <li>
                                 <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard' : '' }}" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
-                                    <img src="https://i.postimg.cc/52kqWYxW/user-icon.png" alt="dashboard-icon" class="w_25px">
+                                    <i class="fa-solid fa-utensils fs-3 text"></i>
+                                </a>
+                            </li>
+                            @endif
+                            @endauth
+                            
+                            <!-- Menù -->
+                            <li>
+                                <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'products.index' ? 'bg-custard' : '' }}" href="{{ route('products.index') }}">
+                                    <i class="fa-solid fa-book-open fs-3 text"></i>
+                                </a>
+                            </li>
+
+                            @auth
+                            @if (auth()->user()->restaurant)
+                            <!-- Aggiungi Prodotti -->
+                            <li>
+                                <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'products.create' ? 'bg-custard' : '' }}" href="{{ route('products.create') }}">
+                                    <i class="fa-solid fa-plus fs-3 text"></i>
                                 </a>
                             </li>
                             @endif
@@ -198,7 +209,7 @@
                 @endauth
                 <div @auth class="d-flex justify-content-end vh-100" @endauth>
                     <main @auth
-                    class="dashboard_size_lg dashboard_size_sm d-flex flex-column align-items-center overflow-y-auto p-5"
+                    class="dashboard_size_lg dashboard_size_sm d-flex flex-column align-items-center overflow-y-auto py-5"
                     @endauth 
                     @guest
                     class="full_screen"
