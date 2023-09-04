@@ -79,5 +79,3 @@
         </table>
     </div>
 @endsection
-
-  
