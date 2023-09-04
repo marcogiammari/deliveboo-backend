@@ -43,6 +43,33 @@
         border: 1px solid rgba(255, 255, 255, 0.356);
     }
 }
+
+@media screen and (max-width:768px) {
+    .card-custom{
+        width: 90vh !important;
+        height:65%!important ;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    input[type=text]{
+        height: 40px!important;
+    }
+    .img-full-size-container{
+        display: none!important;
+    }
+
+    .img-full-size{
+        display: none!important;
+    }
+    .bg-custom {
+        background-image: url('https://i.postimg.cc/j597w09D/21.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        backdrop-filter: blur(1px);
+    }
+}
+
 .button-login-register{
     border-radius: 30px;
     background-color: #9061FF;
