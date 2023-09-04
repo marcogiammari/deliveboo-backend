@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <script src="../../js/app.js"></script>
     <!-- Scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
@@ -164,7 +165,7 @@
                             @if (!auth()->user()->restaurant)
                             <li>
                                 <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'restaurants.create' ? 'bg-custard' : '' }}" href="{{ route('restaurants.create') }}">
-                                    <img src="https://i.postimg.cc/YCfwDP2g/shop-icon.png" alt="dashboard-icon" class="w_25px">
+                                    <i class="fa-solid fa-utensils"></i>
                                 </a>
                             </li>
                             @endif
@@ -204,12 +205,20 @@
                 @endguest>
     
                     {{-- flash messages  --}}
-                    @if (session()->has('flash'))
-                    <div class="d-flex justify-content-center">
-                        <span class="p-4 text-center bg-warning rounded-2 mx-auto">{{ session('flash') }}</span>
+                    <div x-data="{ flash: true }">
+                        @if (session()->has('flash'))
+                        <div x-show="flash"
+                            class="position-relative mb-10 rounded border border-success bg-success-subtle px-4 py-3 text-success"
+                            role="alert">
+
+                            <div class="px-3 py-2">{{ session('flash') }}</div>
+
+                            <span @click="flash = false" class="position-absolute top-0 end-0 px-2 py-2 btn">
+                                X
+                            </span>
+                        </div>
+                        @endif
                     </div>
-                    @endif
-    
     
                     @yield('content')
                 </main>
