@@ -29,7 +29,7 @@
                 <div  class="d-flex justify-content-center gap-2 flex-wrap">
                     @foreach ($restaurant->categories as $category)
                         <div class="px-1 pastel-orange-bg rounded">
-                            <p class="p-1 m-0">{{ $category->name }}</p>
+                            <p class="p-1 text-white fw-bold m-0">{{ $category->name }}</p>
                         </div>
                     @endforeach
                 </div>

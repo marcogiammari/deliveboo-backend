@@ -221,8 +221,17 @@
 // Show
 
 .rs_general_container {
-    background: rgba(255, 216, 184, 0.7);
+    border: 8px solid rgba(255, 216, 184, 0.7);
+    background-color: rgba(255, 216, 184, 0.3);
     border-radius: 30px;
+    color: rgb(32, 32, 32);
+
+    input[type=text],[type=number],[type=file],textarea {
+        border:none ;
+        border-radius: 20px;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(216, 216, 216, 0.13); 
+        box-shadow: 0px 0px 5px 5px rgba(216, 216, 216, 0.13);
+    }
 }
 
 .img-container {
@@ -240,6 +249,18 @@
 //     max-height: 500px;
 // }
 
+//restaurant edit / create 
+
+.text-bg-custom{
+    background-color: rgba(255, 196, 0, 0.699);
+}
+
+.btn-custom-confirm{
+    background:#9061FF ;
+}
+.btn-custom{
+    border-radius: 20px;
+}
 
 //HOME
 

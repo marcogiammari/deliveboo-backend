@@ -101,12 +101,12 @@
                 
                 <label for="categories">Categorie</label>
                 @foreach ($categories as $category)
-                    <div class="form-check d-flex">
+                    <div class="form-check d-flex justify-content-between align-items-center badge rounded-pill text-bg-custom px-4 text-white fw-bold fs-6">
                         <input @if (old('categories') && in_array($category->id, old('categories'))) {{ 'checked' }}
                         @elseif (!old('categories') && $restaurant->categories->contains($category))
                         {{ 'checked' }} @endif type="checkbox" name="categories[]" value="{{ $category->id }}"
-                            class="form-check-input">
-                        <label class="form-check-label">{{ $category->name }}</label>
+                            class="form-check-input m-1 me-0">
+                        <label class="form-check-label ps-2">{{ $category->name }}</label>
                     </div>
                 @endforeach
 
@@ -115,8 +115,8 @@
             {{-- <input type="hidden" name="categories[]" id="hiddenSelectedTagsInput" required> --}}
             <!-- Button -->
             <div class="w-100 d-flex justify-content-center mb-3 gap-3">
-                <button type="reset" class="btn btn-secondary">Reset</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary btn-custom fw-bold">Reset</button>
+                <button type="submit" class="btn btn-custom btn-custom-confirm text-white fw-bold">Conferma</button>
             </div>
         </form>
     </div>
