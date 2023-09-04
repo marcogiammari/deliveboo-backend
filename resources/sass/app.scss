@@ -271,3 +271,21 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.custom-feedback-card{
+    height: 200px;
+    width: calc(100% / 3 - 1.5rem);
+    border-radius: 15px;
+}
+.card-1{
+    background-image: url('../../public/dashboard/card\ 1\ dashboard.jpg');
+    background-size: cover;
+}
+.card-2{
+    background-image: url('../../public/dashboard/card\ dashboard\ 2.jpg');
+    background-size: cover;
+}
+.card-3{
+    background-image: url('../../public/dashboard/card\ 3.jpg');
+    background-size: cover;
+}
