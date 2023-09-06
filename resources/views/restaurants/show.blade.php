@@ -41,7 +41,7 @@
             <!-- Modifica -->
             <div class="show_buttons d-flex gap-2">
                 <a href="{{ route('restaurants.edit', $restaurant) }}">
-                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-pen"></i></button>
+                    <button type="button" class="btn btn-light peach-bg text-white"><i class="fa-solid fa-pen"></i></button>
                 </a>
                 <form action="{{ route('restaurants.destroy', $restaurant) }}" method="post">
                     @csrf

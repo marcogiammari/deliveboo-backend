@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="dashboard_menu_xsm text-center">
+    <div class="w-75 text-center">
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Prezzo</th>
-                    <th scope="col">Descrizione</th>
-                    <th scope="col">Immagine</th>
+                    <th class="remove_element" scope="col">Descrizione</th>
+                    <th class="remove_element" scope="col">Immagine</th>
                     <th scope="col">Gestisci</th>
                 </tr>
             </thead>
@@ -20,7 +20,7 @@
                     <!-- Prezzo -->
                     <td>{{ $product->price }} €</td>
                     <!-- Descrizione -->
-                    <td class="text-break">
+                    <td class="text-break remove_element">
                         @if ($product->description == true)
                             {{ $product->description }}
                         @else
@@ -28,7 +28,7 @@
                         @endif
                     </td>
                     <!-- Immagine -->
-                    <td>
+                    <td class="remove_element">
                         <div class="d-flex justify-content-center">
                             @if (isset($product->thumb))
                                 <img src="{{asset('storage/' . $product->thumb)}}" class="w-75 img-fluid d-block img_max-width">

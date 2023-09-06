@@ -99,7 +99,7 @@
             @enderror
             <div class="form-group w-100 d-flex justify-content-center mb-3 flex-wrap gap-1">
                 
-                <label for="categories">Categorie</label>
+                <label for="categories">Categorie *</label>
                 @foreach ($categories as $category)
                     <div class="form-check d-flex justify-content-between align-items-center badge rounded-pill text-bg-custom px-4 text-white fw-bold fs-6">
                         <input @if (old('categories') && in_array($category->id, old('categories'))) {{ 'checked' }}

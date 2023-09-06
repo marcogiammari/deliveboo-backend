@@ -47,8 +47,8 @@
         </div>
         <!-- Button -->
         <div class="mb-3 w-100 d-flex justify-content-center gap-3">
-            <button type="reset" class="btn btn-secondary px-4 m-3">Reset</button>
-            <button type="submit" class="btn btn-primary px-4 m-3">Submit</button>
+            <button type="reset" class="btn btn-secondary px-4 m-3 btn-custom">Reset</button>
+            <button type="submit" class="btn btn-primary px-4 m-3 btn-custom btn-custom-confirm">Submit</button>
         </div>
     </form>
 </div>
