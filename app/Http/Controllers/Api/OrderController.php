@@ -40,6 +40,7 @@ class OrderController extends Controller
             "order" => $newOrder
         ];
         
+        return response()->json($data, 200);
     }
     // FUNCTION PER GENERARE TOKEN
     public function generate(Request $request, Gateway $gateway)
