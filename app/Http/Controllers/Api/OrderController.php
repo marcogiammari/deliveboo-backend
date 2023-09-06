@@ -39,7 +39,7 @@ class OrderController extends Controller
         $data = [
             "order" => $newOrder
         ];
-        
+
         return response()->json($data, 200);
     }
     // FUNCTION PER GENERARE TOKEN
@@ -56,30 +56,28 @@ class OrderController extends Controller
     // FUNCTION PER FARE IL PAGAMENTO
     public function makepayment(Request $request, Gateway $gateway)
     {
-
+        // return response()->json($request, 200);
         // CREO UNA VARIABILE PER LA REQUEST DEI DATI
-        $products = $request->input('products');
-        // INIZIALIZZO LA VARIABILE PER LA SOMMA
-        $totalAmount = 0;
-        // CICLO FOR PER RICAVARE IL PRICE DAL DB E CALCOLARE IL TOTAL AMOUNT
-        foreach ($products as $product) {
-            $productFromDB = Product::findOrFail($product["id"]);
-            $totalAmount += $productFromDB->price * $product["quantity"];
-        }
+        $data = $request->all();
+
+        $order_found = Order::find($request->order);
 
         // GENERIAMO IL PAGAMENTO
         $result = $gateway->transaction()->sale([
             // TOKEN PRESO DAL F.END
-            'amount' => $totalAmount,
+            'amount' => $order_found->total_amount,
             'paymentMethodNonce' => $request->token,
             'options' => [
-            'submitForSettlement' => true
+                'submitForSettlement' => true
             ]
         ]);
+
+
         // VISUALIZZAZIONE RISULTATO TRANSAZIONE
         $data = [
             'success' => false,
             'message' => "",
+            'order' => $data['order']
         ];
         if ($result->success) {
             $data['success'] = true;
