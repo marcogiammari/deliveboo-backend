@@ -77,11 +77,13 @@ class OrderController extends Controller
         $data = [
             'success' => false,
             'message' => "",
-            'order' => $data['order']
+            'order' => $order_found->is_paid
         ];
         if ($result->success) {
             $data['success'] = true;
             $data['message'] = "Transazione avvenuta con successo. ";
+            $order_found->is_paid = true;
+            $order_found->save();
             return response()->json($data, 200);
         } else {
             $data['message'] = 'La transazione ha fallito: ';
