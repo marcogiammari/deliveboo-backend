@@ -4,18 +4,48 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
+use App\Models\Order;
 use App\Models\Product;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
 
+
 class OrderController extends Controller
 {
+    public function createOrder(Request $request)
+    {
+        // STEP 1 RICAVARE PRODOTTI DALLA REQUEST
+        $products = $request->input("products");
+        $data = $request->input("data");
+        $newOrder = new Order();
+
+        // INIZIALIZZO LA VARIABILE PER LA SOMMA
+        $totalAmount = 0;
+        // CICLO FOR PER RICAVARE IL PRICE DAL DB E CALCOLARE IL TOTAL AMOUNT
+        foreach ($products as $product) {
+            $productFromDB = Product::findOrFail($product["id"]);
+            $totalAmount += $productFromDB->price * $product["quantity"];
+        }
+        $newOrder->total_amount = $totalAmount;
+        $newOrder->fill($data);
+        $newOrder->save();
+        foreach ($products as $product) {
+            // Supponiamo che il campo 'quantity' sia presente nella richiesta per ogni prodotto
+            $quantity = $product['quantity'];
+            $newOrder->products()->attach([$product['id'] => ['quantity' => $quantity]]);
+        }
+        $newOrder = Order::with('products')->findOrFail($newOrder->id);
+
+        $data = [
+            "order" => $newOrder
+        ];
+        
+    }
     // FUNCTION PER GENERARE TOKEN
     public function generate(Request $request, Gateway $gateway)
     {
-        // ASSEGNIAMO TOKEN 
+        // ASSEGNIAMO TOKENk 
         $token = ($gateway->clientToken()->generate());
-
         $data = [
             'token' => $token
         ];
@@ -42,7 +72,7 @@ class OrderController extends Controller
             'amount' => $totalAmount,
             'paymentMethodNonce' => $request->token,
             'options' => [
-                'submitForSettlement' => true
+            'submitForSettlement' => true
             ]
         ]);
         // VISUALIZZAZIONE RISULTATO TRANSAZIONE
