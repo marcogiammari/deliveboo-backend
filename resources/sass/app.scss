@@ -12,7 +12,7 @@
 }
 
 .pastel-orange-bg{
-    background-color: #83d8d1;
+    background-color: #70d6ce;
 }
 
 .bg-custard{
@@ -114,7 +114,7 @@
     left: 40%;
 }
 .align-center-on-md{
-    width: calc(100% - 200px);
+    width: calc(100% - 100px);
 }
 
 @media screen and (max-width: 768px){
@@ -131,6 +131,10 @@
     color: white;
 }
 
+.sidebar_height {
+    height: 50vh;
+}
+
 // Header
 
 .header_index {
@@ -140,13 +144,39 @@
 // 
 
 .sidebar_size {
-    width: 200px;
+    width: 100px;
     padding-top: 55.04px;
+}
+
+.link_on_hover {
+
+    a {
+        transform: translate(-36px, 0);
+        border-radius: 50px;
+    }
+
+    h5 {
+        margin-left: 1rem;
+        display: none;
+        white-space: nowrap;
+    }
+
+    :hover {
+
+        h5 {
+            display: block;
+        }
+
+    }
+}
+
+.show_on_hover:hover {
+    display: block;
 }
 
 @media screen and (min-width: 768px) {
     .dashboard_size_lg {
-        width: calc(100% - 200px);
+        width: calc(100% - 100px);
         height: calc(100vh - 55.04px);
         align-self: flex-end;
     }
@@ -252,14 +282,14 @@
 
 // Index
 
-@media screen and (min-width: 465px) {
-    .dashboard_menu_xsm {
-        width: 75%;
-    }
-}
-
 .img_max-width {
     max-width: 200px;
+}
+
+@media screen and (max-width: 465px) {
+    .remove_element {
+        display: none;
+    }
 }
 
 //restaurant edit / create 

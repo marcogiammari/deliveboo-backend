@@ -88,27 +88,26 @@
         <div class="h-100">
             @auth
                 <!-- Sidebar -->
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 peach-bg sidebar display_none_sidebar position-fixed vh-100 sidebar_size">
-                    <div class="">
-                        <ul class="nav flex-column align-items-end justify-content-evenly">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 peach-bg sidebar display_none_sidebar position-fixed vh-100 sidebar_size d-flex align-items-center justify-content-center">
+                    <div>
+                        <ul class="nav flex-column justify-content-evenly sidebar_height">
                             <!-- Home -->
-                            <li class="nav-item py-2 w-100">
-                                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'bg-custard rounded' : '' }} text-white"
-                                    href="{{ route('home') }}">
-                                    <div class="d-flex justify-content-end align-items-center">
-                                        <h6 class="my-0 me-3 text-end">Dashboard</h6>
+                            <li class="nav-item py-2 w-100 link_on_hover position-relative">
+                                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'bg-custard' : '' }} text-white position-absolute peach-bg" href="{{ route('home') }}">
+                                    <div class="d-flex justify-content-end align-items-center text-center">
                                         <i class="fa-solid fa-house fs-1 text"></i>
+                                        <h5 class="my-0 text-end">Dashboard</h5>
                                     </div>
                                 </a>
                             </li>
                             @auth
                             @if (!auth()->user()->restaurant)
                             <!-- Crea Ristorante -->
-                            <li class="nav-item py-2 w-100">
-                                <a class="nav-link {{ Route::currentRouteName() == 'restaurants.create' ? 'bg-custard rounded' : '' }} text-white " href="{{ route('restaurants.create') }}">
+                            <li class="nav-item py-2 w-100 link_on_hover position-relative">
+                                <a class="nav-link {{ Route::currentRouteName() == 'restaurants.create' ? 'bg-custard' : '' }} text-white position-absolute peach-bg" href="{{ route('restaurants.create') }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h6 class="my-0 me-3 text-end">Crea Ristorante</h6>
                                         <i class="fa-solid fa-utensils fs-1 text"></i>
+                                        <h5 class="my-0 text-end">Crea Ristorante</h5>
                                     </div>
                                 </a>
                             </li>
@@ -117,11 +116,11 @@
                             @auth
                             @if (auth()->user()->restaurant)
                             <!-- Gestisci Ristorante -->
-                            <li class="nav-item py-2 w-100">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard rounded' : '' }}" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
+                            <li class="nav-item py-2 w-100 link_on_hover position-relative">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard' : '' }} position-absolute peach-bg" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h5 class="my-0 me-3 text-end">Il tuo Ristorante</h5>
                                         <i class="fa-solid fa-utensils fs-1 text"></i>
+                                        <h5 class="my-0 text-end">Il tuo Ristorante</h5>
                                     </div>
                                 </a>
                             </li>
@@ -129,11 +128,11 @@
                             @endauth
                             
                             <!-- Menù -->
-                            <li class="nav-item py-2 w-100">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-custard rounded' : '' }}" href="{{ route('products.index') }}">
+                            <li class="nav-item py-2 w-100 link_on_hover position-relative">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-custard' : '' }} position-absolute peach-bg" href="{{ route('products.index') }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h5 class="my-0 me-3 text-end">Menù</h5>
                                         <i class="fa-solid fa-book-open fs-1 text"></i>
+                                        <h5 class="my-0 text-end">Menù</h5>
                                     </div>
                                 </a>
                             </li>
@@ -141,11 +140,11 @@
                             @auth
                             @if (auth()->user()->restaurant)
                             <!-- Aggiungi Prodotto -->
-                            <li class="nav-item w-100">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard rounded' : '' }}" href="{{ route('products.create') }}">
+                            <li class="nav-item w-100 link_on_hover position-relative">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard' : '' }} position-absolute peach-bg" href="{{ route('products.create') }}">
                                     <div class="d-flex justify-content-end align-items-center">
-                                        <h6 class="my-0 me-3 text-end">Aggiungi Prodotto</h6>
                                         <i class="fa-solid fa-plus fs-1 text"></i>
+                                        <h5 class="my-0 text-end">Aggiungi Prodotto</h5>
                                     </div>
                                 </a>
                             </li>
