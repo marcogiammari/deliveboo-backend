@@ -18,6 +18,15 @@ class OrderController extends Controller
         $products = $request->input("products");
         $data = $request->input("data");
         $newOrder = new Order();
+
+        // INIZIALIZZO LA VARIABILE PER LA SOMMA
+        $totalAmount = 0;
+        // CICLO FOR PER RICAVARE IL PRICE DAL DB E CALCOLARE IL TOTAL AMOUNT
+        foreach ($products as $product) {
+            $productFromDB = Product::findOrFail($product["id"]);
+            $totalAmount += $productFromDB->price * $product["quantity"];
+        }
+        $newOrder->total_amount = $totalAmount;
         $newOrder->fill($data);
         $newOrder->save();
         foreach ($products as $product) {
@@ -25,8 +34,8 @@ class OrderController extends Controller
             $quantity = $product['quantity'];
             $newOrder->products()->attach([$product['id'] => ['quantity' => $quantity]]);
         }
-        dd($newOrder);
-
+        $newOrder = Order::with('products')->findOrFail($newOrder->id);
+        dd($newOrder);    
     }
     // FUNCTION PER GENERARE TOKEN
     public function generate(Request $request, Gateway $gateway)
