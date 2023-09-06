@@ -35,7 +35,11 @@ class OrderController extends Controller
             $newOrder->products()->attach([$product['id'] => ['quantity' => $quantity]]);
         }
         $newOrder = Order::with('products')->findOrFail($newOrder->id);
-        dd($newOrder);    
+
+        $data = [
+            "order" => $newOrder
+        ];
+        
     }
     // FUNCTION PER GENERARE TOKEN
     public function generate(Request $request, Gateway $gateway)
@@ -68,7 +72,7 @@ class OrderController extends Controller
             'amount' => $totalAmount,
             'paymentMethodNonce' => $request->token,
             'options' => [
-                'submitForSettlement' => true
+            'submitForSettlement' => true
             ]
         ]);
         // VISUALIZZAZIONE RISULTATO TRANSAZIONE
