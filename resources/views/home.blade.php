@@ -16,7 +16,7 @@
             </div>
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-3 ">
                 <h3 class="text-capitalize fw-bolder text-white">
-                    Prodotto più venduto del mese: {{$best_selling_product}}
+                    Prodotto più venduto del mese: {{$best_selling_product->name}}
                 </h3>
             </div>
         </div>

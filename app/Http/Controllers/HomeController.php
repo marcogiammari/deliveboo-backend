@@ -34,13 +34,13 @@ class HomeController extends Controller
 
         $month_income = Order::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->sum('total_amount');
 
-        $best_selling_product = Product::select('products.name', 'products.id')
+        $best_selling_product = Product::select('products.name')
             ->join('order_product', 'products.id', '=', 'order_product.product_id')
             ->join('orders', 'order_product.order_id', '=', 'orders.id')
             ->whereMonth('orders.created_at', Carbon::now()->month)
-            ->groupBy('products.name', 'products.id')
+            ->groupBy('products.name')
             ->orderByRaw('SUM(order_product.quantity) DESC')
-            ->first()->value('name');
+            ->first();
 
         return view('home', compact('orders', 'month_income', 'best_selling_product'));
     }
