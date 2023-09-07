@@ -36,7 +36,7 @@
             <span class="fs-5 custom-table">{{$order->customer_name}}</span>
             <span class="fs-5 custom-table">{{$order->customer_email}}</span>
             <span class="fs-5 custom-table">{{$order->customer_tel}}</span>
-            <span class="fs-5 custom-table"> @if ($order->is_paid === 0)
+            <span class="fs-5 custom-table"> @if ($order->is_paid == true)
                 <i class="fa-solid fa-check text-success"></i>
             @else
             <i class="fa-solid fa-x text-danger"></i>
