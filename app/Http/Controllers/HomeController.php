@@ -41,7 +41,7 @@ class HomeController extends Controller
             ->groupBy('products.name')
             ->orderByRaw('SUM(order_product.quantity) DESC')
             ->first();
-
+        
         return view('home', compact('orders', 'month_income', 'best_selling_product'));
     }
 }

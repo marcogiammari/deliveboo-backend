@@ -6,7 +6,7 @@
         <div class="mt-5 d-flex justify-content-between">
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-1 ">
                 <h3 class="text-capitalize fw-bolder text-white">
-                    Totale ricavi del mese: {{$month_income}}
+                    Totale ricavi del mese: {{number_format($month_income, 2, '.', ' ')}}€
                 </h3>
             </div>
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-2 ">
@@ -43,7 +43,7 @@
             @endif             
             </span>
             <span class="fs-5 custom-table">{{ $order->created_at->format('Y-m-d H:i') }}</span>
-            <span class="fs-5 custom-table">{{$order->total_amount}}€</span>
+            <span class="fs-5 custom-table">{{number_format($order->total_amount, 2, '.', ' ')}}€</span>
         </div>
         @endforeach
     </div>
