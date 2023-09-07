@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id;
-        $orders = Order::whereHas('products.restaurant.user', function ($query) use ($user_id) {
+        $orders = Order::latest()->whereHas('products.restaurant.user', function ($query) use ($user_id) {
             $query->where('users.id', $user_id);
         })->get();
 
