@@ -16,9 +16,12 @@ class OrderSeeder extends Seeder
     public function run(): void
     {
         $ordersData = config('store.orders');
-        foreach ($ordersData as $index => $order) {
-            $menu = Product::where('restaurant_id', $index)->get();
-            Order::create($order)->products()->attach($menu, ['quantity' => rand(1,3)]);
+        foreach ($ordersData as $order) {
+            $menu = Product::where('restaurant_id', $order['restaurant_id'])->get();
+            $newOrder = Order::create($order['data']);
+            $newOrder->is_paid = true;
+            $newOrder->save();
+            $newOrder->products()->attach($menu, ['quantity' => rand(1,3)]);
         }
     }
 }
