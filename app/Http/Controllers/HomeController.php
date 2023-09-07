@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -33,6 +34,14 @@ class HomeController extends Controller
 
         $month_income = Order::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->sum('total_amount');
 
-        return view('home', compact('orders', 'month_income'));
+        $best_selling_product = Product::select('products.name', 'products.id')
+            ->join('order_product', 'products.id', '=', 'order_product.product_id')
+            ->join('orders', 'order_product.order_id', '=', 'orders.id')
+            ->whereMonth('orders.created_at', Carbon::now()->month)
+            ->groupBy('products.name', 'products.id')
+            ->orderByRaw('SUM(order_product.quantity) DESC')
+            ->first()->value('name');
+
+        return view('home', compact('orders', 'month_income', 'best_selling_product'));
     }
 }
