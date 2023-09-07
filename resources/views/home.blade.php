@@ -6,7 +6,7 @@
         <div class="mt-5 d-flex justify-content-between">
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-1 ">
                 <h3 class="text-capitalize fw-bolder text-white">
-                    12,00 €
+                    Totale ricavi del mese: {{$month_income}}
                 </h3>
             </div>
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-2 ">

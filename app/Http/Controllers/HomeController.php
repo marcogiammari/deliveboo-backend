@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -30,6 +31,8 @@ class HomeController extends Controller
             $query->where('users.id', $user_id);
         })->get();
 
-        return view('home', compact('orders'));
+        $month_income = Order::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->sum('total_amount');
+
+        return view('home', compact('orders', 'month_income'));
     }
 }

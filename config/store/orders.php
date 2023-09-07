@@ -3,7 +3,7 @@ return [
     [
         'restaurant_id' => 1,
         'data' => [
-            'total_amount' => 15,
+            'total_amount' => 15.50,
             'customer_name' => 'Luca Rossi',
             'customer_address' => 'Via Roma 123',
             'customer_tel' => '3312345678',
