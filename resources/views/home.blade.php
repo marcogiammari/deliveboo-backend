@@ -1,5 +1,7 @@
 @extends('layouts.app')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+ 
 @section('content')
 <div class="container-fluid mt-4">
     <div class="row justify-content-center">
@@ -10,9 +12,9 @@
                 </h3>
             </div>
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-2 ">
-                <h3 class="text-capitalize fw-bolder text-white">
-                    Qui un mini chart
-                </h3>
+                <div>
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-3 ">
                 <h3 class="text-capitalize fw-bolder text-white">
@@ -48,4 +50,30 @@
         @endforeach
     </div>
 </div>
+
+<script>
+    const ctx = document.getElementById('myChart');
+    const jsObject = {{Illuminate\Support\Js::from($best_selling_product)}}
+    
+    console.log(jsObject)
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
 @endsection
