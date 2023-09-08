@@ -48,27 +48,24 @@ class HomeController extends Controller
             ->orderByRaw('SUM(order_product.quantity) DESC')
             ->first();
 
-        
-        // $months = null;
-        // $incomes = null;
 
-        // $data = [
-        //     'mese' => 'income',
-        //     'mese' => 'income',
-        //     'mese' => 'income',
-        //     'mese' => 'income',
-        // ];
+        // Raggruppa gli ordini per anno e calcola il conteggio di ciascun gruppo
+        $ordersData = Order::selectRaw('MONTH(created_at) as month, SUM(total_amount) as incomes')
+            ->where('is_paid', true)
+            ->whereHas('products.restaurant.user', function ($query) use ($user_id) {
+                $query->where('users.id', $user_id);
+            })
+            ->groupBy('month')
+            ->get();
 
-            // const data = [
-            //     { year: 2010, count: 10 },
-            //     { year: 2011, count: 20 },
-            //     { year: 2012, count: 15 },
-            //     { year: 2013, count: 25 },
-            //     { year: 2014, count: 22 },
-            //     { year: 2015, count: 30 },
-            //     { year: 2016, count: 28 },
-            //   ];
-        
-        return view('home', compact('orders', 'month_income', 'best_selling_product'));
+        // Trasforma i risultati in un array nel formato desiderato
+        $data = $ordersData->map(function ($item) {
+            return [
+                'month' => $item->month,
+                'incomes' => $item->incomes,
+            ];
+        });
+
+        return view('home', compact('orders', 'month_income', 'best_selling_product', 'data'));
     }
 }

@@ -53,9 +53,9 @@
 
 <script>
     const ctx = document.getElementById('myChart');
-    const jsObject = {{Illuminate\Support\Js::from($best_selling_product)}}
+    const test = {{Illuminate\Support\Js::from($data)}}
     
-    console.log(jsObject)
+    console.log(test)
 
     new Chart(ctx, {
       type: 'bar',
