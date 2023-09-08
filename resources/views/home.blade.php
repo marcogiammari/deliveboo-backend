@@ -12,8 +12,8 @@
                 </h3>
             </div>
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-2 ">
-                <div>
-                    <canvas id="myChart"></canvas>
+                <div class="w-100 h-100">
+                    <canvas id="myChart" width="300" height="150"></canvas>
                 </div>
             </div>
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-3 ">
@@ -53,21 +53,23 @@
 
 <script>
     const ctx = document.getElementById('myChart');
-    const test = {{Illuminate\Support\Js::from($data)}}
+    const month_data = {{Illuminate\Support\Js::from($data)}}
     
-    console.log(test)
+    console.log(month_data)
 
     new Chart(ctx, {
-      type: 'bar',
+      type: 'line',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: month_data.map(row => row.month),
         datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
+            label: 'Acquisitions by year',
+            data: month_data.map(row => row.incomes)
         }]
       },
       options: {
+        borderColor: '#36A2EB',
+        backgroundColor: '#9BD0F5',
+        
         scales: {
           y: {
             beginAtZero: true
