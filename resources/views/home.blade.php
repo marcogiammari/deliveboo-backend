@@ -7,8 +7,8 @@
     <div class="row justify-content-center">
         <div class="mt-5 d-flex justify-content-between">
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-1 ">
-                <h3 class="text-capitalize fw-bolder text-white">
-                    Totale ricavi del mese: {{number_format($month_income, 2, '.', ' ')}}€
+                <h3 class="text-capitalize fw-bolder text-white text-center">
+                    Totale ricavi del mese: <br> {{number_format($month_income, 2, '.', ' ')}}€
                 </h3>
             </div>
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-2 ">
@@ -62,7 +62,7 @@
       data: {
         labels: month_data.map(row => row.month),
         datasets: [{
-            label: 'Acquisitions by year',
+            label: 'entrate mensili',
             data: month_data.map(row => row.incomes)
         }]
       },
