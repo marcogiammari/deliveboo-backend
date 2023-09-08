@@ -32,11 +32,12 @@ class HomeController extends Controller
             $query->where('users.id', $user_id);
         })->get();
 
-        $month_income = Order::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->sum('total_amount');
+        $month_income = Order::where('is_paid', true)->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->sum('total_amount');
 
         $best_selling_product = Product::select('products.name')
             ->join('order_product', 'products.id', '=', 'order_product.product_id')
             ->join('orders', 'order_product.order_id', '=', 'orders.id')
+            ->where('is_paid', true)
             ->whereMonth('orders.created_at', Carbon::now()->month)
             ->groupBy('products.name')
             ->orderByRaw('SUM(order_product.quantity) DESC')
