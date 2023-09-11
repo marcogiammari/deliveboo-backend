@@ -33,7 +33,7 @@ class StatsController extends Controller
             $query->where('users.id', $user_id);
         })->sum('total_amount');
 
-        // ----------------- //
+        // best & worst
         $best_selling_product = Product::select('products.name')
         ->join('order_product', 'products.id', '=', 'order_product.product_id')
         ->join('orders', 'order_product.order_id', '=', 'orders.id')
@@ -58,14 +58,34 @@ class StatsController extends Controller
         ->orderByRaw('SUM(order_product.quantity) ASC')
         ->first();
 
-        $daily_data = $day_income->map(function ($item) {
+        // charts data
+        $incomes_by_day = Order::selectRaw('DAY(created_at) as day, SUM(total_amount) as incomes')
+        ->where('is_paid', true)
+        ->whereYear('created_at', Carbon::now()->year)
+        ->whereMonth('created_at', Carbon::now()->month)
+        ->whereHas('products.restaurant.user', function ($query) use ($user_id) {
+            $query->where('users.id', $user_id);
+        })
+        ->groupBy('day')
+        ->get();
+
+        $incomes_by_month = Order::selectRaw('MONTH(created_at) as month, SUM(total_amount) as incomes')
+        ->where('is_paid', true)
+        ->whereYear('created_at', Carbon::now()->year)
+        ->whereHas('products.restaurant.user', function ($query) use ($user_id) {
+            $query->where('users.id', $user_id);
+        })
+        ->groupBy('month')
+        ->get();
+
+        $daily_data = $incomes_by_day->map(function ($item) {
             return [
                 'day' => $item->day,
                 'incomes' => $item->incomes,
             ];
         });
 
-        $monthly_data = $month_income->map(function ($item) {
+        $monthly_data = $incomes_by_month->map(function ($item) {
             return [
                 'month' => $item->month,
                 'incomes' => $item->incomes,
