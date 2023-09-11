@@ -46,11 +46,11 @@ class StatsController extends Controller
         ->orderByRaw('SUM(order_product.quantity) DESC')
         ->first();
 
-        var_dump($day_income);
-        var_dump($month_income);
-        var_dump($year_income);
-        var_dump($total_income);
-        var_dump($best_selling_product);
+        // var_dump($day_income);
+        // var_dump($month_income);
+        // var_dump($year_income);
+        // var_dump($total_income);
+        // var_dump($best_selling_product);
         // var_dump($worst_selling_product);
 
         return view('stats', compact('day_income','month_income', 'year_income', 'total_income', 'best_selling_product'));
