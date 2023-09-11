@@ -5,7 +5,9 @@ use Illuminate\Http\Request;
 
 class StatsController extends Controller
 {
-    function index(){
+    public function index() 
+    {
 
+        return view('stats');
     }
 }
