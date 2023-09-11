@@ -6,21 +6,21 @@
     <div class="container-fluid container-query mt-4">
         <div class="row justify-content-center">
             <div class="d-flex justify-content-between card-query mt-5">
-                <div class="d-flex justify-content-center align-items-center custom-feedback-card card-1 border-white">
+                <div class="d-flex justify-content-center align-items-center custom-feedback-card w-50 card-1 m-5 border-white">
                     <h3 class="text-capitalize fw-bolder text-center text-white">
                         Entrate Mensili: <br> {{ number_format($month_income, 2, '.', ' ') }}€
                     </h3>
                 </div>
-                <div class="d-flex justify-content-center align-items-center custom-feedback-card card-2 border-white">
+                <div class="d-flex justify-content-center align-items-center custom-feedback-card w-50 m-5 card-2 border-white">
                     <div class="w-100 h-100 d-flex justify-content-center">
                         <canvas id="myChart" width="300" height="150"></canvas>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center align-items-center custom-feedback-card card-3 border-white">
+                {{-- <div class="d-flex justify-content-center align-items-center custom-feedback-card card-3 border-white">
                     <h3 class="text-capitalize fw-bolder text-center text-white">
                         Prodotto del mese: <br> {{ $best_selling_product->name }}
                     </h3>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="border-black-50 m-auto mt-5 rounded border py-3">
@@ -81,7 +81,7 @@
                 plugins: { // 'legend' now within object 'plugins {}'
                     legend: {
                         labels: {
-                            color: "blue", // not 'fontColor:' anymore
+                            color: "white", // not 'fontColor:' anymore
                             // fontSize: 18  // not 'fontSize:' anymore
                             font: {
                                 size: 18 // 'size' now within object 'font {}'
@@ -93,7 +93,7 @@
                 scales: {
                     y: { // not 'yAxes: [{' anymore (not an array anymore)
                         ticks: {
-                            color: "green", // not 'fontColor:' anymore
+                            color: "white", // not 'fontColor:' anymore
                             // fontSize: 18,
                             font: {
                                 size: 18, // 'size' now within object 'font {}'
@@ -104,7 +104,7 @@
                     },
                     x: { // not 'xAxes: [{' anymore (not an array anymore)
                         ticks: {
-                            color: "purple", // not 'fontColor:' anymore
+                            color: "white", // not 'fontColor:' anymore
                             //fontSize: 14,
                             font: {
                                 size: 14 // 'size' now within object 'font {}'
