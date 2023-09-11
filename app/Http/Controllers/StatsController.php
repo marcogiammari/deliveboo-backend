@@ -46,13 +46,25 @@ class StatsController extends Controller
         ->orderByRaw('SUM(order_product.quantity) DESC')
         ->first();
 
+        $worst_selling_product = Product::select('products.name')
+        ->join('order_product', 'products.id', '=', 'order_product.product_id')
+        ->join('orders', 'order_product.order_id', '=', 'orders.id')
+        ->where('is_paid', true)
+        ->whereHas('restaurant.user', function ($query) use ($user_id) {
+            $query->where('users.id', $user_id);
+        })
+        ->whereMonth('orders.created_at', Carbon::now()->month)
+        ->groupBy('products.name')
+        ->orderByRaw('SUM(order_product.quantity) ASC')
+        ->first();
+
         var_dump($day_income);
         var_dump($month_income);
         var_dump($year_income);
         var_dump($total_income);
         var_dump($best_selling_product);
-        // var_dump($worst_selling_product);
+        var_dump($worst_selling_product);
 
-        return view('stats', compact('day_income','month_income', 'year_income', 'total_income', 'best_selling_product'));
+        return view('stats', compact('day_income','month_income', 'year_income', 'total_income', 'best_selling_product', 'worst_selling_product'));
     }
 }
