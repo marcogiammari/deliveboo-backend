@@ -52,12 +52,14 @@
         </div>
         <div class="d-flex justify-content-center">
             {{ $orders->links() }}
+
+            {{$daily_data}}
         </div>
     </div>
 
     <script>
         const ctx = document.getElementById('myChart');
-        const month_data = {{ Illuminate\Support\Js::from($data) }}
+        const month_data = {{ Illuminate\Support\Js::from($monthly_data) }}
         const monthNames = [
             'Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu',
             'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'
