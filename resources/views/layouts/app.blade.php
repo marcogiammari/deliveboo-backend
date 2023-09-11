@@ -88,72 +88,74 @@
         <div class="h-100">
             @auth
                 <!-- Sidebar -->
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 peach-bg sidebar display_none_sidebar position-fixed vh-100 sidebar_size d-flex align-items-center justify-content-center">
-                    <div>
-                        <ul class="nav flex-column justify-content-evenly sidebar_height">
-                            <!-- Home -->
-                            <li class="nav-item py-2 w-100 link_on_hover position-relative">
-                                <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'bg-custard' : '' }} text-white position-absolute peach-bg" href="{{ route('home') }}">
-                                    <div class="d-flex justify-content-end align-items-center text-center">
-                                        <i class="fa-solid fa-house fs-1 text"></i>
-                                        <h5 class="my-0 text-end">Dashboard</h5>
-                                    </div>
-                                </a>
-                            </li>
-                            @auth
-                            @if (!auth()->user()->restaurant)
-                            <!-- Crea Ristorante -->
-                            <li class="nav-item py-2 w-100 link_on_hover position-relative">
-                                <a class="nav-link {{ Route::currentRouteName() == 'restaurants.create' ? 'bg-custard' : '' }} text-white position-absolute peach-bg" href="{{ route('restaurants.create') }}">
-                                    <div class="d-flex justify-content-end align-items-center">
-                                        <i class="fa-solid fa-utensils fs-1 text"></i>
-                                        <h5 class="my-0 text-end">Crea Ristorante</h5>
-                                    </div>
-                                </a>
-                            </li>
-                            @endif
-                            @endauth
-                            @auth
-                            @if (auth()->user()->restaurant)
-                            <!-- Gestisci Ristorante -->
-                            <li class="nav-item py-2 w-100 link_on_hover position-relative">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard' : '' }} position-absolute peach-bg" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
-                                    <div class="d-flex justify-content-end align-items-center">
-                                        <i class="fa-solid fa-utensils fs-1 text"></i>
-                                        <h5 class="my-0 text-end">Il tuo Ristorante</h5>
-                                    </div>
-                                </a>
-                            </li>
-                            @endif
-                            @endauth
-                            
-                            <!-- Menù -->
-                            <li class="nav-item py-2 w-100 link_on_hover position-relative">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-custard' : '' }} position-absolute peach-bg" href="{{ route('products.index') }}">
-                                    <div class="d-flex justify-content-end align-items-center">
-                                        <i class="fa-solid fa-book-open fs-1 text"></i>
-                                        <h5 class="my-0 text-end">Menù</h5>
-                                    </div>
-                                </a>
-                            </li>
+                <div class="display_none_sidebar">
+                    <nav id="sidebarMenu" class="col-md-3 col-lg-2 peach-bg sidebar position-fixed vh-100 sidebar_size d-flex align-items-center justify-content-center">
+                        <div>
+                            <ul class="nav flex-column justify-content-evenly sidebar_height">
+                                <!-- Home -->
+                                <li class="nav-item py-2 w-100 link_on_hover position-relative">
+                                    <a class="nav-link {{ Route::currentRouteName() == 'home' ? 'bg-custard' : '' }} text-white position-absolute peach-bg" href="{{ route('home') }}">
+                                        <div class="d-flex justify-content-end align-items-center text-center">
+                                            <i class="fa-solid fa-house fs-1 text"></i>
+                                            <h5 class="my-0 text-end">Dashboard</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                @auth
+                                @if (!auth()->user()->restaurant)
+                                <!-- Crea Ristorante -->
+                                <li class="nav-item py-2 w-100 link_on_hover position-relative">
+                                    <a class="nav-link {{ Route::currentRouteName() == 'restaurants.create' ? 'bg-custard' : '' }} text-white position-absolute peach-bg" href="{{ route('restaurants.create') }}">
+                                        <div class="d-flex justify-content-end align-items-center">
+                                            <i class="fa-solid fa-utensils fs-1 text"></i>
+                                            <h5 class="my-0 text-end">Crea Ristorante</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                @endif
+                                @endauth
+                                @auth
+                                @if (auth()->user()->restaurant)
+                                <!-- Gestisci Ristorante -->
+                                <li class="nav-item py-2 w-100 link_on_hover position-relative">
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-custard' : '' }} position-absolute peach-bg" href="{{ route('restaurants.show', auth()->user()->restaurant) }}">
+                                        <div class="d-flex justify-content-end align-items-center">
+                                            <i class="fa-solid fa-utensils fs-1 text"></i>
+                                            <h5 class="my-0 text-end">Il tuo Ristorante</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                @endif
+                                @endauth
+                                
+                                <!-- Menù -->
+                                <li class="nav-item py-2 w-100 link_on_hover position-relative">
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-custard' : '' }} position-absolute peach-bg" href="{{ route('products.index') }}">
+                                        <div class="d-flex justify-content-end align-items-center">
+                                            <i class="fa-solid fa-book-open fs-1 text"></i>
+                                            <h5 class="my-0 text-end">Menù</h5>
+                                        </div>
+                                    </a>
+                                </li>
 
-                            @auth
-                            @if (auth()->user()->restaurant)
-                            <!-- Aggiungi Prodotto -->
-                            <li class="nav-item w-100 link_on_hover position-relative">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard' : '' }} position-absolute peach-bg" href="{{ route('products.create') }}">
-                                    <div class="d-flex justify-content-end align-items-center">
-                                        <i class="fa-solid fa-plus fs-1 text"></i>
-                                        <h5 class="my-0 text-end">Aggiungi Prodotto</h5>
-                                    </div>
-                                </a>
-                            </li>
-                            @endif
-                            @endauth
-                        </ul>
+                                @auth
+                                @if (auth()->user()->restaurant)
+                                <!-- Aggiungi Prodotto -->
+                                <li class="nav-item w-100 link_on_hover position-relative">
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'products.create' ? 'bg-custard' : '' }} position-absolute peach-bg" href="{{ route('products.create') }}">
+                                        <div class="d-flex justify-content-end align-items-center">
+                                            <i class="fa-solid fa-plus fs-1 text"></i>
+                                            <h5 class="my-0 text-end">Aggiungi Prodotto</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                @endif
+                                @endauth
+                            </ul>
 
-                    </div>
-                </nav>
+                        </div>
+                    </nav>
+                </div>
 
                 <!-- Footer -->
                     <nav class="fix_bottom display_none_footer peach-bg footer w-100 navbar_icons">
