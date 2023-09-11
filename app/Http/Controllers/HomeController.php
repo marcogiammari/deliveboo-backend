@@ -30,7 +30,7 @@ class HomeController extends Controller
         $user_id = Auth::user()->id;
         $orders = Order::latest()->whereHas('products.restaurant.user', function ($query) use ($user_id) {
             $query->where('users.id', $user_id);
-        })->get();
+        })->paginate(15);
 
         $month_income = Order::where('is_paid', true)->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->whereHas('products.restaurant.user', function ($query) use ($user_id) {
             $query->where('users.id', $user_id);
