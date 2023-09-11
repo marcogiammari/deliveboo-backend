@@ -68,6 +68,6 @@ class HomeController extends Controller
             ];
         });
 
-        return view('home', compact('orders', 'month_income', 'best_selling_product', 'daily_data', 'monthly_data'));
+        return view('home', compact('orders', 'month_income', 'daily_data', 'monthly_data'));
     }
 }
