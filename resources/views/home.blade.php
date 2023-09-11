@@ -1,18 +1,20 @@
 @extends('layouts.app')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+ 
 @section('content')
 <div class="container-fluid mt-4">
     <div class="row justify-content-center">
         <div class="mt-5 d-flex justify-content-between">
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-1 ">
-                <h3 class="text-capitalize fw-bolder text-white">
-                    Totale ricavi del mese: {{number_format($month_income, 2, '.', ' ')}}€
+                <h3 class="text-capitalize fw-bolder text-white text-center">
+                    Totale ricavi del mese: <br> {{number_format($month_income, 2, '.', ' ')}}€
                 </h3>
             </div>
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-2 ">
-                <h3 class="text-capitalize fw-bolder text-white">
-                    Qui un mini chart
-                </h3>
+                <div class="w-100 h-100">
+                    <canvas id="myChart" width="300" height="150"></canvas>
+                </div>
             </div>
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-3 ">
                 <h3 class="text-capitalize fw-bolder text-white">
@@ -48,4 +50,32 @@
         @endforeach
     </div>
 </div>
+
+<script>
+    const ctx = document.getElementById('myChart');
+    const month_data = {{Illuminate\Support\Js::from($data)}}
+    
+    console.log(month_data)
+
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: month_data.map(row => row.month),
+        datasets: [{
+            label: 'entrate mensili',
+            data: month_data.map(row => row.incomes)
+        }]
+      },
+      options: {
+        borderColor: '#36A2EB',
+        backgroundColor: '#9BD0F5',
+        
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
 @endsection
