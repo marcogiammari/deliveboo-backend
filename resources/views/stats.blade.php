@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 @section('content')
 
@@ -37,11 +37,15 @@
 
 <div class="d-flex justify-content-between">
     <div class="w-50 p-3">
-
+        <div class="d-flex justify-content-center ">
+            <canvas id="myChart"></canvas>
+        </div>
     </div>
 
     <div class="w-50 p-3">
-
+        <div class="d-flex justify-content-center ">
+            <canvas id="myChart2"></canvas>
+        </div>
     </div>
 </div>
 
@@ -50,5 +54,122 @@
     <div></div>
     <div></div>
 </div>
+
+<script>
+    const ctx = document.getElementById('myChart');
+    const month_data = {{ Illuminate\Support\Js::from($monthly_data) }}
+    const monthNames = [
+        'Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu',
+        'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'
+    ];
+    console.log(month_data)
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: month_data.map(row => monthNames[row.month - 1]),
+            datasets: [{
+                label: 'Entrate mensili',
+                data: month_data.map(row => row.incomes),
+            }]
+        },
+        options: {
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            plugins: { // 'legend' now within object 'plugins {}'
+                legend: {
+                    labels: {
+                        color: "white", // not 'fontColor:' anymore
+                        // fontSize: 18  // not 'fontSize:' anymore
+                        font: {
+                            size: 18 // 'size' now within object 'font {}'
+                        }
+                    }
+                }
+            },
+
+            scales: {
+                y: { // not 'yAxes: [{' anymore (not an array anymore)
+                    ticks: {
+                        color: "#000000 ", // not 'fontColor:' anymore
+                        // fontSize: 18,
+                        font: {
+                            size: 18, // 'size' now within object 'font {}'
+                        },
+                        stepSize: 1,
+                        beginAtZero: true
+                    }
+                },
+                x: { // not 'xAxes: [{' anymore (not an array anymore)
+                    ticks: {
+                        color: "#000000", // not 'fontColor:' anymore
+                        //fontSize: 14,
+                        font: {
+                            size: 14 // 'size' now within object 'font {}'
+                        },
+                        stepSize: 1,
+                        beginAtZero: true
+                    }
+                }
+            }
+        }
+    });
+
+    const ctx2 = document.getElementById('myChart2');
+    const day_data = {{ Illuminate\Support\Js::from($daily_data) }}
+    // const dayNames = [
+    // 'Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
+
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: day_data.map(row => row.day),
+            datasets: [{
+                label: 'Entrate giornaliere',
+                data: day_data.map(row => row.incomes),
+            }]
+        },
+        options: {
+            borderColor: '#36A2EB',
+            backgroundColor: '#9BD0F5',
+            plugins: { // 'legend' now within object 'plugins {}'
+                legend: {
+                    labels: {
+                        color: "white", // not 'fontColor:' anymore
+                        // fontSize: 18  // not 'fontSize:' anymore
+                        font: {
+                            size: 18 // 'size' now within object 'font {}'
+                        }
+                    }
+                }
+            },
+
+            scales: {
+                y: { // not 'yAxes: [{' anymore (not an array anymore)
+                    ticks: {
+                        color: "#000000", // not 'fontColor:' anymore
+                        // fontSize: 18,
+                        font: {
+                            size: 18, // 'size' now within object 'font {}'
+                        },
+                        stepSize: 1,
+                        beginAtZero: true
+                    }
+                },
+                x: { // not 'xAxes: [{' anymore (not an array anymore)
+                    ticks: {
+                        color: "#000000", // not 'fontColor:' anymore
+                        //fontSize: 14,
+                        font: {
+                            size: 14 // 'size' now within object 'font {}'
+                        },
+                        stepSize: 1,
+                        beginAtZero: true
+                    }
+                }
+            }
+        }
+    });
+</script>
 
 @endsection
