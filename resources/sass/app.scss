@@ -315,6 +315,18 @@
     white-space: nowrap;
 }
 
+@media screen and (max-width: 1199px) {
+    .custom_table_wider {
+        width: 33%;
+    }
+}
+
+@media screen and (min-width: 1199px)  {
+    .remove_button::after {
+        display: none;
+    }
+}
+
 .custom-feedback-card{
     height: 200px;
     width: calc(100% / 3 - 1.5rem);
@@ -336,9 +348,9 @@
 
 @media screen and (max-width: 576px) {
     .card-query{
-       display: block!important;
-       margin-top: 0;
-       padding-top: 0;
+        display: block!important;
+        margin-top: 0;
+        padding-top: 0;
     }
     .container-query{
         margin-top: 0;
@@ -348,4 +360,8 @@
         margin: 0px auto;
         margin-bottom: 50px;
     }
+}
+
+.button_icon {
+    width: 20px;
 }
