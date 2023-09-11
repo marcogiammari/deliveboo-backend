@@ -316,12 +316,12 @@
 }
 
 .custom-feedback-card{
-    height: 200px;
+    height: 300px;
     width: calc(100% / 3 - 1.5rem);
     border-radius: 15px;
 }
 .card-1{
-    background-image: url('../../public/dashboard/card\ 1\ dashboard.jpg');
+    background-image: url('../../public/dashboard/card\ 3.jpg');
     background-size: cover;
 }
 .card-2{
@@ -332,20 +332,37 @@
     background-image: url('../../public/dashboard/card\ 3.jpg');
     background-size: cover;
 }
-
-
+#myChart{
+    height: 100%!important;
+}
+.dashboard_size_lg{
+    padding: 0!important;
+}
 @media screen and (max-width: 576px) {
+
+    .dashboard_size_lg{
+        padding: 0!important;
+    }
     .card-query{
+        width: 100%!important;
        display: block!important;
        margin-top: 0;
        padding-top: 0;
     }
     .container-query{
         margin-top: 0;
+        width: 100%!important;
     }
     .custom-feedback-card{
-        width: 90%;
-        margin: 0px auto;
-        margin-bottom: 50px;
+        width: 90%!important;
+        margin: 0px auto!important;
+        margin-bottom: 50px!important;
+    }
+    #myChart{
+        height: 100%!important;
+    }
+
+    .custom-feedback-card{
+        height: 250px;
     }
 }
