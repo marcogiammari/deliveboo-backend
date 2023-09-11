@@ -54,15 +54,18 @@
 <script>
     const ctx = document.getElementById('myChart');
     const month_data = {{Illuminate\Support\Js::from($data)}}
-    
+    const monthNames = [
+        'Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu',
+        'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'
+    ];
     console.log(month_data)
 
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: month_data.map(row => row.month),
+        labels: month_data.map(row => monthNames[row.month - 1]),
         datasets: [{
-            label: 'entrate mensili',
+            label: 'Entrate mensili',
             data: month_data.map(row => row.incomes)
         }]
       },
