@@ -332,3 +332,20 @@
     background-image: url('../../public/dashboard/card\ 3.jpg');
     background-size: cover;
 }
+
+
+@media screen and (max-width: 576px) {
+    .card-query{
+       display: block!important;
+       margin-top: 0;
+       padding-top: 0;
+    }
+    .container-query{
+        margin-top: 0;
+    }
+    .custom-feedback-card{
+        width: 90%;
+        margin: 0px auto;
+        margin-bottom: 50px;
+    }
+}
