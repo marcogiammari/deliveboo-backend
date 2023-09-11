@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -42,9 +43,14 @@ Route::middleware(['auth'])->prefix('restaurants')->group(function () {
     Route::middleware(['check-restaurant-ownership'])->group(function () {
         
         Route::get('{restaurant}', [RestaurantController::class, 'show'])->name('restaurants.show');
+        
+        
     });
+
 });
 
+Route::get('stats', [StatsController::class, 'index'])->name('stats');
+// stats
 
 Route::middleware(['auth', 'check-product-access'])->group(function () {
 

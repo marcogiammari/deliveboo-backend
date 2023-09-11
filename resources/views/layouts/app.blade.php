@@ -149,6 +149,16 @@
                                         </div>
                                     </a>
                                 </li>
+
+                                {{-- Statistiche  --}}
+                                <li class="nav-item w-100 link_on_hover position-relative">
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'stats' ? 'bg-custard' : '' }} position-absolute peach-bg" href="{{ route('stats') }}">
+                                        <div class="d-flex justify-content-end align-items-center">
+                                            <i class="fa-solid fa-chart-simple fs-1 text"></i>
+                                            <h5 class="my-0 text-end">Statistiche</h5>
+                                        </div>
+                                    </a>
+                                </li>
                                 @endif
                                 @endauth
                             </ul>
@@ -201,6 +211,13 @@
                             <li>
                                 <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'products.create' ? 'bg-custard' : '' }}" href="{{ route('products.create') }}">
                                     <i class="fa-solid fa-plus fs-3 text"></i>
+                                </a>
+                            </li>
+
+                            <!-- Stats -->
+                            <li>
+                                <a class="d-flex justify-content-center {{ Route::currentRouteName() == 'stats' ? 'bg-custard' : '' }}" href="{{ route('stats') }}">
+                                    <i class="fa-solid fa-chart-simple fs-3 text"></i>
                                 </a>
                             </li>
                             @endif
