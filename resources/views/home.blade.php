@@ -7,9 +7,13 @@
         <div class="row justify-content-center">
             <div class="d-flex justify-content-between card-query mt-5">
                 <div class="d-flex justify-content-center align-items-center custom-feedback-card w-50 card-1 m-5 border-white">
-                    <h3 class="text-capitalize fw-bolder text-center text-white">
+                    {{-- <h3 class="text-capitalize fw-bolder text-center text-white">
                         Entrate Mensili: <br> {{ number_format($month_income, 2, '.', ' ') }}€
-                    </h3>
+                    </h3> --}}
+
+                    <div class="w-100 h-100 d-flex justify-content-center">
+                        <canvas id="myChart2" width="300" height="150"></canvas>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-center custom-feedback-card w-50 m-5 card-2 border-white">
                     <div class="w-100 h-100 d-flex justify-content-center">
@@ -52,8 +56,6 @@
         </div>
         <div class="d-flex justify-content-center">
             {{ $orders->links() }}
-
-            {{$daily_data}}
         </div>
     </div>
 
@@ -73,6 +75,62 @@
                 datasets: [{
                     label: 'Entrate mensili',
                     data: month_data.map(row => row.incomes),
+                }]
+            },
+            options: {
+                borderColor: '#36A2EB',
+                backgroundColor: '#9BD0F5',
+                plugins: { // 'legend' now within object 'plugins {}'
+                    legend: {
+                        labels: {
+                            color: "white", // not 'fontColor:' anymore
+                            // fontSize: 18  // not 'fontSize:' anymore
+                            font: {
+                                size: 18 // 'size' now within object 'font {}'
+                            }
+                        }
+                    }
+                },
+
+                scales: {
+                    y: { // not 'yAxes: [{' anymore (not an array anymore)
+                        ticks: {
+                            color: "white", // not 'fontColor:' anymore
+                            // fontSize: 18,
+                            font: {
+                                size: 18, // 'size' now within object 'font {}'
+                            },
+                            stepSize: 1,
+                            beginAtZero: true
+                        }
+                    },
+                    x: { // not 'xAxes: [{' anymore (not an array anymore)
+                        ticks: {
+                            color: "white", // not 'fontColor:' anymore
+                            //fontSize: 14,
+                            font: {
+                                size: 14 // 'size' now within object 'font {}'
+                            },
+                            stepSize: 1,
+                            beginAtZero: true
+                        }
+                    }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('myChart2');
+        const day_data = {{ Illuminate\Support\Js::from($daily_data) }}
+        // const dayNames = [
+        // 'Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
+
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: day_data.map(row => row.day),
+                datasets: [{
+                    label: 'Entrate giornaliere',
+                    data: day_data.map(row => row.incomes),
                 }]
             },
             options: {
