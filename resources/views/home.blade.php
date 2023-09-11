@@ -3,12 +3,12 @@
 
  
 @section('content')
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-4 container-query">
     <div class="row justify-content-center">
-        <div class="mt-5 d-flex justify-content-between">
+        <div class="mt-5 d-flex justify-content-between card-query">
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-1 ">
                 <h3 class="text-capitalize fw-bolder text-white text-center">
-                    Totale ricavi del mese: <br> {{number_format($month_income, 2, '.', ' ')}}€
+                    Entrate Mensili: <br> {{number_format($month_income, 2, '.', ' ')}}€
                 </h3>
             </div>
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-2 ">
@@ -17,13 +17,13 @@
                 </div>
             </div>
             <div class="border-white d-flex justify-content-center align-items-center custom-feedback-card card-3 ">
-                <h3 class="text-capitalize fw-bolder text-white">
-                    Prodotto più venduto del mese: {{$best_selling_product->name}}
+                <h3 class="text-capitalize fw-bolder text-center text-white">
+                    Prodotto del mese: <br> {{$best_selling_product->name}}
                 </h3>
             </div>
         </div>
     </div>
-    <div class=" m-auto mt-5 border border-black-50 rounded py-3">
+    <div class="m-auto mt-5 border border-black-50 rounded py-3">
         <h1 class="text-center">I tuoi Ordini</h1>
         <div class="d-flex justify-content-between border-bottom border-black-50 fw-semibold">
             <span class="fs-5 custom-table">Nome</span>
