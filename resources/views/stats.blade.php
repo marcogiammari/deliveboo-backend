@@ -4,7 +4,7 @@
 @section('content')
 
 
-<div class="w-100 d-flex justify-content-around py-2 text-white">
+<div class="w-100 d-flex flex-wrap justify-content-around py-2 text-white">
     <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column">
         <h4 class="text-center fw-bolder" > Entrate Giornaliere:
         </h4>
@@ -35,24 +35,38 @@
     </div>
 </div>
 
-<div class="d-flex justify-content-between">
-    <div class="w-50 p-3">
-        <div class="d-flex justify-content-center ">
+<div class="d-sm-flex justify-content-between">
+
+    <div class="custom-chart-container w-50 p-3">
+        <div class="d-flex justify-content-center custom-chart-container">
             <canvas id="myChart"></canvas>
         </div>
     </div>
 
-    <div class="w-50 p-3">
-        <div class="d-flex justify-content-center ">
-            <canvas id="myChart2"></canvas>
+    <div class="custom-chart-container w-50 p-3">
+        <div class="custom-chart-container d-flex justify-content-center ">
+            <canvas id="myChart2" class="w-100"></canvas>
         </div>
     </div>
+
 </div>
 
 
-<div class="d-flex">
-    <div></div>
-    <div></div>
+<div class="w-100 d-flex flex-wrap justify-content-center py-2 text-white pt-5">
+    <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column mx-5">
+        <h4 class="text-center fw-bolder" > Prodotto del mese:
+        </h4>
+        <h3 class="text-center fw-bolder">
+            {{$best_selling_product->name}} 
+        </h3>
+    </div>
+    <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column mx-5">
+        <h4 class="text-center fw-bolder" > Prodotto meno acquistato:
+        </h4>
+        <h3 class="text-center fw-bolder">
+            {{$worst_selling_product->name}}
+        </h3>
+    </div>
 </div>
 
 <script>
@@ -79,10 +93,10 @@
             plugins: { // 'legend' now within object 'plugins {}'
                 legend: {
                     labels: {
-                        color: "white", // not 'fontColor:' anymore
+                        color: "#000000", // not 'fontColor:' anymore
                         // fontSize: 18  // not 'fontSize:' anymore
                         font: {
-                            size: 18 // 'size' now within object 'font {}'
+                            size: 15 // 'size' now within object 'font {}'
                         }
                     }
                 }
@@ -94,7 +108,7 @@
                         color: "#000000 ", // not 'fontColor:' anymore
                         // fontSize: 18,
                         font: {
-                            size: 18, // 'size' now within object 'font {}'
+                            size: 15, // 'size' now within object 'font {}'
                         },
                         stepSize: 1,
                         beginAtZero: true
@@ -135,10 +149,10 @@
             plugins: { // 'legend' now within object 'plugins {}'
                 legend: {
                     labels: {
-                        color: "white", // not 'fontColor:' anymore
+                        color: "#000000", // not 'fontColor:' anymore
                         // fontSize: 18  // not 'fontSize:' anymore
                         font: {
-                            size: 18 // 'size' now within object 'font {}'
+                            size: 15 // 'size' now within object 'font {}'
                         }
                     }
                 }
@@ -150,7 +164,7 @@
                         color: "#000000", // not 'fontColor:' anymore
                         // fontSize: 18,
                         font: {
-                            size: 18, // 'size' now within object 'font {}'
+                            size: 15, // 'size' now within object 'font {}'
                         },
                         stepSize: 1,
                         beginAtZero: true

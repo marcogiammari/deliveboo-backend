@@ -338,6 +338,32 @@
 .dashboard_size_lg{
     padding: 0!important;
 }
+
+
+//stats blade
+
+
+.stats-cards{
+    height: 200px;
+    background-color: #9061FF;
+    width: calc(100% / 4 - 30px);
+}
+
+
+.custom-chart-container{
+    height: 250px !important;
+}
+
+#myChart{
+    height: 100%!important;
+}
+
+#myChart2{
+    height: 100%!important;
+}
+
+//QUERY
+
 @media screen and (max-width: 576px) {
 
     .dashboard_size_lg{
@@ -365,10 +391,15 @@
     .custom-feedback-card{
         height: 250px;
     }
+
+    .stats-cards{
+        height: 200px;
+        width: calc(100% / 2 - 30px);
+    }
+
+    .custom-chart-container{
+        width: 90%!important;
+        margin: 0 auto;
+    }
 }
 
-.stats-cards{
-    height: 200px;
-    background-color: #9061FF;
-    width: calc(100% / 4 - 30px);
-}
