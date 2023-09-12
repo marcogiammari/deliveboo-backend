@@ -32,6 +32,10 @@ class HomeController extends Controller
             $query->where('users.id', $user_id);
         })->paginate(15);
 
+        $day_profit = Order::where('is_paid', true)->whereDate('created_at', Carbon::now()->format('Y-m-d'))->whereHas('products.restaurant.user', function ($query) use ($user_id) {
+            $query->where('users.id', $user_id);
+        })->sum('total_amount');
+
         // daily income chart data 
         $day_income = Order::selectRaw('DAY(created_at) as day, SUM(total_amount) as incomes')
             ->where('is_paid', true)
@@ -68,6 +72,6 @@ class HomeController extends Controller
             ];
         });
 
-        return view('home', compact('orders', 'month_income', 'daily_data', 'monthly_data'));
+        return view('home', compact('orders', 'month_income', 'daily_data', 'monthly_data', 'day_profit'));
     }
 }

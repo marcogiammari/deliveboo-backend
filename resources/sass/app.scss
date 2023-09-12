@@ -307,12 +307,28 @@
 
 //HOME
 
+.w_90 {
+    width: 90%;
+}
+
 .custom-table{
     width: calc(100% / 6);
     text-align: center;
     overflow: hidden; 
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+@media screen and (max-width: 1199px) {
+    .custom_table_wider {
+        width: 33%;
+    }
+}
+
+@media screen and (min-width: 1199px)  {
+    .remove_button::after {
+        display: none;
+    }
 }
 
 .custom-feedback-card{
@@ -371,19 +387,19 @@
     }
     .card-query{
         width: 100%!important;
-       display: block!important;
-       margin-top: 0;
-       padding-top: 0;
+        display: block!important;
+        margin-top: 0;
+        padding-top: 0;
     }
     .container-query{
         margin-top: 0;
         width: 100%!important;
     }
-    .custom-feedback-card{
-        width: 90%!important;
-        margin: 0px auto!important;
-        margin-bottom: 50px!important;
-    }
+    // .custom-feedback-card{
+    //     width: 90%!important;
+    //     margin: 0px auto!important;
+    //     margin-bottom: 50px!important;
+    // }
     #myChart{
         height: 100%!important;
     }
@@ -403,3 +419,13 @@
     }
 }
 
+.button_icon {
+    width: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .m_md {
+        width: 90% !important;
+        margin-top: 1.5rem;
+    }
+}
