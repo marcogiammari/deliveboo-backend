@@ -14,7 +14,7 @@ class RestaurantController extends Controller
     public function index()
     {
 
-        return new RestaurantCollection(Restaurant::all());
+        return new RestaurantCollection(Restaurant::limit(20)->get());
     }
 
     public function filterByCategories(Request $request)
