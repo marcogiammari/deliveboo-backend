@@ -3,10 +3,8 @@
 
 
 @section('content')
-    <div class="container-fluid container-query mt-4">
-        <div class="row justify-content-center">
-            <div class="d-flex justify-content-between card-query mt-5">
-                <div class="d-flex justify-content-center align-items-center custom-feedback-card w-50 card-1 m-5 border-white">
+            <div class="d-flex justify-content-between card-query w-100 m_md">
+                <div class="justify-content-center align-items-center custom-feedback-card w-100 card-1 m-5 border-white d-none d-md-flex">
                     {{-- <h3 class="text-capitalize fw-bolder text-center text-white">
                         Entrate Mensili: <br> {{ number_format($month_income, 2, '.', ' ') }}€
                     </h3> --}}
@@ -15,20 +13,23 @@
                         <canvas id="myChart2" width="300" height="150"></canvas>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center align-items-center custom-feedback-card w-50 m-5 card-2 border-white">
+                <!-- <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column d-md-none w-100">
+                    
+                </div> -->
+                <!-- <div class="d-flex justify-content-center align-items-center custom-feedback-card w-50 m-5 card-2 border-white d-none">
                     <div class="w-100 h-100 d-flex justify-content-center">
                         <canvas id="myChart" width="300" height="150"></canvas>
                     </div>
-                </div>
-                {{-- <div class="d-flex justify-content-center align-items-center custom-feedback-card card-3 border-white">
-                    <h3 class="text-capitalize fw-bolder text-center text-white">
-                        Prodotto del mese: <br> {{ $best_selling_product->name }}
+                </div> -->
+                <div class="d-flex justify-content-center align-items-center flex-column custom-feedback-card card-3 border-white d-md-none w-100 m-0">
+                    <h4 class="text-center fw-bolder" > Entrate Giornaliere:
+                    </h4>
+                    <h3 class="text-center fw-bolder">
+                        {{$day_profit}} €
                     </h3>
-                </div> --}}
-            </div>
-        </div>
+                </div>
     </div>
-    <div class="m-auto mt-5 border border-black-50 rounded py-3">
+    <div class="m-auto w_90 mt-5 border border-black-50 rounded py-3">
         <h1 class="text-center">I tuoi Ordini</h1>
         <div class="d-flex justify-content-between border-bottom border-black-50 fw-semibold px-3 me-3">
             <span class="fs-5 custom-table custom_table_wider">Nome</span>
@@ -44,7 +45,7 @@
                 <button class="accordion-button collapsed d-flex justify-content-between remove_button accordion_button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ $order->id }}" aria-expanded="false" aria-controls="flush-collapse{{ $order->id }}">
                     <div class="d-flex justify-content-between w-100">
                         <span class="fs-5 custom-table custom_table_wider">{{$order->customer_name}}</span>
-                        <span class="fs-5 custom-table d-xl-block d-none">{{$order->customer_email}}</span>
+                        <span class="fs-5 custom-table d-xl-block d-none t_show">{{$order->customer_email}}</span>
                         <span class="fs-5 custom-table d-xl-block d-none">{{$order->customer_tel}}</span>
                         <span class="fs-5 custom-table custom_table_wider"> @if ($order->is_paid == true)
                             <i class="fa-solid fa-check text-success"></i>
