@@ -27,39 +27,70 @@
                 </div> --}}
             </div>
         </div>
-        <div class="border-black-50 m-auto mt-5 rounded border py-3">
-            <h1 class="text-center">I tuoi Ordini</h1>
-            <div class="d-flex justify-content-between border-bottom border-black-50 fw-semibold">
-                <span class="fs-5 custom-table">Nome</span>
-                <span class="fs-5 custom-table">E-mail</span>
-                <span class="fs-5 custom-table">Tel.</span>
-                <span class="fs-5 custom-table">Pagato</span>
-                <span class="fs-5 custom-table">Data</span>
-                <span class="fs-5 custom-table">Totale</span>
-            </div>
+    </div>
+    <div class="m-auto mt-5 border border-black-50 rounded py-3">
+        <h1 class="text-center">I tuoi Ordini</h1>
+        <div class="d-flex justify-content-between border-bottom border-black-50 fw-semibold px-3 me-3">
+            <span class="fs-5 custom-table custom_table_wider">Nome</span>
+            <span class="fs-5 custom-table d-xl-block d-none">E-mail</span>
+            <span class="fs-5 custom-table d-xl-block d-none">Tel.</span>
+            <span class="fs-5 custom-table custom_table_wider">Pagato</span>
+            <span class="fs-5 custom-table d-xl-block d-none">Data</span>
+            <span class="fs-5 custom-table custom_table_wider">Totale</span>
+        </div>
+        <div class="accordion accordion-flush">
             @foreach ($orders as $order)
-                <div class="d-flex justify-content-between border-bottom border-black-50 mt-2 py-2">
-                    <span class="fs-5 custom-table">{{ $order->customer_name }}</span>
-                    <span class="fs-5 custom-table">{{ $order->customer_email }}</span>
-                    <span class="fs-5 custom-table">{{ $order->customer_tel }}</span>
-                    <span class="fs-5 custom-table">
-                        @if ($order->is_paid == true)
+            <div class="mt-2 border-bottom border-black-50 py-2 accordion-item">
+                <button class="accordion-button collapsed d-flex justify-content-between remove_button accordion_button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ $order->id }}" aria-expanded="false" aria-controls="flush-collapse{{ $order->id }}">
+                    <div class="d-flex justify-content-between w-100">
+                        <span class="fs-5 custom-table custom_table_wider">{{$order->customer_name}}</span>
+                        <span class="fs-5 custom-table d-xl-block d-none">{{$order->customer_email}}</span>
+                        <span class="fs-5 custom-table d-xl-block d-none">{{$order->customer_tel}}</span>
+                        <span class="fs-5 custom-table custom_table_wider"> @if ($order->is_paid == true)
                             <i class="fa-solid fa-check text-success"></i>
-                        @else
+                            @else
                             <i class="fa-solid fa-x text-danger"></i>
-                        @endif
-                    </span>
-                    <span class="fs-5 custom-table">{{ $order->created_at->format('Y-m-d H:i') }}</span>
-                    <span class="fs-5 custom-table">{{ number_format($order->total_amount, 2, '.', ' ') }}€</span>
+                            @endif             
+                        </span>
+                        <span class="fs-5 custom-table d-xl-block d-none">{{ $order->created_at->format('Y-m-d H:i') }}</span>
+                        <span class="fs-5 custom-table custom_table_wider">{{number_format($order->total_amount, 2, '.', ' ')}}€</span>
+                    </div>
+                </button>
+                <div id="flush-collapse{{ $order->id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body d-flex justify-content-center gap-1 flex-wrap text-center">
+                        <p class="fs-5 my-0"><strong>Nome:</strong> {{$order->customer_name}}</p>
+                        <p class="fs-5 ps-2 my-0"><strong>Email:</strong> {{$order->customer_email}}</p>
+                        <p class="fs-5 ps-2 my-0"><strong>Telefono:</strong> {{$order->customer_tel}}</p>
+                        <p class="fs-5 ps-2 my-0"><strong>Data:</strong> {{ $order->created_at->format('Y-m-d H:i') }}</p>
+                    </div>
                 </div>
+            </div>
             @endforeach
         </div>
-        <div class="d-flex justify-content-center">
-            {{ $orders->links() }}
-        </div>
     </div>
+    <div class="d-flex justify-content-center">
+        {{ $orders->links() }}
+    </div>
+</div>
 
     <script>
+    // Quando rimuove 
+    const mediaQuery = window.matchMedia('(min-width: 1199px)');
+    const accordionButtons = document.getElementsByClassName("accordion_button");
+
+    function handleTabletChange(e) {
+        for (const elementAccordion of accordionButtons) {
+            if (e.matches) {
+                elementAccordion.removeAttribute("data-bs-toggle");
+            }
+            else {
+                elementAccordion.setAttribute("data-bs-toggle", "collapse");
+            }
+        }
+    }
+    mediaQuery.addListener(handleTabletChange)
+    handleTabletChange(mediaQuery)
+
         const ctx = document.getElementById('myChart');
         const month_data = {{ Illuminate\Support\Js::from($monthly_data) }}
         const monthNames = [

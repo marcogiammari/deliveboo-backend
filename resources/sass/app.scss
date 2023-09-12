@@ -315,6 +315,18 @@
     white-space: nowrap;
 }
 
+@media screen and (max-width: 1199px) {
+    .custom_table_wider {
+        width: 33%;
+    }
+}
+
+@media screen and (min-width: 1199px)  {
+    .remove_button::after {
+        display: none;
+    }
+}
+
 .custom-feedback-card{
     height: 300px;
     width: calc(100% / 3 - 1.5rem);
@@ -371,4 +383,8 @@
     height: 200px;
     background-color: #9061FF;
     width: calc(100% / 4 - 30px);
+}
+
+.button_icon {
+    width: 20px;
 }
