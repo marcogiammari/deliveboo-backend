@@ -10,7 +10,7 @@
                     </h3> --}}
 
                     <div class="w-100 h-100 d-flex justify-content-center">
-                        <canvas id="myChart2" width="300" height="150"></canvas>
+                        <canvas id="myChart2" class="shadow-none" width="300" height="150"></canvas>
                     </div>
                 </div>
                 <!-- <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column d-md-none w-100">
@@ -29,7 +29,7 @@
                     </h3>
                 </div>
     </div>
-    <div class="m-auto w_90 mt-5 border border-black-50 rounded py-3">
+    <div class="m-auto w_90 mt-5 border border-black-50 rounded pt-3 mb-3 zIndex-1">
         <h1 class="text-center">I tuoi Ordini</h1>
         <div class="d-flex justify-content-between border-bottom border-black-50 fw-semibold px-3 me-3">
             <span class="fs-5 custom-table custom_table_wider">Nome</span>
@@ -132,7 +132,6 @@
                             font: {
                                 size: 18, // 'size' now within object 'font {}'
                             },
-                            stepSize: 1,
                             beginAtZero: true
                         }
                     },
@@ -143,7 +142,6 @@
                             font: {
                                 size: 14 // 'size' now within object 'font {}'
                             },
-                            stepSize: 1,
                             beginAtZero: true
                         }
                     }
@@ -188,7 +186,6 @@
                             font: {
                                 size: 18, // 'size' now within object 'font {}'
                             },
-                            stepSize: 1,
                             beginAtZero: true
                         }
                     },
@@ -199,7 +196,6 @@
                             font: {
                                 size: 14 // 'size' now within object 'font {}'
                             },
-                            stepSize: 1,
                             beginAtZero: true
                         }
                     }

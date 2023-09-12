@@ -7,41 +7,41 @@
 <div class="w-75 d-flex justify-content-around flex-wrap py-2 text-white">
     <!-- Entrate giornaliere -->
     <div class="col-12 col-md-6 px-3">
-        <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column w-100">
+        <div class="stats-cards stats-card-1  rounded my-3 d-flex justify-content-center align-items-start p-5 flex-column w-100">
             <h4 class="text-center fw-bolder" > Entrate Giornaliere:
             </h4>
             <h3 class="text-center fw-bolder">
-                {{$day_income}} €
+                {{number_format($day_income,2 , ".") }} €
             </h3>
         </div>
     </div>
     <!-- Entrate mensili -->
     <div class="col-12 col-md-6 px-3">
-        <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column w-100">
+        <div class="stats-cards stats-card-2 rounded my-3 d-flex justify-content-center align-items-start p-5 flex-column w-100">
             <h4 class="text-center fw-bolder" > Entrate Mensili:
             </h4>
             <h3 class="text-center fw-bolder">
-                {{$month_income}} €
+                {{number_format($month_income,2 , ".") }} €
             </h3>
         </div>
     </div>
     <!-- Entrate Annue -->
     <div class="col-12 col-md-6 px-3">
-        <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column w-100">
+        <div class="stats-cards stats-card-3 rounded my-3 d-flex justify-content-center align-items-start p-5 flex-column w-100">
             <h4 class="text-center fw-bolder" > Entrate Annuali:
             </h4>
             <h3 class="text-center fw-bolder">
-                {{$year_income}} €
+                {{number_format($year_income,2 , ".") }} €
             </h3>
         </div>
     </div>
     <!-- Entrate totali -->
     <div class="col-12 col-md-6 px-3">
-        <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column w-100">
+        <div class="stats-cards stats-card-4 rounded my-3 d-flex justify-content-center align-items-start p-5 flex-column w-100">
             <h4 class="text-center fw-bolder" > Entrate Totali:
             </h4>
             <h3 class="text-center fw-bolder">
-                {{$total_income}} €
+                {{number_format($total_income,2 , ".") }} €
             </h3>
         </div>
     </div>
@@ -66,7 +66,7 @@
 <div class="w-75 d-flex justify-content-around flex-wrap py-2 text-white">
     <!-- Miglior prodotto -->
     <div class="col-12 col-md-6 px-3">
-        <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column w-100">
+        <div class="stats-cards card-1 rounded my-3 d-flex justify-content-center align-items-center flex-column w-100">
             <h4 class="text-center fw-bolder" > Più venduto:
             </h4>
             <h3 class="text-center fw-bolder">
@@ -76,7 +76,7 @@
     </div>
     <!-- Peggior prodotto -->
     <div class="col-12 col-md-6 px-3">
-        <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column w-100">
+        <div class="stats-cards card-2 rounded my-3 d-flex justify-content-center align-items-center flex-column w-100">
             <h4 class="text-center fw-bolder" > Meno venduto:
             </h4>
             <h3 class="text-center fw-bolder">
@@ -127,7 +127,6 @@
                         font: {
                             size: 15, // 'size' now within object 'font {}'
                         },
-                        stepSize: 1,
                         beginAtZero: true
                     }
                 },
@@ -152,7 +151,7 @@
     // 'Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
 
     new Chart(ctx2, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: day_data.map(row => row.day),
             datasets: [{
@@ -183,7 +182,6 @@
                         font: {
                             size: 15, // 'size' now within object 'font {}'
                         },
-                        stepSize: 1,
                         beginAtZero: true
                     }
                 },

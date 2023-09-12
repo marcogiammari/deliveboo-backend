@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="w-75 text-center">
+    <div class="w-75 text-center my-5">
         <table class="table">
             <thead>
                 <tr>

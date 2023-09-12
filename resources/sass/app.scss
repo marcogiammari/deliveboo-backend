@@ -306,6 +306,9 @@
 }
 
 //HOME
+.zIndex-1{
+    z-index: -1;
+}
 
 .w_90 {
     width: 90%;
@@ -363,19 +366,39 @@
     height: 200px;
     background-color: #9061FF;
     width: calc(100% / 4 - 30px);
+    box-shadow: 10px 10px 45px #bebebe, -10px -10px 45px #ffffff;
 }
-
-
+.stats-card-1{
+    background-color: #4b76e7 !important;
+}
+.stats-card-2{
+    background-color: #7dc4fa !important;
+}
+.stats-card-3{
+    background-color: #9e71ce !important;
+}
+.stats-card-4{
+    background-color: #86d1b3 !important;
+}
 .custom-chart-container{
     height: 250px !important;
 }
 
 #myChart{
     height: 100%!important;
+    width: calc(100% / 4 - 30px);
+    box-shadow: 10px 10px 45px #bebebe, -10px -10px 45px #ffffff;
+    border-radius: 15px;
+    padding: 15px;
 }
 
 #myChart2{
     height: 100%!important;
+    width: calc(100% / 4 - 30px);
+    box-shadow: 10px 10px 45px #bebebe, -10px -10px 45px #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+
 }
 
 //QUERY
