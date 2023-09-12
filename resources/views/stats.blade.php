@@ -4,55 +4,85 @@
 @section('content')
 
 
-<div class="w-100 d-flex justify-content-around py-2 text-white">
-    <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column">
-        <h4 class="text-center fw-bolder" > Entrate Giornaliere:
-        </h4>
-        <h3 class="text-center fw-bolder">
-            {{$day_income}} €
-        </h3>
+<div class="w-75 d-flex justify-content-around flex-wrap py-2 text-white">
+    <!-- Entrate giornaliere -->
+    <div class="col-12 col-md-6 px-3">
+        <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column">
+            <h4 class="text-center fw-bolder" > Entrate Giornaliere:
+            </h4>
+            <h3 class="text-center fw-bolder">
+                {{$day_income}} €
+            </h3>
+        </div>
     </div>
-    <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column">
-        <h4 class="text-center fw-bolder" > Entrate Giornaliere:
-        </h4>
-        <h3 class="text-center fw-bolder">
-            {{$month_income}} €
-        </h3>
+    <!-- Entrate mensili -->
+    <div class="col-12 col-md-6 px-3">
+        <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column">
+            <h4 class="text-center fw-bolder" > Entrate Mensili:
+            </h4>
+            <h3 class="text-center fw-bolder">
+                {{$month_income}} €
+            </h3>
+        </div>
     </div>
-    <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column">
-        <h4 class="text-center fw-bolder" > Entrate Annuali:
-        </h4>
-        <h3 class="text-center fw-bolder">
-            {{$year_income}} €
-        </h3>
+    <!-- Entrate Annue -->
+    <div class="col-12 col-md-6 px-3">
+        <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column">
+            <h4 class="text-center fw-bolder" > Entrate Annuali:
+            </h4>
+            <h3 class="text-center fw-bolder">
+                {{$year_income}} €
+            </h3>
+        </div>
     </div>
-    <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column">
-        <h4 class="text-center fw-bolder" > Entrate Totali:
-        </h4>
-        <h3 class="text-center fw-bolder">
-            {{$total_income}} €
-        </h3>
+    <!-- Entrate totali -->
+    <div class="col-12 col-md-6 px-3">
+        <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column">
+            <h4 class="text-center fw-bolder" > Entrate Totali:
+            </h4>
+            <h3 class="text-center fw-bolder">
+                {{$total_income}} €
+            </h3>
+        </div>
     </div>
 </div>
 
-<div class="d-flex justify-content-between">
-    <div class="w-50 p-3">
-        <div class="d-flex justify-content-center ">
-            <canvas id="myChart"></canvas>
+<div class="d-flex justify-content-between w-75 flex-wrap">
+    <div class="col-12 col-lg-6 p-3">
+        <div class="d-flex justify-content-center chart_card">
+            <canvas id="myChart" class="chart_height"></canvas>
         </div>
     </div>
 
-    <div class="w-50 p-3">
-        <div class="d-flex justify-content-center ">
-            <canvas id="myChart2"></canvas>
+    <div class="col-12 col-lg-6 p-3">
+        <div class="d-flex justify-content-center chart_card">
+            <canvas id="myChart2" class="chart_height"></canvas>
         </div>
     </div>
 </div>
 
 
-<div class="d-flex">
-    <div></div>
-    <div></div>
+<div class="w-75 d-flex justify-content-around flex-wrap py-2 text-white">
+    <!-- Miglior prodotto -->
+    <div class="col-12 col-md-6 px-3">
+        <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column">
+            <h4 class="text-center fw-bolder" > Più venduto:
+            </h4>
+            <h3 class="text-center fw-bolder">
+                {{$best_selling_product -> name}}
+            </h3>
+        </div>
+    </div>
+    <!-- Peggior prodotto -->
+    <div class="col-12 col-md-6 px-3">
+        <div class="stats-cards rounded my-3 d-flex justify-content-center align-items-center flex-column">
+            <h4 class="text-center fw-bolder" > Meno venduto:
+            </h4>
+            <h3 class="text-center fw-bolder">
+                {{$worst_selling_product -> name}}
+            </h3>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -79,7 +109,7 @@
             plugins: { // 'legend' now within object 'plugins {}'
                 legend: {
                     labels: {
-                        color: "white", // not 'fontColor:' anymore
+                        color: "black", // not 'fontColor:' anymore
                         // fontSize: 18  // not 'fontSize:' anymore
                         font: {
                             size: 18 // 'size' now within object 'font {}'
@@ -135,7 +165,7 @@
             plugins: { // 'legend' now within object 'plugins {}'
                 legend: {
                     labels: {
-                        color: "white", // not 'fontColor:' anymore
+                        color: "black", // not 'fontColor:' anymore
                         // fontSize: 18  // not 'fontSize:' anymore
                         font: {
                             size: 18 // 'size' now within object 'font {}'
