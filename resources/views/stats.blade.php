@@ -59,6 +59,7 @@
             <canvas id="myChart2" class="chart_height"></canvas>
         </div>
     </div>
+
 </div>
 
 
@@ -112,7 +113,7 @@
                         color: "black", // not 'fontColor:' anymore
                         // fontSize: 18  // not 'fontSize:' anymore
                         font: {
-                            size: 18 // 'size' now within object 'font {}'
+                            size: 15 // 'size' now within object 'font {}'
                         }
                     }
                 }
@@ -124,7 +125,7 @@
                         color: "#000000 ", // not 'fontColor:' anymore
                         // fontSize: 18,
                         font: {
-                            size: 18, // 'size' now within object 'font {}'
+                            size: 15, // 'size' now within object 'font {}'
                         },
                         stepSize: 1,
                         beginAtZero: true
@@ -168,7 +169,7 @@
                         color: "black", // not 'fontColor:' anymore
                         // fontSize: 18  // not 'fontSize:' anymore
                         font: {
-                            size: 18 // 'size' now within object 'font {}'
+                            size: 15 // 'size' now within object 'font {}'
                         }
                     }
                 }
@@ -180,7 +181,7 @@
                         color: "#000000", // not 'fontColor:' anymore
                         // fontSize: 18,
                         font: {
-                            size: 18, // 'size' now within object 'font {}'
+                            size: 15, // 'size' now within object 'font {}'
                         },
                         stepSize: 1,
                         beginAtZero: true
