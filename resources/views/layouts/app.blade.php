@@ -234,7 +234,7 @@
                 @endguest>
     
                     {{-- flash messages  --}}
-                    <div x-data="{ flash: true }">
+                    <div class="mt-5" x-data="{ flash: true }">
                         @if (session()->has('success'))
                         <div x-show="flash"
                             class="position-relative mb-10 rounded border border-success bg-success-subtle px-4 py-3 text-success"

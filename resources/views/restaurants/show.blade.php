@@ -68,6 +68,9 @@
                     </div>
                 </form>
             </div>
+            <div class="mt-3">
+                <a href="{{'http://localhost:5173/restaurant/' . $restaurant->id}}" target="_blank" class="mt-4 pastel-orange-bg p-2 text-decoration-none text-white fw-bold rounded">Vai al tuo ristorante</a>
+            </div>
         </div>
     </div>
         <script>
