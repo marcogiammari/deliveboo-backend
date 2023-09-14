@@ -8,9 +8,9 @@
     <!-- Entrate giornaliere -->
     <div class="col-12 col-md-6 px-3">
         <div class="stats-cards stats-card-1  rounded my-3 d-flex justify-content-center align-items-start p-5 flex-column w-100">
-            <h4 class="text-center fw-bolder" > Entrate Giornaliere:
+            <h4 class="fw-bolder" > Entrate Giornaliere:
             </h4>
-            <h3 class="text-center fw-bolder">
+            <h3 class="fw-bolder">
                 {{number_format($day_income,2 , ".") }} €
             </h3>
         </div>
